@@ -4,6 +4,79 @@
   
     
     <entry>
+      <title><![CDATA[HTML 5.1 里的新东西]]></title>
+      <url>http://jsgrblog.win/2016/12/10/H5-1%E6%96%B0%E7%89%B9%E6%80%A7/</url>
+      <content type="html"><![CDATA[<p>两年前HTML5标准的发布对于web开发社区来说是一件大事。不仅是因为它包含了一系列让人印象深刻的新特性, 还因为它是1999年发布的HTML4.01标准以后，对HTML的第一个大版本更新。你现在依然可以看到一些网站夸耀他们在使用“现代”的HTML5标准。<br><img src="http://p0.qhimg.com/t01c6cd825f03ce294a.png" alt="A HTML 5.1 knight in shining armor!"><br><a id="more"></a></p>
+<p>幸运的是我们不需为下一次HTML标准的更新等待那么长时间。2015年10月，W3C开始着手HTML5.1草案，其目标是修复一些HTML5遗留的问题。多次迭代后, 草案于2016年6月达到“候选建议（Candidate Recommendation）”阶段，2016年9月达到“提议建议（Proposed Recommendation）”，最终2016年11月发布<a href="https://www.w3.org/TR/html/" target="_blank" rel="external">W3C 建议</a>。关注新标准的人可能注意到了，这是一段曲折之路。很多开始提出的HTML5.1特性因为不好的设计或者缺少浏览器厂商支持而被废弃了。</p>
+<p>尽管HTML5.1仍然在发展, W3C已经开始着手<a href="https://www.w3.org/TR/html52/" target="_blank" rel="external">HTML5.2草案</a>，该标准预计2017年末发布。本文是对HTML5.1一些有趣的新特性和提升的概览。浏览器对这些特性依然缺乏支持，但是至少我们会告诉你一些支持这些特性的浏览器，用来测试每个例子。</p>
+<h3 id="上下文菜单使用menu和menuitems元素"><a href="#上下文菜单使用menu和menuitems元素" class="headerlink" title="上下文菜单使用menu和menuitems元素"></a>上下文菜单使用<code>menu</code>和<code>menuitems</code>元素</h3><p>HTML5.1草案介绍了两种不同的<code>menu</code>元素: <code>context</code>和<code>toolbar</code>。前者用来扩展本地上下文菜单，通常被页面上的鼠标右击激活；后者用来定义一个普通的菜单组件。在发展过程中，<code>toolbar</code> 被放弃了，但是<code>context</code>菜单保存了下来。</p>
+<p>可以使用 <a href="https://www.w3.org/TR/html/interactive-elements.html#the-menu-element" target="_blank" rel="external"><code>&lt;menu&gt;</code></a> 标签来定义一个包含一个或几个 <a href="https://www.w3.org/TR/html/interactive-elements.html#the-menuitem-element" target="_blank" rel="external"><code>&lt;menuitem&gt;</code></a> 元素的菜单，然后把它绑定到任何使用<a href="https://www.w3.org/TR/html/interactive-elements.html#element-attrdef-global-contextmenu" target="_blank" rel="external"><code>contextmenu</code></a> 属性的元素上。</p>
+<p>每个 <code>&lt;menuitem&gt;</code> 可以是以下三种类型之一:</p>
+<ul>
+<li><p><code>checkbox</code> – 允许选择或者取消选择一个选项(option);</p>
+</li>
+<li><p><code>command</code> – 允许在单击鼠标时执行一个动作;</p>
+</li>
+<li><p><code>radio</code> – 允许在一组选项中选择一个.</p>
+</li>
+</ul>
+<p>这里有一个基本的使用例子，可以在Firefox49中运行， 但是Chrome54目前不行。</p>
+<p>请看SitePoint (<a href="http://codepen.io/SitePoint" target="_blank" rel="external">@SitePoint</a>)在<a href="http://codepen.io" target="_blank" rel="external">CodePen</a>上<a href="http://codepen.io/SitePoint/pen/bBrvRP/" target="_blank" rel="external">HTML5.1菜单例子</a>。</p>
+<p>在一个支持的浏览器上，这个上下文菜单的例子应该看起来这样：</p>
+<p><img src="http://p0.qhimg.com/t012b201ff03692f462.png" alt="A HTML 5.1 context menu"></p>
+<p>上下文菜单中有自定义项。</p>
+<h3 id="细节（Details）和总结（Summary）元素"><a href="#细节（Details）和总结（Summary）元素" class="headerlink" title="细节（Details）和总结（Summary）元素"></a>细节（Details）和总结（Summary）元素</h3><p>新的<a href="https://www.w3.org/TR/html/interactive-elements.html#the-details-element" target="_blank" rel="external"><code>&lt;details&gt;</code></a>和<a href="https://www.w3.org/TR/html/interactive-elements.html#the-summary-element" target="_blank" rel="external"><code>&lt;summary&gt;</code></a>元素可以通过鼠标点击实现附加信息的展示和隐藏。这是使用JavaScript时候经常在干的事，现在可以使用<code>&lt;details&gt;</code>元素和<code>&lt;summary&gt;</code>元素代劳了。点击<code>&lt;summary&gt;</code>元素可以展示和隐藏<code>details</code>元素的其余部分.</p>
+<p>下面的例子可以在Firefox和Chrome中进行测试。</p>
+<p>请看SitePoint (<a href="http://codepen.io/SitePoint" target="_blank" rel="external">@SitePoint</a>)在<a href="http://codepen.io" target="_blank" rel="external">CodePen</a>上<a href="http://codepen.io/SitePoint/pen/rWzgzg/" target="_blank" rel="external">HTML5.1 细节和总结 demo</a>。</p>
+<p>这个demo在支持的浏览器上应该是下面这样：</p>
+<p><img src="http://p0.qhimg.com/t01800aaa24cc973da6.png" alt="Details and summary elements"></p>
+<h3 id="更多的input类型-month，week-和-datetime-local"><a href="#更多的input类型-month，week-和-datetime-local" class="headerlink" title="更多的input类型 - month，week 和 datetime-local"></a>更多的input类型 - <code>month</code>，<code>week</code> 和 <code>datetime-local</code></h3><p>input扩展了三种类型: <a href="https://www.w3.org/TR/html/sec-forms.html#month-state-typemonth" target="_blank" rel="external"><code>month</code></a>， <a href="https://www.w3.org/TR/html/index.html#contents" target="_blank" rel="external"><code>week</code></a> 和<a href="https://www.w3.org/TR/html/sec-forms.html#local-date-and-time-state-typedatetimelocal" target="_blank" rel="external"><code>datetime-local</code></a>。</p>
+<p>前两种类型让你可以选择周或者月。在Chrome中两者都渲染成下拉的日历，可以选择某周或者某月。当你用JavaScript获得它们的值，你将得到一个大致这样的字符串： <code>&quot;2016-W43&quot;</code>（<code>week</code> input）； <code>&quot;2016-10&quot;</code> （<code>month</code> input）。</p>
+<p>最初，HTML5.1草案介绍了两种日期类型input — <code>datetime</code>和<code>datetime-local</code>。不同的是，<code>datetime-local</code> 使用用户时区, 而<code>datetime</code>允许你选择时区。发展过程中，<code>datetime</code> 被放弃了，现在只有<code>datetime-local</code>存在。<code>datetime-local</code> input由两部分组成 — 日期，可以像<code>week</code> 和 <code>month</code>一样进行选择；时间, 可以单独输入。</p>
+<p>下面是关于所有新类型input的例子，它在chrome中可以正常展示，但是firfox不行。</p>
+<p>请看SitePoint (<a href="http://codepen.io/SitePoint" target="_blank" rel="external">@SitePoint</a>)在<a href="http://codepen.io" target="_blank" rel="external">CodePen</a>上<a href="http://codepen.io/SitePoint/pen/xRLowg/" target="_blank" rel="external">HTML 5.1 week, month 和 datetime inputs</a>。</p>
+<p>这个demo在支持的浏览器上应该是下面这样：</p>
+<p><img src="http://p0.qhimg.com/t018be52a398d1db7cd.png" alt="Week, month and datetime-local inputs"></p>
+<h3 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h3><p>HTML5.1包括几个在不使用CSS情况下实现响应式图片的新特性。每个特性都有自己单独的使用场景。</p>
+<h4 id="srcset属性"><a href="#srcset属性" class="headerlink" title="srcset属性"></a><code>srcset</code>属性</h4><p><a href="https://www.w3.org/TR/html/single-page.html#element-attrdef-img-srcset" target="_blank" rel="external"><code>srcset</code></a>图像属性允许列出多个可用于替代的图片数据源，这些数据源的像素密度不同。这使得浏览器可以针对用户设备选择合适质量的图片（由设备的像素密度、缩放比例或者网速决定）。例如，在低速手机网络和小屏幕手机的情况下，应该为用户提供低像素的图片。</p>
+<p><code>srcset</code>属性接受一个用逗号分隔的URL列表，每个URL带有一个表示最接近所请求图片像素比（一个CSS像素所代表的物理像素数量）的修饰<code>x</code>。下面是一个简单的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;images/low-res.jpg&quot; srcset=&quot;</div><div class="line">  images/low-res.jpg 1x, </div><div class="line">  images/high-res.jpg 2x, </div><div class="line">  images/ultra-high-res.jpg 3x&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>在这个例子中，如果用户设备的像素比是1，图片<code>low-res</code>将会被展示；如果是2，图片<code>high-res</code>将会被展示；如果是3或者更大，图片<code>ultra-high-res</code>将会被展示。</p>
+<p>或者，你可以选择将图片展示成不同尺寸。这需要使用<code>w</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;images/low-res.jpg&quot; srcset=&quot;</div><div class="line">  images/low-res.jpg 600w, </div><div class="line">  images/high-res.jpg 1000w, </div><div class="line">  images/ultra-high-res.jpg 1400w&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>在这个例子中，图片<code>low-res</code>被定义成600px宽，图片<code>high-res</code>被定义成1000px宽，<code>ultra-high-res</code>是1400px宽。</p>
+<h4 id="sizes属性"><a href="#sizes属性" class="headerlink" title="sizes属性"></a><code>sizes</code>属性</h4><p>你可能想根据用户屏幕尺寸来使用不同方式展示图片。例如，你可能想在宽屏幕上用两栏展示图片，窄一些的屏幕上用一栏。这点用<code>sizes</code>属性就可以实现。它允许你为图片分配屏幕的宽度，然后通过<code>srcset</code>属性选择合适的图片。下面是一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;images/low-res.jpg&quot; sizes=&quot;(max-width: 40em) 100vw, 50vw&quot; </div><div class="line">  srcset=&quot;images/low-res.jpg 600w, </div><div class="line">  images/high-res.jpg 1000w, </div><div class="line">  images/ultra-high-res.jpg 1400w&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<p>当视口宽度大于40em时，<code>sizes</code>属性把图片的宽度定义为视口宽度的50%；当视口（viewport）宽度小于或者等于40em时，把图片宽度定义为视口宽度的100%。</p>
+<h4 id="picture元素"><a href="#picture元素" class="headerlink" title="picture元素"></a><code>picture</code>元素</h4><p>如果根据屏幕不同改变图片的尺寸还是不能满足需求，你想根据屏幕不同展示不同的图片，那就需要使用<a href="https://www.w3.org/TR/html/single-page.html#elementdef-picture" target="_blank" rel="external"><code>picture</code></a>元素。它允许你通过用<code>&lt;picture&gt;</code>指定多个不同<code>&lt;source&gt;</code>元素，来为不同尺寸的屏幕定义不同资源的图片。<code>&lt;source&gt;</code>元素作为URL加载图片的来源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;picture&gt;</div><div class="line">  &lt;source media=&quot;(max-width: 20em)&quot; srcset=&quot;</div><div class="line">    images/small/low-res.jpg 1x,</div><div class="line">    images/small/high-res.jpg 2x, </div><div class="line">    images/small/ultra-high-res.jpg 3x</div><div class="line">  &quot;&gt;</div><div class="line">  &lt;source media=&quot;(max-width: 40em)&quot; srcset=&quot;</div><div class="line">    images/large/low-res.jpg 1x,</div><div class="line">    images/large/high-res.jpg 2x, </div><div class="line">    images/large/ultra-high-res.jpg 3x</div><div class="line">  &quot;&gt;</div><div class="line"></div><div class="line">  &lt;img src=&quot;images/large/low-res.jpg&quot;&gt;</div><div class="line">&lt;/picture&gt;</div></pre></td></tr></table></figure>
+<p>如果你想知道更多关于响应式图片的东西，请戳<a href="https://www.sitepoint.com/how-to-build-responsive-images-with-srcset" target="_blank" rel="external">How to Build Responsive Images with <code>srcset</code></a>.</p>
+<h3 id="用form-reportValidity-验证表单"><a href="#用form-reportValidity-验证表单" class="headerlink" title="用form.reportValidity()验证表单"></a>用<code>form.reportValidity()</code>验证表单</h3><p>HTML5定义的<a href="https://www.w3.org/TR/html/single-page.html#dom-htmlobjectelement-checkvalidity" target="_blank" rel="external"><code>form.checkValidity()</code></a>方法可以检查表单是否符合事先定义好的验证器然后返回一个布尔值。新的<a href="https://www.w3.org/TR/html/single-page.html#dom-htmlformelement-reportvalidity" target="_blank" rel="external"><code>reportValidity()</code></a> 方法很相似 — 它也可以检验一个表单并返回结果，但是它还能为用户报告错误。下面是一个例子（请在Firefox或Chrome中测试）：</p>
+<p>请在<a href="http://codepen.io" target="_blank" rel="external">CodePen</a>上看SitePoint (<a href="http://codepen.io/SitePoint" target="_blank" rel="external">@SitePoint</a>)的例子<a href="http://codepen.io/SitePoint/pen/eBEwjg/" target="_blank" rel="external">HTML 5.1 report validity demo</a>。</p>
+<p>“First name”输入框被要求非空，如果不填写它将被标记有错误。如果符合预期，它将是这样：</p>
+<p><img src="http://p0.qhimg.com/t01f231808cf20572c6.png" alt="Working form validation with a message"></p>
+<h3 id="frames的AllowfullscreenFrames的Allowfullscreen属性"><a href="#frames的AllowfullscreenFrames的Allowfullscreen属性" class="headerlink" title="frames的AllowfullscreenFrames的Allowfullscreen属性"></a>frames的<code>Allowfullscreen</code>Frames的<code>Allowfullscreen</code>属性</h3><p>frames新的布尔属性<a href="https://www.w3.org/TR/html/single-page.html#element-attrdef-iframe-allowfullscreen" target="_blank" rel="external"><code>allowfullscreen</code></a>可以控制内容是否可以通过<a href="https://fullscreen.spec.whatwg.org/#dom-element-requestfullscreen" target="_blank" rel="external"><code>requestFullscreen()</code></a>方法来全屏展示内容。</p>
+<h3 id="使用element-forceSpellCheck-进行拼写检查"><a href="#使用element-forceSpellCheck-进行拼写检查" class="headerlink" title="使用element.forceSpellCheck()进行拼写检查"></a>使用<code>element.forceSpellCheck()</code>进行拼写检查</h3><p>新的<a href="https://html.spec.whatwg.org/multipage/interaction.html#dom-forcespellcheck" target="_blank" rel="external"><code>element.forceSpellCheck()</code></a>方法允许你在text元素上触发拼写检查。这也是本文所列出的所有特性中第一个还不被任何浏览器支持的特性。也许，这可以用来进行检查还没有被用户直接编辑的元素。</p>
+<h3 id="没有写进HTML5-1的特性"><a href="#没有写进HTML5-1的特性" class="headerlink" title="没有写进HTML5.1的特性"></a>没有写进HTML5.1的特性</h3><p>一些特性在第一版的草案中被定义但是最终被删除了，大部分原因是浏览器厂商缺乏兴趣。下面是其中一些有趣的方法：</p>
+<h4 id="inert属性"><a href="#inert属性" class="headerlink" title="inert属性"></a><code>inert</code>属性</h4><p><code>inert</code>属性可以禁用所有子元素的用户交互，就像给所有子元素都加了<code>disabled</code>属性。</p>
+<h4 id="dialog元素"><a href="#dialog元素" class="headerlink" title="dialog元素"></a><code>dialog</code>元素</h4><p><code>&lt;dialog&gt;</code>元素提供一个原生的弹出框，它甚至有一个方便的表单集合 - 在<code>&lt;dialog&gt;</code>上使用<code>method</code>属性可以阻止表单提交到服务器上，而是关闭弹出框并把结果返回给弹出框的建立者。</p>
+<p>这个特性似乎在firfox仍然支持，所以可以看看下面这个例子（译者注：firfox V49.0.2不支持：</p>
+<p>请看SitePoint (<a href="http://codepen.io/SitePoint" target="_blank" rel="external">@SitePoint</a>)在<a href="http://codepen.io" target="_blank" rel="external">CodePen</a>的例子 <a href="http://codepen.io/SitePoint/pen/XNaLOg/" target="_blank" rel="external">HTML dialog element</a>。</p>
+<h3 id="作者的更多文章"><a href="#作者的更多文章" class="headerlink" title="作者的更多文章"></a>作者的更多文章</h3><ul>
+<li><p><a href="https://www.sitepoint.com/up-and-running-with-eslint-the-pluggable-javascript-linter/?utm_source=sitepoint&amp;utm_medium=relatedinline&amp;utm_term=&amp;utm_campaign=relatedauthor" target="_blank" rel="external">Up and Running with ESLint — the Pluggable JavaScript Linter</a></p>
+</li>
+<li><p><a href="https://www.sitepoint.com/visual-regression-testing-with-phantomcss/?utm_source=sitepoint&amp;utm_medium=relatedinline&amp;utm_term=&amp;utm_campaign=relatedauthor" target="_blank" rel="external">Visual Regression Testing with PhantomCSS</a></p>
+</li>
+</ul>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>这不是一个关于HTML5.1所有新特性的文章。有许多小的新特性、改变已经从现行标准中删除，还有一些从未使用的特性也被删除了。如果你想知道HTML5.1的所有改变，请戳[Changes](<a href="https://www.w3.org/TR/html/changes.html#changes。同时，让我们一起期待浏览器厂商尽快支持这些新特性!" target="_blank" rel="external">https://www.w3.org/TR/html/changes.html#changes。同时，让我们一起期待浏览器厂商尽快支持这些新特性!</a></p>
+<p>HTML5.1哪些方面最令你激动？通过评论告诉我们吧!</p>
+<blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@CynthiaLYY" target="_blank" rel="external">柒青衿</a><br>链接：<a href="http://www.zcfy.cc/article/1899" target="_blank" rel="external">http://www.zcfy.cc/article/1899</a><br>原文：<a href="https://www.sitepoint.com/whats-new-in-html-5-1/" target="_blank" rel="external">https://www.sitepoint.com/whats-new-in-html-5-1/</a></p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hello World]]></title>
       <url>http://jsgrblog.win/2016/12/09/hello-world/</url>
       <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>

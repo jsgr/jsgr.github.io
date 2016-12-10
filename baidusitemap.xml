@@ -5,13 +5,15 @@
     
   <url>
     <loc>http://jsgrblog.win/2016/12/10/H5-1%E6%96%B0%E7%89%B9%E6%80%A7/</loc>
-    <lastmod>2016-12-10T07:46:15.363Z</lastmod>
+    <lastmod>2016-12-10T07:52:50.361Z</lastmod>
     <data>
         <display>
         <title>HTML 5.1 里的新东西</title>
         <pubTime>2016-12-10T07:04:09.000Z</pubTime>
         
-        <tag>转载 H5</tag>
+        <tag>H5</tag>
+         
+        <tag>转载</tag>
          
          
            
@@ -26,39 +28,4 @@
     
     
     
-    
-  <url>
-    <loc>http://jsgrblog.win/2016/02/21/my-new-post/</loc>
-    <lastmod>2016-12-09T12:44:12.220Z</lastmod>
-    <data>
-        <display>
-        <title>my new post</title>
-        <pubTime>2016-02-21T08:04:09.000Z</pubTime>
-        
-        <tag>文章</tag>
-         
-         
-           
-             
-              <breadCrumb title="blog" url="http://jsgrblog.win/categories/blog/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jsgrblog.win/2016/12/09/hello-world/</loc>
-    <lastmod>2016-12-09T12:16:58.219Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2016-12-09T12:16:58.211Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
 </urlset>

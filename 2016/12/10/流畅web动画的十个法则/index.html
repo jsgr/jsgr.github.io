@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="jsgr" />
+
+
+
+<meta name="description" content="自从我们去年登陆了Gyroscope，许多人都问我有关用在我们网站上的javascript动画库。我们考虑过将此开源，但是这不是魔法真正实现的地方。
+我不希望大家认为我们是依靠特殊的javascript插件来解决这些问题的。对于大部分人来说，我们只是充分利用了近来浏览器性能的提升，GPU和CSS3规格.
+对于良好的动画性能没有高招，除了将大量的时间放在测试和优化。然而，过了许多年的实验和撞击浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流畅web动画的十个法则">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/10/流畅web动画的十个法则/index.html">
+<meta property="og:site_name" content="jsgr blog">
+<meta property="og:description" content="自从我们去年登陆了Gyroscope，许多人都问我有关用在我们网站上的javascript动画库。我们考虑过将此开源，但是这不是魔法真正实现的地方。
+我不希望大家认为我们是依靠特殊的javascript插件来解决这些问题的。对于大部分人来说，我们只是充分利用了近来浏览器性能的提升，GPU和CSS3规格.
+对于良好的动画性能没有高招，除了将大量的时间放在测试和优化。然而，过了许多年的实验和撞击浏览器">
+<meta property="og:image" content="http://p0.qhimg.com/t01127208383af267ed.gif">
+<meta property="og:image" content="http://p0.qhimg.com/t013e0b852373af9835.gif">
+<meta property="og:image" content="http://p0.qhimg.com/t0146d29814a6cdc280.gif">
+<meta property="og:image" content="http://p0.qhimg.com/t01cea2a1a8ba49dadb.gif">
+<meta property="og:image" content="http://p0.qhimg.com/t014b3b3c722b70bbf3.png">
+<meta property="og:image" content="http://p0.qhimg.com/t01c22edb1dcb830d14.gif">
+<meta property="og:image" content="http://p0.qhimg.com/t01bd1905f5c91073f1.gif">
+<meta property="og:image" content="http://p0.qhimg.com/t01ec60db7e77e8df6d.png">
+<meta property="og:image" content="http://p0.qhimg.com/t01dd5118782727aa5a.gif">
+<meta property="og:image" content="http://p0.qhimg.com/t018e6035e75b69d537.png">
+<meta property="og:image" content="http://p0.qhimg.com/t0146ff2d14e670a189.png">
+<meta property="og:image" content="http://p0.qhimg.com/t01aeef50b97627fdeb.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t016da3be3ddbaa201d.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t017cf7418c05cdfcf4.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t019d5f3ec63d3322e1.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t01a8e36a629ced0700.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t0192465868d2b8776c.gif">
+<meta property="og:updated_time" content="2016-12-10T08:08:55.624Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="流畅web动画的十个法则">
+<meta name="twitter:description" content="自从我们去年登陆了Gyroscope，许多人都问我有关用在我们网站上的javascript动画库。我们考虑过将此开源，但是这不是魔法真正实现的地方。
+我不希望大家认为我们是依靠特殊的javascript插件来解决这些问题的。对于大部分人来说，我们只是充分利用了近来浏览器性能的提升，GPU和CSS3规格.
+对于良好的动画性能没有高招，除了将大量的时间放在测试和优化。然而，过了许多年的实验和撞击浏览器">
+<meta name="twitter:image" content="http://p0.qhimg.com/t01127208383af267ed.gif">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="jsgr blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>流畅web动画的十个法则 | jsgr blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jsgr</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">就是个人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jsgr</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jsgr</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-流畅web动画的十个法则" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/10/流畅web动画的十个法则/" class="article-date">
+      <time datetime="2016-12-10T08:05:14.000Z" itemprop="datePublished">2016-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      流畅web动画的十个法则
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>自从我们去年登陆了<a href="https://gyrosco.pe/" target="_blank" rel="external"><em>Gyroscope</em></a>，许多人都问我有关用在我们网站上的javascript动画库。我们考虑过将此开源，但是这不是魔法真正实现的地方。</p>
+<p>我不希望大家认为我们是依靠特殊的javascript插件来解决这些问题的。对于大部分人来说，我们只是充分利用了近来浏览器性能的提升，GPU和CSS3规格.</p>
+<p>对于良好的动画性能没有高招，除了将大量的时间放在测试和优化。然而，过了许多年的实验和撞击浏览器性能的极限，我们发现了一系列的设计和代码准则，看上去似乎是良好动画可靠的结果。这些技术让你的页面，在现代桌面和手机浏览器上变得流畅，运行良好。最重要的是，易于维护。<br><a id="more"></a></p>
+<p><img src="http://p0.qhimg.com/t01127208383af267ed.gif" alt=""></p>
+<p>对每个人来说，技术和实现方式都有所不同，但是大体上的规则对大多是情况都会有帮助。</p>
+<h3 id="什么是动画？"><a href="#什么是动画？" class="headerlink" title="什么是动画？"></a>什么是动画？</h3><p>动画在互联网出现之前就已经饱经世故了，并且如果你想做好它，这会是你一生的课题。然而对于应用于互联网的动画，有一些特别的约束和挑战。</p>
+<p>对于60帧的流畅动画，每一帧都需要在16ms内渲染！这并没有多少时间，因此为了流畅的性能，我们需要找到非常有效的方法来渲染每一帧。</p>
+<p><img src="http://p0.qhimg.com/t013e0b852373af9835.gif" alt=""></p>
+<p><img src="http://p0.qhimg.com/t0146d29814a6cdc280.gif" alt=""><br><img src="http://p0.qhimg.com/t01cea2a1a8ba49dadb.gif" alt=""><br><a href="http://the12principles.tumblr.com/" target="_blank" rel="external">一些经典的动画规则</a></p>
+<p>T<br>在web上有一打方法做动画。比如，幻灯片是一种方法，在互联网之前就已经流行，通过轻微不同的手绘帧，在一秒内多次置换，来创造运动的视觉效果。</p>
+<p>最近Twitter使用这种简单的方法，制作了新的爱心动画，通过切换一组雪碧图切换实现。</p>
+<p><img src="http://p0.qhimg.com/t014b3b3c722b70bbf3.png" alt=""></p>
+<p>这个效果不能用一堆小元素单独做动画，或者做一个SVG，但是那样会产生十分不必要的复杂以及可能会不流畅。</p>
+<p><img src="http://p0.qhimg.com/t01c22edb1dcb830d14.gif" alt=""></p>
+<p>在许多例子中，你会想用CSS transition属性来做自动动画。这个技术也同样以“补间动画”闻名，在两个不同的值之间的过渡。这个好处就是，你可以轻易地取消，而不需要建立所有的逻辑。这个对于“一劳永逸”样式的动画是理想的解决方式，就像介绍序列，等等，或者简单如悬停的交互。</p>
+<p>延伸阅读: <a href="https://blog.alexmaccaw.com/css-transitions" target="_blank" rel="external">你需要知道关于CSS Transitions的事</a></p>
+<p><img src="http://p0.qhimg.com/t01bd1905f5c91073f1.gif" alt=""></p>
+<p>在其他例子中，关键帧为基础的CSS动画属性也许对于不间断运行的背景细节是非常理想的。举个例子，在Gyroscope logo上的戒指计划是不间断地旋转。其他受益于CSS动画语法的是齿轮速比。</p>
+<p>因此，事不宜迟，这里有些建议能够帮助你很大程度上地提高你的动画性能……</p>
+<blockquote>
+<p>#1</p>
+</blockquote>
+<h3 id="不要改变除了opacity和transform之外的参数！"><a href="#不要改变除了opacity和transform之外的参数！" class="headerlink" title="不要改变除了opacity和transform之外的参数！"></a>不要改变除了opacity和transform之外的参数！</h3><p><em>即使你觉得这样ok，也不要这么做!</em></p>
+<p>仅仅这一个基本的准则能帮你解决80%的问题，即使是在手机上。你可能在之前听过这个——这不是最初的主意，但是是很少被跟随。这相当于是web的“吃的健康和运动”的相同法则，这个听上去是一个好的建议，但是你可能会无视。</p>
+<p>一旦你如此想了，你会发现这个相对简单，但是可能会是一个大跳跃，对这些习惯传统CSS属性的动画。</p>
+<p>举个例子，如果你想让元素变小，你可以使用<em>transform: scale()</em>，而不是改变他的宽度。如果你想移动他，不同于用外边距或者内边距混在一起——你可以仅仅使用一个简单的<em>transform: translateX</em>或者<em>transform: translateY</em>。</p>
+<h4 id="为什么这个是有效的？"><a href="#为什么这个是有效的？" class="headerlink" title="为什么这个是有效的？"></a>为什么这个是有效的？</h4><p>对于人类来说，改变宽度，外边距或者其他属性，看上去不是很大的交易——因为它更简单，看上去更好——但是电脑需要做的事情和人类比起来简直是天壤之别，他要做的更加多更加槽糕。</p>
+<p>浏览器团队花费了很大的力气在优化这些操作。Transforms真的很简单就能提高效率，并且经常能够充分利用你的图形界面，而不用重新渲染元素。</p>
+<p>第一次载入页面的时候，你可能会抓狂——在所有的角落，使用图片，在每个元素上加上阴影，如果你觉得特别粗糙，你甚至可以加上一个动态模糊。如果这只发生一次，一些额外的毫秒时间计算并不影响。但是一旦内容重新渲染，你不会想重新计算所有的内容。</p>
+<p>延展阅读：<a href="https://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/" target="_blank" rel="external">用translate移动元素 (Paul Irish)</a></p>
+<blockquote>
+<p>#2</p>
+</blockquote>
+<h3 id="将内容藏在不起眼的地方"><a href="#将内容藏在不起眼的地方" class="headerlink" title="将内容藏在不起眼的地方"></a><em>将内容藏在不起眼的地方</em></h3><p><em>使用pointer-events:通过透明度为0来隐藏元素</em></p>
+<p>这个属性也许会有浏览器兼容的问题，但是如果你只是为webkit或者其他现代浏览器做东西，这会让你的生活更美好。</p>
+<p>过去很长一段时间，当动画需要通过jQuery的animate()处理的时候，许多渐变元素的复杂来自切换“display“属性实现的：在一个合</p>
+<p>CSS的pointer-events属性（这已经存在了很长时间了，但是不经常用），让元素不回应任何点击和交互，就像他们不在那边一样。它可以简单地通过CSS切换开启和关闭，而不通过打断动画或者以任何方法影响渲染/可见性。</p>
+<p>与opacity为0结合使用，他基本上和display：none是一样的效果，但是不触发新的渲染而影响性能。当隐藏元素时，我可以常常只设置opacity为0，并且关闭pointer-events，然后遗忘元素，他会自己照顾自己。</p>
+<p>这和绝对定位的元素一起工作地特别好，因为你会十分有信心，它对页面其他的元素完全没有影响。</p>
+<p>这也给你更多的回旋余地，因为定时并不完美——这不是世界末日，如果一个元素是可点击的或者在其他元素上遮盖一秒或者更长，或者如果这仅仅能被点一次，然后就隐藏起来了。</p>
+<blockquote>
+<p>#3</p>
+</blockquote>
+<h3 id="不要同一时间所有元素都做动画"><a href="#不要同一时间所有元素都做动画" class="headerlink" title="不要同一时间所有元素都做动画"></a>不要同一时间所有元素都做动画</h3><p><em>除非使用编排</em></p>
+<p>一个单独的动画自己是流畅的，但是同一时间许多元素都做动画，就会扰乱他们。创建单个的流畅动画很简单——但是一个数量级的动画就很难确保性能达到满分。因此，合理地规划特别重要。</p>
+<p>将时间分开，那么所有的元素都不在一个相同的时间开始。典型的是，2，3个可以在同一时间运行，而不需要减速，特别是如果他们在稍不同的时间开始动画。</p>
+<p>除非你的页面上只有一个元素，不然理解<em>编排</em>是很重要的。这可能看上去像一个舞蹈编排，但事对于动画接口来说是同样重要的。元素需要在一个合适得位置合适的时间进入。及时他们都是分开的，他们必须感觉是设计好的的一个单元。</p>
+<p>Google素材设计在这个主题上又很有意思的建议。这不仅仅是做事的正确方式，也是你需要考虑的事情和测试。</p>
+<p><img src="http://p0.qhimg.com/t01ec60db7e77e8df6d.png" alt=""></p>
+<p>延伸阅读： <a href="https://material.google.com/motion/material-motion.html" target="_blank" rel="external">Google素材设计 · 动机</a></p>
+<blockquote>
+<p>#4</p>
+</blockquote>
+<h3 id="轻微地增加延迟，让编排动作变得简单"><a href="#轻微地增加延迟，让编排动作变得简单" class="headerlink" title="轻微地增加延迟，让编排动作变得简单_"></a>轻微地增加延迟，让编排动作变得简单_</h3><p>编排动画真的十分重要，并且需要十分多的实验和测试才能找到感觉。然而，他的代码并不十分复杂。</p>
+<p>我通常会改变父元素上的一个Class（通常是在body上），来触发一系列变化，每一个在特定的时间有自己的过度延迟。从代码观点来说，你只需要关心状态改变，并且不需要在javascript中维护一堆定时。</p>
+<p><img src="http://p0.qhimg.com/t01dd5118782727aa5a.gif" alt=""></p>
+<p> <a href="https://gyrosco.pe/chrome/" target="_blank" rel="external">Gyroscope Chrome 扩展</a>的动画</p>
+<p>交错安排一系列元素，是最简单的编排你的元素的方法。这很强大，因为这同时看上去很好，同时也带来了珍贵的性能——记住只有一小部分元素在同一时间开始。你会将他们分开直至感觉足够流畅，但是不要分得太开，导致整体看上去太慢。足够应该是重叠，这感觉像一个不间断的流，而不是一系列独立的个体元素。</p>
+<h4 id="代码样例"><a href="#代码样例" class="headerlink" title="代码样例"></a>代码样例</h4><p>这里有一系列简单的技巧，交错排序你的元素——特别是如果是一长串元素。如果有少于10个元素，或者有一个不可估量的数量（就像在静态页面），然后我通常在CSS指定值。这是最简单的便于维护的方法。</p>
+<p><img src="http://p0.qhimg.com/t018e6035e75b69d537.png" alt=""></p>
+<p>一个简单的SASS循环</p>
+<p>对于很长的元素列表或者一个动态的内容，定时器可能需要通过循环每个元素动态设置。</p>
+<p><img src="http://p0.qhimg.com/t0146ff2d14e670a189.png" alt=""></p>
+<p>最简单的javascript循环</p>
+<p>这里有两个常用变量：你的基本延迟和每个元素之间的延迟。这是一个需要寻找的微妙的平衡，但是当你敲击正确的数字集，这会感觉非常好。</p>
+<blockquote>
+<p>#5</p>
+</blockquote>
+<h3 id="使用全局倍数来设计慢动画"><a href="#使用全局倍数来设计慢动画" class="headerlink" title="使用全局倍数来设计慢动画"></a>使用全局倍数来设计慢动画</h3><p><em>然后加速之后所有的元素</em></p>
+<p>对于动画设计，定时就是一切。20%的工具是实现他们，并且其他80%是找到正确的参数&amp;让一切同步的间距，以及感觉流畅。</p>
+<p>特别是在编排一系列元素的时候，尝试压榨性能和页面并发性，看看所有的元素在慢动作下会让事情变得简单。</p>
+<p>无论你是否用javascript，或者一些CSS预处理器，如Sass（我的最爱），这都需要直接做些额外的算数，和创建变量。</p>
+<p>你必须确认尝试一些不用的速度或者定时是很方便的。比如，如果一个动画在十分之一的速度下都很卡顿，那么有可能从根本上就有问题。如果将它调至50倍速度依然流畅，那么问题就是要找到他所能达到的最快的速度。在全速之下，5毫秒的问题很难察觉，但是如果你降低了整体的速度，那么他们就会变得特别明显。</p>
+<p>特别对于十分复杂的动画，或者解决棘手性能的瓶颈，在慢动作下查看元素的能力可能十分有用。</p>
+<p>最主要的问题是，你想包装许多完美的细节，当它变得慢的时候，然后提高整体的速度，因此这感觉是十分棒的。这十分微妙，但是用户会察觉流畅以及细节。</p>
+<p>这些特性只是OS X的一部分——如果你点击shift按钮来减小按钮或者一个app图标，你会看到他在慢速运行。在这一点上，当你按shift按钮的时候，我们甚至可以在Gyroscope实现激活慢动画。</p>
+<p><img src="http://p0.qhimg.com/t01aeef50b97627fdeb.jpg" alt=""></p>
+<blockquote>
+<p>#6</p>
+</blockquote>
+<h3 id="拍下你的UI，并且重放他们，以获取有价值的第三方关点。"><a href="#拍下你的UI，并且重放他们，以获取有价值的第三方关点。" class="headerlink" title="拍下你的UI，并且重放他们，以获取有价值的第三方关点。"></a>拍下你的UI，并且重放他们，以获取有价值的第三方关点。</h3><p>有时候一个不同的关点，能帮助你看事物更透彻，并且视频是一个极佳总这件事的方法。</p>
+<p>一些人在AE中创建视频，并且尝试将他们在网站上实现。我经常换做其他的方式，然后尝试做一个来自网站的UI好视频。</p>
+<p><img src="http://p0.qhimg.com/t016da3be3ddbaa201d.jpg" alt=""></p>
+<p>能够发表vine或者一些video，是十分高杆的。有一天，我十分激动于我做的东西，并且尝试做成视频，分享给一些小伙伴。</p>
+<p>然而，当我再看一次的时候，我发现有一堆东西不够完美。有一个大的滞后阻碍了之后的动画，并且所以的定时器都有一些问题。这让我有些担心，我最后没有发表它而是意识到我还有许多工作要做。</p>
+<p>当要在正式环境使用它的时候粉饰这些很容易，但是看在视频上的动画——一遍又一遍或者在一个很慢的速度——让所有的问题都变得十分明显。</p>
+<p><img src="http://p0.qhimg.com/t017cf7418c05cdfcf4.jpg" alt=""></p>
+<p>他们说相机加了10磅。也许这也增加了10帧。</p>
+<p><img src="http://p0.qhimg.com/t019d5f3ec63d3322e1.jpg" alt=""></p>
+<p>I<br>这现在也变成了我工作流中重要的一部分，查看页面慢动画视频，以及如果有任何帧让我感觉不对，就马上做些改变。要怪罪于慢浏览器很容易，但是在一些更加优化的浏览器上，测试，有可能解决了所有的问题。</p>
+<p>一旦你在视频上捕捉滞后停顿不觉得尴尬的时候，并且感觉视频够好，能够分享了，那么页面差不多就可以准备上线了。</p>
+<blockquote>
+<p>#7</p>
+</blockquote>
+<h3 id="网络活动导致滞后"><a href="#网络活动导致滞后" class="headerlink" title="网络活动导致滞后"></a>网络活动导致滞后</h3><p><em>你需要提前或者滞后加载大的http请求</em></p>
+<p>图片是这个问题的最黑祸首们，是否一些大家伙（也许是一个大的背景）或者大量地小图片（想象50个表情符加载），或者仅仅有许多内容（一个很长的到底都有图片的页面）。</p>
+<p>当页面第一次加载，大量的东西初始化和下载。有统计，广告和其他的第三方脚本让事情变得更糟糕。有时候，延迟所有的动画到加载完几百毫秒之后对性能有极大的帮助。</p>
+<p>除非必要，不要过度优化，但是一个复杂的页面也许需要十分准确的延迟和内容定时，然后才能运行路畅。通常上来说，你想要在开始加载尽可能少的内容，一旦重的部分和简介动画做完之后，不断地加载页面其余的部分。</p>
+<p>有许多数据的页面，加载所有的元素的工作量似乎是巨大的。一旦在做动画的同时开始加载真实数据，一个动画和静态页面运行地很好也许看上去是分开的。如果一些东西看上去应该工作或者有时候工作地流畅其他时间不流畅。我建议减产网络活动，确认你没有在同一时间做其他事情。</p>
+<blockquote>
+<p>#8</p>
+</blockquote>
+<h3 id="不要直接绑定滚动"><a href="#不要直接绑定滚动" class="headerlink" title="不要直接绑定滚动"></a>不要直接绑定滚动</h3><p><em>看上去是一个很酷的主意，但实际上不是。</em></p>
+<p>在过去几年中，滚动为基础的动画很受欢迎，特别是在视差或者其他特殊效果中。是否是好设计，有待辩论，但是有一些好或者槽糕的方法去实现他们。</p>
+<p>在这个类别中，适度的优化做些的事是将达到滚动到一定距离作为一个事件——并且仅仅运行一次。除非你真的了解你在做什么，我会建议避免这个类别，因为这很容易出问题而且真的很难维护。</p>
+<p>更加糟糕的是，创建你自己的滚动条功能，而不是用默认的——也就是<em>scrolljacking</em>。请不要做么做！</p>
+<p>这条建议对手机来说特别有用，但是也可能是用户体验的好实践。</p>
+<p>如果你确实有一个特别的体验，你想专注在滚动或者其他特殊事件，我会建议创建一个快速原型，以确保这在花费大时间设计的时候，能够运行良好。</p>
+<blockquote>
+<p>#9</p>
+</blockquote>
+<h3 id="尽早-amp-经常在手机上测试。"><a href="#尽早-amp-经常在手机上测试。" class="headerlink" title="尽早&amp;经常在手机上测试。"></a>尽早&amp;经常在手机上测试。</h3><p>大多数网站是在电脑上创建的，并且很有可能在他们创建的相同机器上运行测试。因此手机体验和动画性能经常是后知后觉的。一些技术（比如canvas）或者动画技术在手机并没有运行地这么好。</p>
+<p>然而，如果编写&amp;优化适当（看规则#1），一个手机体验可能会比电脑体验还要好。手机优化是一个非常棘手的课题，但是新的iPhone现在比大多数手提都要快！如果你按照之前的建议编写，你会发现你做的东西在手机上有着极佳的性能。</p>
+<p><a href="https://gyrosco.pe/app/" target="_blank" rel="external"><img src="http://p0.qhimg.com/t01a8e36a629ced0700.jpg" alt=""></a></p>
+<p>手机用法会是对于大多数网站都是一个非常大而且重要的部分。这看上去和极端，但是对于一整个项目，我会建议将手机从你的项目中分离出来。这不应该感觉像是一个惩罚去做手机版本，虽然经常会这样。</p>
+<p>保持设计进步&amp;性能加强，知道这感觉被打磨流畅已经像网站的大版本那样方便。</p>
+<p>如果你强迫自己只用手机网站一个礼拜，你很可能就会将它优化得向大型网站一样，有着的极佳体验。经常懊恼地使用是值得的，这意味着在你的用户体验之前解决问题。</p>
+<blockquote>
+<p>#10</p>
+</blockquote>
+<h3 id="在不同的设备上经常测试"><a href="#在不同的设备上经常测试" class="headerlink" title="在不同的设备上经常测试"></a>在不同的设备上经常测试</h3><p><em>屏幕大小，像素，或者设备都有着极大的暗示</em><br>.<br>除了手机vs桌面，有许多关键点会彻底影响性能，就像是否屏幕是“retina”屏，窗口的总像素，硬盘多老了，等等。</p>
+<p>即使Chrome和Safari都是webkit的浏览器，有着相同的语法，他们也都有各自怪异行为。每一次chrome更新都会修复一些东西以及引入新的bug，因此你需要一直保持警觉。</p>
+<p>当然，你不仅仅只希望创建最低水准的性能，因此找到最机智的方法来渐进添加或者移除增强功能会十分有用。</p>
+<p>我经常在我的小Macbook和大的iMac之间切换，并且每次切换都引出了一些小问题并且做些改进——特别是依据动画性能，但是对于总体设计，信息密度，可读性，等等。</p>
+<p>媒体查询，常常是强大的工具来处理这些不同环节样式，通过不同的高度或者宽度是最基础的媒体查询的用法。找出OS和设备的类型会很有用，因为手机性能特性和电脑很不一样。</p>
+<p><a href="https://gyrosco.pe/" target="_blank" rel="external"><img src="http://p0.qhimg.com/t0192465868d2b8776c.gif" alt=""></a></p>
+<p>我希望你在你的下一个项目中，会找到有用的技巧。好运！</p>
+<blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@cherryvenus" target="_blank" rel="external">cherryvenus</a><br>链接：<a href="http://www.zcfy.cc/article/1765" target="_blank" rel="external">http://www.zcfy.cc/article/1765</a><br>原文：<a href="https://blog.gyrosco.pe/smooth-css-animations-7d8ffc2c1d29?gi=7abf2b452ec#.8obfitru3?utm_source=CSS-Weekly&amp;utm_campaign=Issue-238&amp;utm_medium=email" target="_blank" rel="external">https://blog.gyrosco.pe/smooth-css-animations-7d8ffc2c1d29?gi=7abf2b452ec#.8obfitru3?utm_source=CSS-Weekly&amp;utm_campaign=Issue-238&amp;utm_medium=email</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
+        <p><span>发布时间:</span>2016-12-10, 16:05:14</p>
+        <p><span>最后更新:</span>2016-12-10, 16:08:55</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/10/流畅web动画的十个法则/" title="流畅web动画的十个法则">http://jsgrblog.win/2016/12/10/流畅web动画的十个法则/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/10/流畅web动画的十个法则/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/10/H5-1新特性/">
+                    HTML 5.1 里的新东西
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是动画？"><span class="toc-number">1.</span> <span class="toc-text">什么是动画？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不要改变除了opacity和transform之外的参数！"><span class="toc-number">2.</span> <span class="toc-text">不要改变除了opacity和transform之外的参数！</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么这个是有效的？"><span class="toc-number">2.1.</span> <span class="toc-text">为什么这个是有效的？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将内容藏在不起眼的地方"><span class="toc-number">3.</span> <span class="toc-text">将内容藏在不起眼的地方</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不要同一时间所有元素都做动画"><span class="toc-number">4.</span> <span class="toc-text">不要同一时间所有元素都做动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#轻微地增加延迟，让编排动作变得简单"><span class="toc-number">5.</span> <span class="toc-text">轻微地增加延迟，让编排动作变得简单_</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码样例"><span class="toc-number">5.1.</span> <span class="toc-text">代码样例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用全局倍数来设计慢动画"><span class="toc-number">6.</span> <span class="toc-text">使用全局倍数来设计慢动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拍下你的UI，并且重放他们，以获取有价值的第三方关点。"><span class="toc-number">7.</span> <span class="toc-text">拍下你的UI，并且重放他们，以获取有价值的第三方关点。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络活动导致滞后"><span class="toc-number">8.</span> <span class="toc-text">网络活动导致滞后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不要直接绑定滚动"><span class="toc-number">9.</span> <span class="toc-text">不要直接绑定滚动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#尽早-amp-经常在手机上测试。"><span class="toc-number">10.</span> <span class="toc-text">尽早&经常在手机上测试。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在不同的设备上经常测试"><span class="toc-number">11.</span> <span class="toc-text">在不同的设备上经常测试</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"流畅web动画的十个法则　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/10/流畅web动画的十个法则/" data-title="流畅web动画的十个法则" data-url="http://jsgrblog.win/2016/12/10/流畅web动画的十个法则/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jsgr"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/10/H5-1新特性/" title="下一篇: HTML 5.1 里的新东西">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/H5-1新特性/">HTML 5.1 里的新东西</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 jsgr
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

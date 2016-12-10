@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="jsgr" />
+
+
+
+<meta name="description" content="先有UI动画，然后才会有好的UI动画。好的动画会让人惊叹“哇哦！”——因为页面看上去很流畅、很漂亮，最重要的是，自然，一点都不会让人觉得不和谐或者僵硬死板。如果你经常逛Dribbble或者 UpLabs这类网站的话，你就会明白我在说什么了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运动曲线提升CSS动画效果">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/10/运动曲线提升CSS动画效果/index.html">
+<meta property="og:site_name" content="jsgr blog">
+<meta property="og:description" content="先有UI动画，然后才会有好的UI动画。好的动画会让人惊叹“哇哦！”——因为页面看上去很流畅、很漂亮，最重要的是，自然，一点都不会让人觉得不和谐或者僵硬死板。如果你经常逛Dribbble或者 UpLabs这类网站的话，你就会明白我在说什么了。">
+<meta property="og:image" content="http://p7.qhimg.com/t0198f1985b49e43d5d.png">
+<meta property="og:image" content="http://p1.qhimg.com/t012147368daf259496.png">
+<meta property="og:image" content="http://p8.qhimg.com/t01e59111828ca82798.gif">
+<meta property="og:image" content="http://p5.qhimg.com/t01c6e2853a8edca4fb.png">
+<meta property="og:image" content="http://p1.qhimg.com/t0165a65b34ba906b01.png">
+<meta property="og:image" content="http://p2.qhimg.com/t01235d7dd83ccf8b53.png">
+<meta property="og:image" content="http://p3.qhimg.com/t01d64520c0d8b9dba7.png">
+<meta property="og:image" content="http://p2.qhimg.com/t013a6e88ee6a11857f.png">
+<meta property="og:image" content="http://p4.qhimg.com/t01ba54f1b734954250.png">
+<meta property="og:image" content="http://p3.qhimg.com/t01b54717a25957ef45.png">
+<meta property="og:image" content="http://p0.qhimg.com/t01128b6bfb975a19d3.png">
+<meta property="og:image" content="http://p0.qhimg.com/t011b0845a4fe631ea1.png">
+<meta property="og:image" content="http://p3.qhimg.com/t016a3c8cd96966370b.png">
+<meta property="og:image" content="http://p3.qhimg.com/t0136e8b23dbeaa5f38.png">
+<meta property="og:image" content="http://p6.qhimg.com/t0158a16075eacf4bb0.png">
+<meta property="og:image" content="http://p7.qhimg.com/t01accc2bf891f52d73.png">
+<meta property="og:image" content="http://p9.qhimg.com/t0169af68ecb7a6d71b.png">
+<meta property="og:image" content="http://p2.qhimg.com/t01c21cc078bd03d502.png">
+<meta property="og:image" content="http://p0.qhimg.com/t015f17780bd1ef0798.png">
+<meta property="og:image" content="http://p8.qhimg.com/t01699e55ca96ec49db.png">
+<meta property="og:image" content="http://p8.qhimg.com/t011b56611c1e410553.png">
+<meta property="og:image" content="http://p1.qhimg.com/t0166f30888eb0272a0.png">
+<meta property="og:image" content="http://p8.qhimg.com/t017802f475cf1c2e4a.png">
+<meta property="og:image" content="http://p9.qhimg.com/t0139848eccb1cfdb8f.gif">
+<meta property="og:image" content="http://p9.qhimg.com/t01e62c7869c74bf660.png">
+<meta property="og:image" content="http://p1.qhimg.com/t01171f1e6f34c6398b.gif">
+<meta property="og:image" content="http://p8.qhimg.com/t01a801b1c9bf2bdaa0.png">
+<meta property="og:image" content="http://p5.qhimg.com/t01ad551b479d334a67.png">
+<meta property="og:image" content="http://p9.qhimg.com/t010a833a5c28ad96f4.gif">
+<meta property="og:image" content="http://p2.qhimg.com/t01a666f25b484eeeb3.png">
+<meta property="og:image" content="http://p1.qhimg.com/t013f39a117a808117a.gif">
+<meta property="og:image" content="http://p1.qhimg.com/t01eb41932ccada2483.png">
+<meta property="og:image" content="http://p9.qhimg.com/t0139848eccb1cfdb8f.gif">
+<meta property="og:image" content="http://p8.qhimg.com/t019c04674d1c9e6e94.png">
+<meta property="og:image" content="http://p0.qhimg.com/t018530bdbc9dd415d1.png">
+<meta property="og:updated_time" content="2016-12-10T12:13:16.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="运动曲线提升CSS动画效果">
+<meta name="twitter:description" content="先有UI动画，然后才会有好的UI动画。好的动画会让人惊叹“哇哦！”——因为页面看上去很流畅、很漂亮，最重要的是，自然，一点都不会让人觉得不和谐或者僵硬死板。如果你经常逛Dribbble或者 UpLabs这类网站的话，你就会明白我在说什么了。">
+<meta name="twitter:image" content="http://p7.qhimg.com/t0198f1985b49e43d5d.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="jsgr blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>运动曲线提升CSS动画效果 | jsgr blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jsgr</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS动画/">CSS动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS单位/">CSS单位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS变量/">CSS变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS定位/">CSS定位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS资源/">CSS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS预处理/">CSS预处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">就是个人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jsgr</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jsgr</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-运动曲线提升CSS动画效果" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/10/运动曲线提升CSS动画效果/" class="article-date">
+      <time datetime="2016-12-10T12:09:28.000Z" itemprop="datePublished">2016-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      运动曲线提升CSS动画效果
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS动画/">CSS动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>先有UI动画，然后才会有好的UI动画。好的动画会让人惊叹“哇哦！”——因为页面看上去很流畅、很漂亮，最重要的是，自然，一点都不会让人觉得不和谐或者僵硬死板。如果你经常逛Dribbble或者 <a href="http://www.uplabs.com" target="_blank" rel="external">UpLabs</a>这类网站的话，你就会明白我在说什么了。</p>
+<a id="more"></a>
+<h3 id="一些极好的拓展阅读资源"><a href="#一些极好的拓展阅读资源" class="headerlink" title="一些极好的拓展阅读资源:"></a>一些极好的拓展阅读资源:</h3><ul>
+<li><p><a href="https://www.smashingmagazine.com/2015/12/animating-clipped-elements-svg/" target="_blank" rel="external">SVG和CSS的路径剪辑动画</a></p>
+</li>
+<li><p><a href="https://www.smashingmagazine.com/2015/06/practical-techniques-on-designing-animation/" target="_blank" rel="external">若干实用的动画技术</a></p>
+</li>
+<li><p><a href="https://www.smashingmagazine.com/2015/09/creating-cel-animations-with-svg/" target="_blank" rel="external">使用SVG手绘动画</a></p>
+</li>
+<li><p><a href="https://www.smashingmagazine.com/2014/11/the-state-of-animation-2014/" target="_blank" rel="external">新的网页动画API</a></p>
+</li>
+</ul>
+<p>既然有这么多天才设计师创造了如此漂亮的动画，自然是任何开发者都会想要在自己的项目中引进这些效果。如今，CSS为<a href="https://developer.mozilla.org/en/docs/Web/CSS/transition-timing-function" target="_blank" rel="external"><code>transition-timing-function</code></a>提供了一些预置变量，比如<code>ease-in</code>, <code>ease-out</code> 和 <code>ease-in-out</code>, 它们将页面的平滑感和真实感提升了一个档次，但是，你不觉得这个方法太大众化了吗？试想如果页面上的每个动画都用了这3个相同的时间变量，那该是有多乏味啊。</p>
+<p>(引自: <a href="https://dribbble.com/LukasStranak" target="_blank" rel="external">Lukáš Straňák</a>)</p>
+<p> <code>transition-timing-function</code>有一个变形是<code>cubic-bezier(n1, n2, n3, n4)</code>, 你可以传进4个参数来创建自己独一无二的时间函数。在这篇文章的最后，你将会看到这4个参数各自代表什么——但是，相信我，要找到四个数字来捕获你想象中的转变并不是一件容易事儿。 幸亏有<a href="http://cubic-bezier.com" target="_blank" rel="external"><code>cubic-bezier</code></a>和<a href="https://matthewlein.com/ceaser/" target="_blank" rel="external"><code>Ceasar</code></a>, 你不必非得自己来完成。这些工具将运动曲线引入到了网页中。</p>
+<p>(引自: <a href="https://dribbble.com/m-2-h" target="_blank" rel="external">m-2-h</a>)</p>
+<p>运动曲线最早是被动画师们用来创造先进、逼真的动画(比如 <a href="http://www.adobe.com/products/aftereffects.html" target="_blank" rel="external">Adobe After Effects</a>)。通过<code>cubic-bezier</code> 和Ceasar, 你可以很容易地操纵曲线的形状，另外 (<code>n1, n2, n3, n4</code>) 这4个数字也会为你填好，这绝对超赞! 尽管如此，如果使用时想要最大化运动曲线的功能，你则需要了解它们的工作原理，这就是我们接下来在这篇文章中要讲到的。现在我们开始吧。</p>
+<h3 id="理解运动曲线"><a href="#理解运动曲线" class="headerlink" title="理解运动曲线"></a>理解运动曲线</h3><p>运动曲线其实只是连接 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties" target="_blank" rel="external">动画属性</a> 和时间的一个点。一条运动曲线展示了一个动画运动的速度是如何受时间的影响并随之变化的。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig26_large-opt.png" target="_blank" rel="external"><img src="http://p7.qhimg.com/t0198f1985b49e43d5d.png" alt="运动曲线是连接动画属性和时间的一个点。"></a></p>
+<p>运动曲线是连接动画属性和时间的一个点。 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig26_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>让我们拿 <a href="https://css-tricks.com/almanac/properties/t/transform/#article-header-id-3" target="_blank" rel="external">distance (<code>translateX</code>)</a> 作为动画属性举例。(这个解释同样适用于其他的任何一个动画属性。)</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig27_large-opt.png" target="_blank" rel="external"><img src="http://p1.qhimg.com/t012147368daf259496.png" alt="在一张距离－时间图上计算t1时刻的速度。"></a></p>
+<p>在一张距离－时间图上计算t1时刻的速度。(<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig27_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>如果你有一定的物理学和初级微积分学的基础，你就会知道从一张距离－时间表上算出速度是非常容易的。表中的<strong>单位时间内走过的距离</strong>除以<strong>单位时间</strong>得到的某时刻的导数，就是速度。 也就是说，距离－时间曲线上的物体在曲线陡峭的地方有更快的运动速度，而在曲线平缓的地方，速度则比较慢。如果你知道它的原理，那太棒了！说明你已经做好了充足的准备，可以跳过下面这节。</p>
+<p>如今，我意识到设计和开发是完全不同的领域，毕竟不是每个人都有相同的背景。 也许上面那段话你完全听不懂，也用不着灰心丧气，因为我接下来会慢慢解释的。</p>
+<p>看到下面的红盒了吗？请允许我童心未泯地将之称为“Boxy”；这样提及它时会更方便一些。好了，我们可以看到Boxy正在以线性的方式从屏幕的一边移动到另一边，接下来我们来分析一下它的运动。</p>
+<p><code>transition-timing-function</code> 的一个预置参数是<code>linear</code>。为了让Boxy动起来，我们要做的就是添加下面的这个方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> .moveForward &#123;</div><div class="line">  transform: translateX(1000px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了控制动画效果，我们会为Boxy设<code>transition</code>属性，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#boxy &#123;</div><div class="line">  width: 200px;</div><div class="line">  height: 200px;</div><div class="line">  background: red;</div><div class="line">  transition-property: transform; </div><div class="line">  transition-duration: 1s; </div><div class="line">  transition-timing-function: linear; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>想要将<code>transition</code>解释清楚是一件很麻烦的事情，实际上，你将会发现<code>transition</code>都是用速记形式写的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#boxy &#123;</div><div class="line">  width: 200px;</div><div class="line">  height: 200px;</div><div class="line">  background: red;</div><div class="line">  transition: transform 1s linear;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看它动起来的效果。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/TNndMJe.gif" target="_blank" rel="external"><img src="http://p8.qhimg.com/t01e59111828ca82798.gif" alt="Boxy 做直线运动。"></a></p>
+<p>红盒在做直线运动。</p>
+<p>它看上去很像一个机器人，不是吗？当然你可以说它之所以看上去很机械，完全是因为它做的是直线运动，这听起来好像很合理。但是你又要如何解释导致这一现象的原因呢？我们可以看到直线运动使得物品的移动显得很机械，但是隐藏在屏幕后面的工作原理又是什么呢？所以，我们的当务之急就是搞清楚为什么这样的移动会让人觉得很机械、不和谐又不自然。</p>
+<p>让我们将Boxy的移动用坐标轴来展现，看看是否能得到一些有用的信息。坐标轴有两根轴线，纵轴表示距离，横轴表示时间。Boxy在1秒钟内走过了1000像素的距离。 我们接下来会用到一些数学知识，不过不用担心，因为都很简单。</p>
+<p>这就是我们建的非常简易的图表，上面有两根坐标轴， 正如我刚刚提到的那样。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig1_large-opt.png" target="_blank" rel="external"><img src="http://p5.qhimg.com/t01c6e2853a8edca4fb.png" alt="只有坐标轴的空表"></a></p>
+<p>只有坐标轴的空表 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig1_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>现在，它是空的，让我们填进去一些数据。</p>
+<p>首先，我们可以看到在初始时刻（也就是0秒时），动画还没有开始，Boxy处在它的初始位置（也就是0像素的位置）。1秒钟过后，Boxy一共运动了1000像素，停在了初始位置的对面。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig2_large-opt.png" target="_blank" rel="external"><img src="http://p1.qhimg.com/t0165a65b34ba906b01.png" alt="Boxy的起点和终点位置"></a></p>
+<p>Boxy的起点和终点位置。 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig2_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>让我们在图中标出数据。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig3_large-opt.png" target="_blank" rel="external"><img src="http://p2.qhimg.com/t01235d7dd83ccf8b53.png" alt="标有Boxy起点和终点位置的图表"></a></p>
+<p>标有Boxy起点和终点位置的图表 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig3_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>到现在为止一切都很顺利。但是只有两个点的数据远远不够——我们需要更多。接下来的数据记录了Boxy在不同时间点的所处位置（这一切都多亏了我的高速摄像机）。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig4_large-opt.png" target="_blank" rel="external"><img src="http://p3.qhimg.com/t01d64520c0d8b9dba7.png" alt="不同时间点Boxy所处的位置"></a></p>
+<p>不同时间点Boxy所处的位置 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig4_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>我们将这些数据添加到坐标轴中。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig5_large-opt.png" target="_blank" rel="external"><img src="http://p2.qhimg.com/t013a6e88ee6a11857f.png" alt="标有不同位置的坐标轴。"></a></p>
+<p>标有不同位置的坐标轴。 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig5_large-opt.png" target="_blank" rel="external">View large version</a>)</p>
+<p>当然，你也可以搜集更多不同时刻的点（比如0.375s、0.6s等等），但是我们现在有的已经足够来建成这张表了。标注了上面的所有点后，我们的表就建成啦。来，击个掌！</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig6_large-opt.png" target="_blank" rel="external"><img src="http://p4.qhimg.com/t01ba54f1b734954250.png" alt="最终版本的坐标轴"></a></p>
+<p>坐标轴最终版本 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig6_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>酷！但是我们能从这得到什么呢？我们要时刻记住，实验的目的是弄明白为什么Boxy的线性运动看上去会不自然并且很机械。很显然，我们建好的这张表还不能告诉我们这是为什么。我们需要更深入地探索。</p>
+<p>让我们记住这张表，然后花1分钟时间来讨论一下速度。我相信你应该了解速度的概念——我指的就是数学术语上的速度。它的计算方法如下所示：</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig7_large-opt.png" target="_blank" rel="external"><img src="http://p3.qhimg.com/t01b54717a25957ef45.png" alt="计算速度的数学公式"></a></p>
+<p>计算速度的数学公式 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig7_large-opt.png" target="_blank" rel="external">View large version</a>)</p>
+<p>因此，如果一辆卡车在1小时内行驶100公里，我们就说它的速度是100km／h。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig8_large-opt.png" target="_blank" rel="external"><img src="http://p0.qhimg.com/t01128b6bfb975a19d3.png" alt="速度的计算"></a></p>
+<p>速度的计算 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig8_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>如果这辆卡车将速度加倍，他就会在相同的时间间隔1小时内行驶双倍的距离（也就是200公里），换句话说，要行驶100公里，它现在只需要刚才的一半时间（也就是半个小时）。能理解我的意思吗？</p>
+<p>类似的，如果这辆卡车将它的速度减半，它将在相同的时间段1小时内走过50公里，也就是说，要行驶100公里，它将需要双倍时间（也就是2个小时）。</p>
+<p>好！让我们回到之前的思路上，我们目前是在尝试弄清楚这张距离－时间表是如何帮助我们找到Boxy的线性运动看上去很僵硬的原因。</p>
+<p>嘿，等一下！我们有一张距离－时间表，并且速度可以通过路程和时间求得，不是吗？接下来我们就尝试计算Boxy不同单位时间内的速度。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig9_large-opt.png" target="_blank" rel="external"><img src="http://p0.qhimg.com/t011b0845a4fe631ea1.png" alt="计算不同单位时间段的速度"></a></p>
+<p>计算不同单位时间段的速度。 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig9_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>在这里，我挑选了3个不同的时间段：一段靠近起点，一段在中间位置，还有一段是接近终点的位置。很明显，在这三个时间段内，Boxy速度相同（它运动的路程s1=s2=s3），即1000px／s。由此可见，不管你在上表中选择的是哪个时间段，你会发现Boxy都是以1000px／s的速度移动的。是不是很意外？现实生活中，没有物体能够一直以一个恒定的速度运动；它们起步时速度都比较慢，然后会逐渐增加速度，运动一段时间后，又会在停下来之前减速，但Boxy却是以1000px／s的速度突然起步，接着做匀速运动，并且恰恰是以相同的速度突然停止。这就是为什么Boxy的移动看上去很机械且不自然，接着我们必须重新绘制我们的坐标系来体现这一点。但是在深入研究之前，我们需要了解速度的改变是如何改变距离－时间表的。准备好了吗？接下来的探索将会很有趣。</p>
+<p>我们将Boxy的速度提升一倍，来看看坐标图相应地会如何变化。Boxy的初始速度，还是如我们上面计算的那样是1000px／s。因为我们将它的速度变为了两倍，Boxy只需一半时间——也就是0.5秒，就可以走完全程。让我们在坐标图中画出来。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig10_large-opt.png" target="_blank" rel="external"><img src="http://p3.qhimg.com/t016a3c8cd96966370b.png" alt="两倍速度时的坐标图"></a></p>
+<p>两倍速度时的坐标图 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig10_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>如果我们将它的速度增加至3倍呢？Boxy只需要三分之一的时间就可以走完全程（也就是1/3秒）。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig11_large-opt.png" target="_blank" rel="external"><img src="http://p3.qhimg.com/t0136e8b23dbeaa5f38.png" alt="三倍速度时的坐标图"></a></p>
+<p>三倍速度时的坐标图 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig11_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>嗯，看出什么了吗？我们可以看到，随着速度的增长，坐标图发生变化，这条直线与时间横轴间的夹角也在不断增加。</p>
+<p>那好，我们继续将Boxy的速度减半。将它的速度减半意味着Boxy只能在1秒钟内走过500像素（也就是刚刚距离的一半）。然后让我们在坐标图中画出来。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig12_large-opt.png" target="_blank" rel="external"><img src="http://p6.qhimg.com/t0158a16075eacf4bb0.png" alt="一半速度时的坐标图"></a></p>
+<p>一半速度时的坐标图 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig12_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>我们将Boxy的速度再放慢一些，让它以原本速度的三分之一运动。这样的话，1秒钟内Boxy就只能走过一开始走过路程的三分之一。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig13_large-opt.png" target="_blank" rel="external"><img src="http://p7.qhimg.com/t01accc2bf891f52d73.png" alt="三分之一速度时的坐标图"></a></p>
+<p>三分之一速度时的坐标图 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig13_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>看出规律了吗？我们增加Boxy的速度时，线条越来越陡峭；而减慢Boxy的速度时，线条又变得平滑。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig14_large-opt.png" target="_blank" rel="external"><img src="http://p9.qhimg.com/t0169af68ecb7a6d71b.png" alt="速度增加时直线变陡，减慢时直线变得平缓"></a></p>
+<p>速度增加时直线变陡，减慢时直线变得平缓。 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig14_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>这个结论很重要，因为对一条很陡的直线而言，也就是速度更快时，一小段时间内Boxy走过的路程会变化很多。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig15_large-opt.png" target="_blank" rel="external"><img src="http://p2.qhimg.com/t01c21cc078bd03d502.png" alt="对线段更陡的表而言，小段时间相应会在距离上有很大的改变。"></a></p>
+<p>对线段更陡的表而言，小段时间相应会在距离上有很大的改变。 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig15_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig16_large-opt.png" target="_blank" rel="external"><img src="http://p0.qhimg.com/t015f17780bd1ef0798.png" alt="对线段更陡的表而言，小段时间相应会在距离上有很大的改变。"></a></p>
+<p>对线段更陡的表而言，小段时间相应会在距离上有很大的改变。(<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig16_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>另一方面，对于坡度不那么大的直线，就算过去很长时间，距离上也只会变化一点点，这是运动速度比较慢的情况。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig17_large-opt.png" target="_blank" rel="external"><img src="http://p8.qhimg.com/t01699e55ca96ec49db.png" alt="坡度比较平缓时坐标图中时间和距离的变化关系"></a></p>
+<p>坡度比较平缓时坐标图中时间和距离的变化关系 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig17_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig18_large-opt.png" target="_blank" rel="external"><img src="http://p8.qhimg.com/t011b56611c1e410553.png" alt="坡度比较平缓时，坐标图中时间和距离的变化关系"></a></p>
+<p>坡度比较平缓时，坐标图中时间和距离的变化关系 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig18_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>以上我们所做的只是改变了Boxy的运动速度，它仍然是在做直线运动。但是，我们以新的方式弄清楚了距离和时间是如何改变速度的，接下来就可以绘制一张表来让Boxy以一种自然、真实的方式运动。</p>
+<p>让我们一步一个脚印。首先，现实生活中的物体都是慢慢开始运动，并且逐渐增加运动速度的。所以，我们来模拟这一过程。</p>
+<p>仔细观察下图，你会发现起点和终点位置没有变。因为我们不想改变动画的持续时间，也不想改变Boxy的运动距离。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig19_large-opt.png" target="_blank" rel="external"><img src="http://p1.qhimg.com/t0166f30888eb0272a0.png" alt="私人定制的运动曲线"></a></p>
+<p>私人定制的运动曲线 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig19_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>Boxy如果照着上面的这张图运动，前0.25秒它的速度会比较慢，因为0秒到0.25秒之间这条线比较平缓，接着它会突然增速（因为0.25秒之后线段突然变陡）。 但是我们需要将这一转变变得平滑，因为我们不想要任何转角——毕竟，这是一条运动曲线。接下来就将这个急转弯换成一条曲线。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig20_large-opt.png" target="_blank" rel="external"><img src="http://p8.qhimg.com/t017802f475cf1c2e4a.png" alt="私人定制的运动曲线"></a></p>
+<p>私人定制的运动曲线 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig20_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>留心Boxy从静止状态到逐渐增速过程中平滑的转变。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/xs6l6oW.gif" target="_blank" rel="external"><img src="http://p9.qhimg.com/t0139848eccb1cfdb8f.gif" alt="按照上面那条运动曲线运动的Boxy"></a></p>
+<p>按照上面那条运动曲线运动的Boxy (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/xs6l6oW.gif" target="_blank" rel="external">点开看大图</a>)</p>
+<p>很好！实际生活中，运动的物体停下来之前速度也是逐渐减慢的。让我们修改坐标图来适应这一变化。类似的，我们会在想要Boxy慢下来的地方增加一个点。就加在0.6秒处怎么样？我已经将这个转折点换成曲线了。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig21_large-opt.png" target="_blank" rel="external"><img src="http://p9.qhimg.com/t01e62c7869c74bf660.png" alt="运动曲线终极版"></a></p>
+<p>运动曲线终极版 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig21_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>看Boxy动起来! 现在看上去自然了很多，不是吗?</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/iI5mrff.gif" target="_blank" rel="external"><img src="http://p1.qhimg.com/t01171f1e6f34c6398b.gif" alt="按照终极版运动曲线运动的Boxy"></a></p>
+<p>按照终极版运动曲线运动的Boxy (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/iI5mrff.gif" target="_blank" rel="external">点开看大图</a>)</p>
+<p>我们用来代替转角的曲线实际上是由很多短线段组成的；并且正如你已经知道的，表中的线段越陡峭，Boxy的运动速度就越快，线段越平缓，Boxy的速度就越慢。看坐标图的左边部分，会发现组成曲线的小线段坡度越来越大，导致速度逐渐增加；相应地，右边部分的线段越来越平缓，所以速度才会越来越慢。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig22_large-opt.png" target="_blank" rel="external"><img src="http://p8.qhimg.com/t01a801b1c9bf2bdaa0.png" alt="一条曲线只是由很多的短线段组成的。"></a></p>
+<p>一条曲线只是很多的短线段的集合 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig22_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>就以上我们所知道的，想要弄清楚运动曲线容易了很多。接下来我们来看一些例子。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig23_large-opt.png" target="_blank" rel="external"><img src="http://p5.qhimg.com/t01ad551b479d334a67.png" alt=""></a></p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig23_large-opt.png" target="_blank" rel="external">(点开看大图)</a></p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/Ij44EBG.gif" target="_blank" rel="external"><img src="http://p9.qhimg.com/t010a833a5c28ad96f4.gif" alt="例 1"></a></p>
+<p>例 1 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/Ij44EBG.gif" target="_blank" rel="external">点开看大图</a>)</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig24_large-opt.png" target="_blank" rel="external"><img src="http://p2.qhimg.com/t01a666f25b484eeeb3.png" alt=""></a></p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig24_large-opt.png" target="_blank" rel="external">(点开看大图)</a></p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/F4Ve4Xl.gif" target="_blank" rel="external"><img src="http://p1.qhimg.com/t013f39a117a808117a.gif" alt="例 2"></a></p>
+<p>例 2 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/F4Ve4Xl.gif" target="_blank" rel="external">点开看大图</a>)</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig25_large-opt.png" target="_blank" rel="external"><img src="http://p1.qhimg.com/t01eb41932ccada2483.png" alt=""></a></p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig25_large-opt.png" target="_blank" rel="external">(点开看大图)</a></p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/a0YYL8I.gif" target="_blank" rel="external"><img src="http://p9.qhimg.com/t0139848eccb1cfdb8f.gif" alt="例 3"></a></p>
+<p>例 3 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/a0YYL8I.gif" target="_blank" rel="external">点开看大图</a>)</p>
+<h3 id="在UI动画中使用运动曲线"><a href="#在UI动画中使用运动曲线" class="headerlink" title="在UI动画中使用运动曲线"></a>在UI动画中使用运动曲线</h3><p>接下来你需要让一个UI元素动起来，可以将运动曲线为你所用。无论是一个滑杆儿、一个窗口模型，还是一个下拉菜单，增加适量的动画效果让它们看上去平滑自然可以大幅度提高你的用户界面质量。它会让用户对你的界面感觉良好。拿下面的滑出式菜单举个例子：</p>
+<p>这是 Nash Vail (<a href="http://codepen.io/nashvail" target="_blank" rel="external">@nashvail</a>)在<a href="http://codepen.io" target="_blank" rel="external">CodePen</a>上创建的Pen <a href="http://codepen.io/nashvail/pen/qNYmLG/" target="_blank" rel="external">nJial</a>。</p>
+<p>点击菜单栏会从左边跳出菜单，但是这个出现的动作显得很生硬。CSS表的第51行将这个动画的<code>transition-timing-function</code> 设置为<code>linear</code>。这个动画效果显然可以优化。让我们使用<a href="http://cubic-bezier.com" target="_blank" rel="external">cubic-bezier</a> 来创建一个私人定制的定时功能。</p>
+<p>如果你读到了这里，我猜你一定是个设计师或者开发人员，又或者两者兼是，因此，你对三次贝塞尔曲线一定不会感到陌生，很有可能至少遇到过1次。贝塞尔曲线的创造就是一个奇迹。  它们一开始是被用于计算机图形学来绘制形状，并且被用在<a href="https://www.sketchapp.com/" target="_blank" rel="external">Sketch</a>和<a href="http://www.adobe.com/in/products/illustrator.html" target="_blank" rel="external">Adobe Illustrator</a>这类工具中来绘制矢量图形。三次Bezier曲线使用如此广泛的原因是它们用起来非常方便：我们只需要改变4个不同点的位置，然后创造我们需要的曲线。</p>
+<p>我们一般都会知道动画中物体的起点和终点位置，所以可以轻易锁定这两个点。然后就只要找到我们需要改变速度的两点位置。前两个固定的点被称为锚点，剩下的两个又叫控制点。</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig28_large-opt.png" target="_blank" rel="external"><img src="http://p8.qhimg.com/t019c04674d1c9e6e94.png" alt="截取的贝塞尔曲线的一部分"></a></p>
+<p>截取的贝塞尔曲线的一部分。 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig28_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>正如你所知，<code>cubic-bezier</code> 需要四个参数(<code>n1, n2, n3, n4</code>)来定制 <code>transition-timing-function</code>。这四个参数代表的是两个控制点的位置： <code>n1, n2</code>表示第一个控制点的x、y坐标点，<code>n3, n4</code>则表示第二个控制点的x、y坐标点。改变控制点的位置会使曲线的形状发生变化，<code>n1, n2, n3, n4</code> 全部或部分改变时我们的动画效果也会不一样。 举个例子，下面是传入参数为<code>cubic-bezier(.14, .78, .89, .35)</code>时的结果:</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig29_large-opt.png" target="_blank" rel="external"><img src="http://p0.qhimg.com/t018530bdbc9dd415d1.png" alt="传入参数为`(.14, .78, .89, .35)` 的三次方贝塞尔曲线。"></a></p>
+<p>传入参数为<code>(.14, .78, .89, .35)</code> 的三次方贝塞尔曲线。(<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/css-animations-motion-curves-fig29_large-opt.png" target="_blank" rel="external">点开看大图</a>)</p>
+<p>这些<a href="https://medium.freecodecamp.com/nerding-out-with-bezier-curves-6e3c0bc48e2f#.113c4usq9" target="_blank" rel="external">隐藏在看似简单的曲线背后的数学知识</a>着实令人着迷。</p>
+<p>好了，好了，让我们回想一下初衷：我们想借助<a href="http://cubic-bezier.com" target="_blank" rel="external">三次方贝塞尔曲线</a>来定制<code>过渡时间功能的函数</code>。我们需要的是能够快速滑出，然后速度逐渐慢下来，最后停止的菜单：</p>
+<p><a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/bezierDemo.gif" target="_blank" rel="external"></a></p>
+<p>调整后的三次贝塞尔曲线。 (<a href="https://www.smashingmagazine.com/wp-content/uploads/2016/08/bezierDemo.gif" target="_blank" rel="external">点开看大图</a>)</p>
+<p>看上去很不错。这个动画会开始很快然后逐渐慢下来，而不是全程都以一个恒定的速度移动。我只是简单地从上文中复制<code>cubic-bezier(.05, .69, .14, 1)</code> 然后拿它替换了<code>linear</code>。</p>
+<p>这是Nash Vail (<a href="http://codepen.io/nashvail" target="_blank" rel="external">@nashvail</a>)在<a href="http://codepen.io" target="_blank" rel="external">CodePen</a>发布的Pen <a href="http://codepen.io/nashvail/pen/rLvymO/" target="_blank" rel="external">nJial</a>。</p>
+<p>看到差别了吧？第二个版本看上去自然了很多，显得更有吸引力。试想，如果你的页面中每个动画都有一个自然定时功能，那将是有多赞啊？</p>
+<p>由此可见，运动曲线一点都不复杂，它们理解、使用起来都非常简单。借助它们，你可以将你的UI页面提升一个档次。</p>
+<p>我希望你已经明白了运动曲线的工作原理。如果你在使用运动曲线的过程中遇到了一些问题，或者你还根本没有用过它们，目前对你而言，让它们照你的意愿创造漂亮的动画，应该都是很简单的。毕竟，动画效果至关重要。</p>
+<p><em>(完)</em></p>
+<blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@JourneyWT" target="_blank" rel="external">鞠大宝</a><br>链接：<a href="http://www.zcfy.cc/article/1162" target="_blank" rel="external">http://www.zcfy.cc/article/1162</a><br>原文：<a href="https://www.smashingmagazine.com/2016/08/css-animations-motion-curves/" target="_blank" rel="external">https://www.smashingmagazine.com/2016/08/css-animations-motion-curves/</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
+        <p><span>发布时间:</span>2016-12-10, 20:09:28</p>
+        <p><span>最后更新:</span>2016-12-10, 20:13:16</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/10/运动曲线提升CSS动画效果/" title="运动曲线提升CSS动画效果">http://jsgrblog.win/2016/12/10/运动曲线提升CSS动画效果/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/10/运动曲线提升CSS动画效果/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/10/148个资源让你成为CSS专家/">
+                    148个资源让你成为CSS专家
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">
+                    70个老司机技巧教你更好的进行CSS编程
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一些极好的拓展阅读资源"><span class="toc-number">1.</span> <span class="toc-text">一些极好的拓展阅读资源:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解运动曲线"><span class="toc-number">2.</span> <span class="toc-text">理解运动曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在UI动画中使用运动曲线"><span class="toc-number">3.</span> <span class="toc-text">在UI动画中使用运动曲线</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"运动曲线提升CSS动画效果　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/10/运动曲线提升CSS动画效果/" data-title="运动曲线提升CSS动画效果" data-url="http://jsgrblog.win/2016/12/10/运动曲线提升CSS动画效果/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jsgr"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/10/148个资源让你成为CSS专家/" title="上一篇: 148个资源让你成为CSS专家">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/" title="下一篇: 70个老司机技巧教你更好的进行CSS编程">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/148个资源让你成为CSS专家/">148个资源让你成为CSS专家</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">70个老司机技巧教你更好的进行CSS编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/使用CSS相对单位构建可缩放的组件/">使用CSS相对单位构建可缩放的组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/关于css定位，你需要知道的5件事/">关于css定位，你需要知道的5件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/了解并使用CSS中的rem单位/">了解并使用 CSS 中的 rem 单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/网页设计和开发的55个顶尖博客/">网页设计和开发的55个顶尖博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/CSS变量和预处理变量有什么不同？/">CSS变量和预处理变量有什么不同？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/如何创建响应式删格系统/">如何创建响应式删格系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/">既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/H5-1新特性/">HTML 5.1 里的新东西</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 jsgr
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

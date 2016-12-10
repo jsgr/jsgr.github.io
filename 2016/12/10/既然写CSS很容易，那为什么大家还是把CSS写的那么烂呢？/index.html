@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="jsgr" />
+
+
+
+<meta name="description" content="在你开始阅读这篇文章之前，一定要做好心理准备。因为我写的 90％ 都是在发牢骚，只有最后大概 10% 介绍 CSS 技巧之最佳实践。提前给你们打好预防针啦。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/index.html">
+<meta property="og:site_name" content="jsgr blog">
+<meta property="og:description" content="在你开始阅读这篇文章之前，一定要做好心理准备。因为我写的 90％ 都是在发牢骚，只有最后大概 10% 介绍 CSS 技巧之最佳实践。提前给你们打好预防针啦。">
+<meta property="og:image" content="http://p0.qhimg.com/t019e6fb41afe19a33f.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t013a4f67b29c95260f.png">
+<meta property="og:image" content="http://p0.qhimg.com/t015af266b6ed948282.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t01aeac5c241603c602.jpg">
+<meta property="og:updated_time" content="2016-12-10T11:00:12.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？">
+<meta name="twitter:description" content="在你开始阅读这篇文章之前，一定要做好心理准备。因为我写的 90％ 都是在发牢骚，只有最后大概 10% 介绍 CSS 技巧之最佳实践。提前给你们打好预防针啦。">
+<meta name="twitter:image" content="http://p0.qhimg.com/t019e6fb41afe19a33f.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="jsgr blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？ | jsgr blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jsgr</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS动画/">CSS动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS单位/">CSS单位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS变量/">CSS变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS定位/">CSS定位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS资源/">CSS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS预处理/">CSS预处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">就是个人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jsgr</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jsgr</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/" class="article-date">
+      <time datetime="2016-12-10T10:57:13.000Z" itemprop="datePublished">2016-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在你开始阅读这篇文章之前，一定要做好心理准备。因为我写的 90％ 都是在发牢骚，只有最后大概 10% 介绍 CSS 技巧之最佳实践。提前给你们打好预防针啦。</p>
+<p><img src="http://p0.qhimg.com/t019e6fb41afe19a33f.jpg" alt="important does not fix your bad css"></p>
+<a id="more"></a>
+<p>前端工程师在职业发展中可能会遇到以下困境：</p>
+<ul>
+<li><p>某个阶段，感觉(自己所做的)工作没有任何难度</p>
+</li>
+<li><p>为团队创造的价值越来越低啦</p>
+</li>
+<li><p>自己做的事情，大家都能做</p>
+</li>
+</ul>
+<p>同意的请举手。如果你确实是这样，（恭喜你）说明你是多数派。</p>
+<p>而且说句实在话，CSS 确实很简单。另外我可以保证，就算是傻子也能写出下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">p &#123;</div><div class="line"></div><div class="line">color: red;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>那么你还有什么好抱怨的？堆纯 CSS 代码，不需要任何技巧。而且只给单个元素添加全局样式，而不用考虑其他 CSS，当然是非常简单的。</p>
+<h3 id="那么CSS到底难在哪儿？"><a href="#那么CSS到底难在哪儿？" class="headerlink" title="那么CSS到底难在哪儿？"></a>那么CSS到底难在哪儿？</h3><p><img src="http://p0.qhimg.com/t013a4f67b29c95260f.png" alt="one does not simply mess with css"></p>
+<p>后端开发工程师：“虽然我已经完成新功能的开发，但是我弄乱了前端，不过你放心，我已经修好绝大部分，所以你前端只需要对细节进行微调，时间应该不会超过 30 分钟”</p>
+<p>于是我打开HTML文件，(吃惊地)发现到处都是弃用的HTML标签，而且丝毫没有考虑过响应式设计。深呼吸，(暗示自己)，他们写的CSS肯定会稍微好点。然而在我打开CSS文件之后，发现(同样)到处都是类似固定(fixed)定位、清除左浮动、右浮动以及!important的代码，于是我慢慢的把鼠标绕在脖子上。（别拦我，让我死）</p>
+<p>（安慰自己），也许他们写出的代码不会一直这么糟糕，但是（在现实中）我几乎没见过后端工程师写出能用的前端代码的。也还好啦，写前端代码本来就不是后端工程师的职责所在。但是请后端工程师不要随便写一堆前端代码，然后指望前端工程师帮你擦屁股。</p>
+<h3 id="所以好的CSS长啥样？"><a href="#所以好的CSS长啥样？" class="headerlink" title="所以好的CSS长啥样？"></a>所以好的CSS长啥样？</h3><p><img src="http://p0.qhimg.com/t015af266b6ed948282.jpg" alt="you don&#39;t have to put all your sass files in the same folder"></p>
+<p>(项目的)组织结构。尤其是当你做过大型项目，就会发现项目的组织结构真的很重要。举个正面例子——Steven Bradley 写的<a href="http://vanseodesign.com/css/sass-directory-structures/" target="_blank" rel="external"><a href="http://vanseodesign.com/css/sass-directory-structures/" target="_blank" rel="external">利于维护代码的目录结构</a></a>，这篇文章是为 SCSS 项目写的，不过也适用于普通的 CSS 项目。它重点强调如何将 CSS 文件模块化，形成便于维护的文件。</p>
+<p>规范。这可能是我每天所遇到的最大问题。不幸的是，大部分工程师对<a href="https://developer.mozilla.org/en/docs/Web/CSS/Specificity" target="_blank" rel="external"><a href="https://developer.mozilla.org/en/docs/Web/CSS/Specificity" target="_blank" rel="external">CSS规范</a></a>的理解一知半解，正是因为这样，才导致糟糕的 CSS 代码（如 !important）烂大街。那我们该如何避免呢？下面列出了很多值得参考的命名约定，它们旨在减少写死的（非常依赖文档结构的） CSS 选择器。假设你对此不感冒，我还是要劝你如无必要，避免使用超过 3 层的 CSS 类/元素选择器。</p>
+<p>命名约定。恕我直言，对于任何一个大型的 CSS 项目来说，命名约定是标配。没有命名约定，CSS 就会变得既难维护又不可靠。命名约定可以让我们轻松地重用项目中的 CSS，如有必要，还能帮我们剔除项目中多余的 CSS。这里仅列举几种比较流行的命名约定，如：<a href="http://getbem.com/introduction/" target="_blank" rel="external"><a href="http://getbem.com/introduction/" target="_blank" rel="external">BEM</a></a>，<a href="http://oocss.org/" target="_blank" rel="external"><a href="http://oocss.org/" target="_blank" rel="external">OOCSS</a></a>，<a href="https://smacss.com/" target="_blank" rel="external"><a href="https://smacss.com/" target="_blank" rel="external">SMACSS</a></a>以及我自己写的<a href="https://github.com/CrashyBang/hiccup" target="_blank" rel="external"><a href="https://github.com/CrashyBang/hiccup" target="_blank" rel="external">hiccup</a></a>。</p>
+<p>测试。在这一点上，绝大多数其它工程师可能都没发现当后端工程师有多爽。 因为后端工程师的开发工作只需要让一个环境（网站所在的服务器）正常即可。你知道作为前端工程师最痛苦的事情是什么吗？5 个以上的浏览器以及上千种移动设备……好的前端测试工作其实是个苦差，且耗时很长。我见过很多项目延期，就因为没有把前端测试考虑进去，而通常前端测试花费的时间会超出常人预期。</p>
+<h3 id="所以如何扭转这种对CSS的天真看法？"><a href="#所以如何扭转这种对CSS的天真看法？" class="headerlink" title="所以如何扭转这种对CSS的天真看法？"></a>所以如何扭转这种对CSS的天真看法？</h3><p><img src="http://p0.qhimg.com/t01aeac5c241603c602.jpg" alt="i&#39;m working on css over here!"></p>
+<p>在以后工作中，再也不能让后端工程师们抱有侥幸心理。作为前端工程师，我们不会随便把一堆无响应式的 CSS 代码丢给后端工程师，然后撒手不管。所以凭什么他们就能写无用的烂代码，然后在他们的 CSS 代码失效时让我们去打补丁？我不是说要让后端工程师好好写 CSS 代码，而是我们应该告诉后端工程师，如果觉得写 CSS 很难的话，就不要写。别让其他工程师觉得前端很简单，前端才不简单呢，我们前端工程师跟其他人一样努力地工作，别让他们看走眼。</p>
+<blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@liuliangsir" target="_blank" rel="external">liuliangsir</a><br>链接：<a href="http://www.zcfy.cc/article/1683" target="_blank" rel="external">http://www.zcfy.cc/article/1683</a><br>原文：<a href="https://hackernoon.com/if-css-is-so-easy-why-does-everyone-suck-e4442cc9428a#.bq9c1sev1" target="_blank" rel="external">https://hackernoon.com/if-css-is-so-easy-why-does-everyone-suck-e4442cc9428a#.bq9c1sev1</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/">既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
+        <p><span>发布时间:</span>2016-12-10, 18:57:13</p>
+        <p><span>最后更新:</span>2016-12-10, 19:00:12</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/" title="既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？">http://jsgrblog.win/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/10/如何创建响应式删格系统/">
+                    如何创建响应式删格系统
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/10/流畅web动画的十个法则/">
+                    流畅web动画的十个法则
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#那么CSS到底难在哪儿？"><span class="toc-number">1.</span> <span class="toc-text">那么CSS到底难在哪儿？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所以好的CSS长啥样？"><span class="toc-number">2.</span> <span class="toc-text">所以好的CSS长啥样？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所以如何扭转这种对CSS的天真看法？"><span class="toc-number">3.</span> <span class="toc-text">所以如何扭转这种对CSS的天真看法？</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/" data-title="既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？" data-url="http://jsgrblog.win/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jsgr"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/10/如何创建响应式删格系统/" title="上一篇: 如何创建响应式删格系统">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/10/流畅web动画的十个法则/" title="下一篇: 流畅web动画的十个法则">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/148个资源让你成为CSS专家/">148个资源让你成为CSS专家</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">70个老司机技巧教你更好的进行CSS编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/使用CSS相对单位构建可缩放的组件/">使用CSS相对单位构建可缩放的组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/关于css定位，你需要知道的5件事/">关于css定位，你需要知道的5件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/了解并使用CSS中的rem单位/">了解并使用 CSS 中的 rem 单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/网页设计和开发的55个顶尖博客/">网页设计和开发的55个顶尖博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/CSS变量和预处理变量有什么不同？/">CSS变量和预处理变量有什么不同？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/如何创建响应式删格系统/">如何创建响应式删格系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/">既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/H5-1新特性/">HTML 5.1 里的新东西</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 jsgr
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

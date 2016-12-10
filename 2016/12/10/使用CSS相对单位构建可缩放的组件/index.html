@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="jsgr" />
+
+
+
+<meta name="description" content="这是 Ahmad Shadeed 的一篇博客，他为我们列举了使用相对单位的诸多好处。说到em这类相对单位，可能大多数人的第一反应是可以用于设置字体大小，事实上，还有许多其他yong chu用处，比如将字体大小与其他视觉元素的尺寸绑定。
+在这个动态的世界中，我们所做的任何事情随时都可能发生变化。作为前端开发者，我们也应该使用动态的方法进行布局。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用CSS相对单位构建可缩放的组件">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/10/使用CSS相对单位构建可缩放的组件/index.html">
+<meta property="og:site_name" content="jsgr blog">
+<meta property="og:description" content="这是 Ahmad Shadeed 的一篇博客，他为我们列举了使用相对单位的诸多好处。说到em这类相对单位，可能大多数人的第一反应是可以用于设置字体大小，事实上，还有许多其他yong chu用处，比如将字体大小与其他视觉元素的尺寸绑定。
+在这个动态的世界中，我们所做的任何事情随时都可能发生变化。作为前端开发者，我们也应该使用动态的方法进行布局。">
+<meta property="og:image" content="http://p3.qhimg.com/t016c9b944f1a0955a1.jpg">
+<meta property="og:image" content="http://p6.qhimg.com/t01fd7aab55668ae1b2.jpg">
+<meta property="og:image" content="http://p8.qhimg.com/t017c9466decf7cc958.jpg">
+<meta property="og:image" content="http://p3.qhimg.com/t015d06d6466d4221e8.jpg">
+<meta property="og:image" content="http://p4.qhimg.com/t0152ef5abbfcbd1243.jpg">
+<meta property="og:image" content="http://p5.qhimg.com/t01252ce7226885b2da.jpg">
+<meta property="og:image" content="http://p5.qhimg.com/t01d7514d96ef5ff183.jpg">
+<meta property="og:image" content="http://p8.qhimg.com/t01c5a410544cde30a8.gif">
+<meta property="og:image" content="http://p1.qhimg.com/t01d0f5adf19f53edf5.jpg">
+<meta property="og:image" content="http://p7.qhimg.com/t0191cc0e7479a752da.jpg">
+<meta property="og:image" content="http://p0.qhimg.com/t018309de496d228476.jpg">
+<meta property="og:image" content="http://p2.qhimg.com/t01321f19b5edda68df.jpg">
+<meta property="og:image" content="http://p4.qhimg.com/t013112188be137e583.jpg">
+<meta property="og:image" content="http://p8.qhimg.com/t01c7c34b616fd55eb8.jpg">
+<meta property="og:image" content="http://p9.qhimg.com/t0189a628d8aa2512c8.jpg">
+<meta property="og:image" content="http://p4.qhimg.com/t012d7462bb1ca04e84.png">
+<meta property="og:image" content="http://p5.qhimg.com/t01eac0d726ef186c1c.jpg">
+<meta property="og:image" content="http://p7.qhimg.com/t018916a1889ca7c6e7.jpg">
+<meta property="og:image" content="http://p7.qhimg.com/t0193912417769614a6.jpg">
+<meta property="og:image" content="http://p7.qhimg.com/t01ca5b3a5514f551e4.gif">
+<meta property="og:image" content="http://p2.qhimg.com/t01b7709dc9b4055008.jpg">
+<meta property="og:image" content="http://p1.qhimg.com/t011d926b22b1c41ce7.jpg">
+<meta property="og:image" content="http://p3.qhimg.com/t01d4a25adf9eec9852.png">
+<meta property="og:updated_time" content="2016-12-10T11:38:20.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用CSS相对单位构建可缩放的组件">
+<meta name="twitter:description" content="这是 Ahmad Shadeed 的一篇博客，他为我们列举了使用相对单位的诸多好处。说到em这类相对单位，可能大多数人的第一反应是可以用于设置字体大小，事实上，还有许多其他yong chu用处，比如将字体大小与其他视觉元素的尺寸绑定。
+在这个动态的世界中，我们所做的任何事情随时都可能发生变化。作为前端开发者，我们也应该使用动态的方法进行布局。">
+<meta name="twitter:image" content="http://p3.qhimg.com/t016c9b944f1a0955a1.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="jsgr blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>使用CSS相对单位构建可缩放的组件 | jsgr blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jsgr</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS动画/">CSS动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS单位/">CSS单位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS变量/">CSS变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS定位/">CSS定位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS资源/">CSS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS预处理/">CSS预处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">就是个人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jsgr</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jsgr</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-使用CSS相对单位构建可缩放的组件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/10/使用CSS相对单位构建可缩放的组件/" class="article-date">
+      <time datetime="2016-12-10T11:34:03.000Z" itemprop="datePublished">2016-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用CSS相对单位构建可缩放的组件
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS单位/">CSS单位</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><em>这是 <a href="https://ishadeed.com/" target="_blank" rel="external">Ahmad Shadeed</a> 的一篇博客，他为我们列举了使用相对单位的诸多好处。说到<code>em</code>这类相对单位，可能大多数人的第一反应是可以用于设置字体大小，事实上，还有许多其他yong chu用处，比如将字体大小与其他视觉元素的尺寸绑定。</em></p>
+<p>在这个动态的世界中，我们所做的任何事情随时都可能发生变化。作为前端开发者，我们也应该使用动态的方法进行布局。<br><a id="more"></a><br>本文将讨论使用CSS相对单位（％，em，或rem）来缩放元素组件中所有UI的方法。我们将举出一些实际的例子，分析各种方法的利弊，最后，还给出了一个使用这种方法建立完整页面的例子。</p>
+<h3 id="一个关于字体大小比例的简单例子"><a href="#一个关于字体大小比例的简单例子" class="headerlink" title="一个关于字体大小比例的简单例子"></a>一个关于字体大小比例的简单例子</h3><p><img src="http://p3.qhimg.com/t016c9b944f1a0955a1.jpg" alt=""></p>
+<p>这里面包含了三个元素：</p>
+<ol>
+<li>副标题</li>
+<li>主标题</li>
+<li>左边框</li>
+</ol>
+<p>HTML如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;article class=&quot;post&quot;&gt;</div><div class="line">   &lt;a href=&quot;#&quot;&gt;</div><div class="line">     &lt;span class=&quot;post-category&quot;&gt;Featured&lt;/span&gt;</div><div class="line">     &lt;h2 class=&quot;post-title&quot;&gt;Building Dynamic Components is Awesome&lt;/h2&gt;</div><div class="line">   &lt;/a&gt;</div><div class="line">&lt;/article&gt;</div></pre></td></tr></table></figure>
+<p>我希望每个元素相当于其他元素都是成比例的，这样当产生缩放时，他们会发生等比例的变化：</p>
+<p><img src="http://p6.qhimg.com/t01fd7aab55668ae1b2.jpg" alt=""></p>
+<p>假设我们采用绝对单位（px）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.post &#123;</div><div class="line">  border-left: 4px solid #4a90e2;</div><div class="line">&#125;</div><div class="line">.post-category &#123;</div><div class="line">  font-size: 14px;</div><div class="line">  color: #7d7d7d;</div><div class="line">&#125;</div><div class="line">.post-title &#123;</div><div class="line">  font-size: 36px;</div><div class="line">  font-weight: bold;</div><div class="line">  color: #4a90de;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当发生缩放时，要使各部分的比例不变，唯一方法就是重新计算各个元素的字体大小。比如，客户说，他们想让这个区域增大1.5倍，那你就得将字体大小分别调整到 <code>21px</code> 和 <code>54px</code>。</p>
+<p>为了使得调整起来更方便，我们可以使用百分比单位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.post-category &#123;</div><div class="line">  font-size: 85%;</div><div class="line">&#125;</div><div class="line">.post-title &#123;</div><div class="line">  font-size: 135%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这段代码的意思是，<code>font-size</code> 的大小要等于其定义了 <code>font-size</code> 属性的最近父级元素字体大小的 85%。</p>
+<p>我们可以给父级元素设置 <code>font-size</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.post &#123;</div><div class="line">  font-size: 24px;</div><div class="line"></div><div class="line">  /* </div><div class="line">    Child elements with % font sizes...</div><div class="line"></div><div class="line">    85%</div><div class="line">    0.85 * 24 = 20.4</div><div class="line"></div><div class="line">    135%</div><div class="line">    1.35 * 24 = 32.4</div><div class="line">  */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你不需要考虑最终的计算值是多少，因为浏览器会自动计算相应的字体大小。对你来说，它只是一个比例而已。</p>
+<p><img src="http://p8.qhimg.com/t017c9466decf7cc958.jpg" alt=""></p>
+<p>使用 <code>em</code>，我们也可以做到一样的事情。对于字体大小来说，百分比和 em 其实是一样的东西。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.post-category &#123;</div><div class="line">  font-size: 85%;</div><div class="line">  /* the same as */</div><div class="line">  font-size: 0.85em;</div><div class="line">&#125;</div><div class="line">.post-title &#123;</div><div class="line">  font-size: 135%;</div><div class="line">  /* the same as */</div><div class="line">  font-size: 1.35em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当我们对除了 <code>font-size</code> 之外的属性使用 <code>em</code> 时，计算值的大小仍然基于 <code>font-size</code> 得到的。这和百分比不同，比如，对于使用百分比的 <code>width</code> 属性，它的计算值是由父级元素的 <code>width</code> 属性而不是 <code>font-size</code> 属性得到的。</p>
+<p>举个栗子，如果我们设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.post &#123;</div><div class="line">  font-size: 24px;</div><div class="line">  border-left: 0.25em solid #4a90e2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>border-left-width</code> 属性的值会计算得到 <code>6px</code>。</p>
+<p>在下面这个demo中，滑动条会改变两个组件的 <code>font-size</code> 值。第一个组件的每个元素的大小都通过像素设置，第二个组件的各个元素大小则都通过 em 设置。</p>
+<p><a href="http://codepen.io/shadeed/pen/5037e798ccb88eb220f26540e6886f5c/" target="_blank" rel="external">demo.</a></p>
+<p>可以看到，使用 em 时，一切都会成比例缩放。</p>
+<h3 id="等比例的按钮"><a href="#等比例的按钮" class="headerlink" title="等比例的按钮"></a>等比例的按钮</h3><p>我们有时需要不同尺寸的按钮。比如，用一个更大尺寸的按钮版本来强调该动作的重要性。使用 <code>em</code>，我们可以轻松的同时增加 <code>font-size</code> 和 <code>padding</code> 的大小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;button class=&quot;button&quot;&gt;Save Settings&lt;/button&gt;</div><div class="line"></div><div class="line">&lt;button class=&quot;button button--medium&quot;&gt;Save Settings&lt;/button&gt;</div><div class="line"></div><div class="line">&lt;button class=&quot;button button--large&quot;&gt;Save Settings&lt;/button&gt;</div></pre></td></tr></table></figure>
+<p>如果我们把尺寸都通过像素来设置，那么我们将需要这么做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">.button &#123;</div><div class="line">  font-size: 16px;</div><div class="line">  padding: 10px 16px;</div><div class="line">  border-radius: 3px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.button--medium &#123;</div><div class="line">  font-size: 24px;</div><div class="line">  padding: 15px 24px;</div><div class="line">  border-radius: 4px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.button--large &#123;</div><div class="line">  font-size: 32px;</div><div class="line">  padding: 20px 32px;</div><div class="line">  border-radius: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>相反，结合百分比和 em 值，我们可以使尺寸值成比例变化，甚至包括 <code>border-radius</code>！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.button &#123;</div><div class="line">  font-size: 1em; /* Let&apos;s say this computes to 16px */</div><div class="line">  padding: 0.625em 1em; /* 0.1875 * 16 = 10px */</div><div class="line">  border-radius: 0.1875em; /* 0.1875 * 16 = 3px */</div><div class="line">&#125;</div><div class="line"></div><div class="line">.button--medium &#123;</div><div class="line">  font-size: 130%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.button--large &#123;</div><div class="line">  font-size: 160%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它们将成比例缩放：</p>
+<p><a href="http://codepen.io/shadeed/pen/f2de84b1d64c07b5085f2e4dadbca4e1/" target="_blank" rel="external">demo.</a></p>
+<h3 id="图片宽／高的成比例缩放"><a href="#图片宽／高的成比例缩放" class="headerlink" title="图片宽／高的成比例缩放"></a>图片宽／高的成比例缩放</h3><p>下面是一个需要让头像图片比署名和发表时间稍大的例子。注意图中的蓝色高亮部分。当我们改变 <code>font-size</code> 大小时，它的高度将发生变化。</p>
+<p><img src="http://p3.qhimg.com/t015d06d6466d4221e8.jpg" alt=""></p>
+<p>HTML如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;bio&quot;&gt;</div><div class="line">  &lt;img src=&quot;author.jpg&quot; alt=&quot;Photo of author Ahmad Shadeed&quot;&gt;</div><div class="line">  &lt;div class=&quot;bio__meta&quot;&gt;</div><div class="line">    &lt;h3&gt;&lt;b&gt;By:&lt;/b&gt; Ahmad Shadeed&lt;/h3&gt;</div><div class="line">    &lt;time&gt;Posted on August 5, 2016&lt;/time&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>我们不仅将字体的尺寸设置为 em 值，图片的宽高也是一样。并且要确保图片质量足够好，不会因为过度放大而失真。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">.bio h3 &#123;</div><div class="line">  font-size: 1em;</div><div class="line">&#125;</div><div class="line">.bio time &#123;</div><div class="line">  font-size: 0.875em;</div><div class="line">&#125;</div><div class="line">.bio img &#123;</div><div class="line">  width: 3.125em;</div><div class="line">  height: 3.125em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="成比例变化的边界"><a href="#成比例变化的边界" class="headerlink" title="成比例变化的边界"></a>成比例变化的边界</h3><p>另一种能用 em 值来设置的属性就是 <code>box-shadow</code>。</p>
+<p><img src="http://p4.qhimg.com/t0152ef5abbfcbd1243.jpg" alt=""></p>
+<p>我们已经知道，边界的大小可以利用 em 值进行放缩。这里，我们将一个内层的 <code>box-shadow</code> 的高度设为 em 值，从而令其随着文本大小进行缩放。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.headline &#123;</div><div class="line">  box-shadow: inset 0 -0.25em 0 0 #e7e7e7;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://codepen.io/shadeed/pen/2ec1144b424ca7017c22fea52aa01494/" target="_blank" rel="external">demo.</a></p>
+<p>注意：在为CSS渐变设置断点颜色时，我们也可以使用这种方法，只需要把断点也设为 em 值即可。</p>
+<h3 id="给图标留出位置"><a href="#给图标留出位置" class="headerlink" title="给图标留出位置"></a>给图标留出位置</h3><p>假设在左上角要有一个用自定义图标实现的装饰性引号``。我们应该考虑到字体大小发生变化的情况，这时，相对单位就有用武之地了。</p>
+<p><img src="http://p5.qhimg.com/t01252ce7226885b2da.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;blockquote class=&quot;quote&quot;&gt;</div><div class="line">  &lt;p&gt;</div><div class="line">    &lt;span&gt;</div><div class="line">      Building dynamic web components using modular design concepts is awesome. </div><div class="line">      &lt;em&gt;- Ahmad Shadeed&lt;/em&gt;</div><div class="line">    &lt;/span&gt;</div><div class="line">  &lt;/p&gt;</div><div class="line">&lt;/blockquote&gt;</div></pre></td></tr></table></figure>
+<p>和上面提到的那样，我们将一切都用相对单位来表示。装饰性SVG图标通过伪元素引入，然后，将该伪元素绝对定位，让其父级元素相对定位，大小用相对单位表示，最后用相对单位表示的padding为伪元素留出足够的空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">.quote &#123;</div><div class="line">  position: relative;</div><div class="line">  padding: 1.5em 2em;</div><div class="line">  padding-left: 4.5em;</div><div class="line">  border-radius: 0.3125em;</div><div class="line">&#125;</div><div class="line">.quote p &#123;</div><div class="line">  font-size: 2em;</div><div class="line">&#125;</div><div class="line">.quote span &#123;</div><div class="line">  box-shadow: inset 0 -0.25em 0 0 rgba(255, 255, 255, 0.4);</div><div class="line">&#125;</div><div class="line">.quote:before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  position: absolute;</div><div class="line">  top: 2.125em;</div><div class="line">  left: 1.875em;</div><div class="line">  background: url(&quot;quotes.svg&quot;) no-repeat;</div><div class="line">  height: 1.875em;</div><div class="line">  width: 1.875em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过这种方法，当我们改变字体大小时，所有的东西都能自由缩放。</p>
+<p><img src="http://p5.qhimg.com/t01d7514d96ef5ff183.jpg" alt=""></p>
+<p>注意这一过程中，各个元素是如何等比例缩放的，这一效果就像在设计软件中我们全选所有元素，然后同时缩放一样！</p>
+<p><img src="http://p8.qhimg.com/t01c5a410544cde30a8.gif" alt=""></p>
+<p>如果使用的是像素值，那么缩放的效果就会不尽如人意。特别是小图标，它将要不然离文字特别近，要不然就特别远。</p>
+<p><img src="http://p1.qhimg.com/t01d0f5adf19f53edf5.jpg" alt=""></p>
+<p>示例如下：</p>
+<p><a href="http://codepen.io/shadeed/pen/2ec1144b424ca7017c22fea52aa01494/" target="_blank" rel="external">demo.</a></p>
+<h3 id="在图片中添加说明文字"><a href="#在图片中添加说明文字" class="headerlink" title="在图片中添加说明文字"></a>在图片中添加说明文字</h3><p>想象一下有排列成这样的一组的图片和说明文字：</p>
+<p><img src="http://p7.qhimg.com/t0191cc0e7479a752da.jpg" alt=""></p>
+<p>通过字体大小，我们可以实现大部分设计效果，比如向左向上的偏移大小，padding，甚至阴影效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;figure class=&quot;figure&quot;&gt;</div><div class="line">  &lt;img src=&quot;sunrise.jpg&quot; alt=&quot;Sunrise&quot;&gt;</div><div class="line">  &lt;figcaption&gt;The feeling you got from watching the sunrise is amazing.&lt;/figcaption&gt;</div><div class="line">&lt;/figure&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.figure figcaption &#123;</div><div class="line">  position: absolute;</div><div class="line">  top: 1.25em;</div><div class="line">  left: -1.875em;</div><div class="line">  right: 0;</div><div class="line">  padding: 1em;</div><div class="line">  box-shadow: -0.3125em 0.3125em 0 0 rgba(0, 0, 0, 0.15);</div><div class="line">  font-size: 1.75em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://codepen.io/shadeed/pen/c51b4e5d3e635e1bfc8d9fe499c247d6/" target="_blank" rel="external">demo.</a></p>
+<h3 id="装饰性背景"><a href="#装饰性背景" class="headerlink" title="装饰性背景"></a>装饰性背景</h3><p>在标题的后面有个黑色的圆形背景：</p>
+<p><img src="http://p0.qhimg.com/t018309de496d228476.jpg" alt=""></p>
+<p>让我们首先确保其大小能够随着字体大小的变化而变化。除此之外，还有一些更加微妙的细节。border－radius值和虚线的粗细应该也是成比例变化的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;section class=&quot;block&quot;&gt;</div><div class="line">  &lt;h3 class=&quot;block__title&quot;&gt;Content outline&lt;/h3&gt;</div><div class="line">  &lt;div class=&quot;block__content&quot;&gt;</div><div class="line">    &lt;p&gt;Description to be there....&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/section&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">.block__title &#123;</div><div class="line">  position: relative;</div><div class="line">  font-size: 1.5em;</div><div class="line">  padding: 0.5em;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.block__title:after &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  position: absolute;</div><div class="line">  left: 0.25em;</div><div class="line">  top: 0;</div><div class="line">  width: 2.5em;</div><div class="line">  height: 2.5em;</div><div class="line">  border-radius: 50%;</div><div class="line">  background: #000;</div><div class="line">  opacity: 0.5;</div><div class="line">  transform: scale(1.75);</div><div class="line">&#125;</div><div class="line"></div><div class="line">.block__title:before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  margin-left: 0.5em;</div><div class="line">  border-bottom: 0.0625em dashed rgba(255, 255, 255, 0.5);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>尽可能的使用相对单位，这能使得每一个元素都能自如缩放：<br><a href="http://codepen.io/shadeed/pen/8993265d72b2dc808ed144ff8a448295/" target="_blank" rel="external">demo.</a></p>
+<h3 id="带icon的搜索框"><a href="#带icon的搜索框" class="headerlink" title="带icon的搜索框"></a>带icon的搜索框</h3><p>使用带小图标的button是很常见的，不过，你也可以在input中使用小图标。一个很常见的例子就是用一个放大镜的小图标来表示搜索按钮：</p>
+<p><img src="http://p2.qhimg.com/t01321f19b5edda68df.jpg" alt=""></p>
+<p>小图标通过<code>background-image</code>来放置，并且给input加了padding－left，以防止文字覆盖小图标。当文字尺寸增加时，我们也应该增加小图标的尺寸。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;form class=&quot;search&quot;&gt;</div><div class="line">  &lt;label for=&quot;search&quot;&gt;Enter keyword:&lt;/label&gt;</div><div class="line">  &lt;input type=&quot;search&quot; id=&quot;search&quot; placeholder=&quot;What are you searching about?&quot;&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.search input &#123;</div><div class="line">  width: 25em;</div><div class="line">  font-size: 1em;</div><div class="line">  padding: 0.625em;</div><div class="line">  padding-left: 2.5em;</div><div class="line">  border-radius: 0.3125em;</div><div class="line">  border: 0.125em solid #b4b4b4;</div><div class="line">  background: url(&quot;search.svg&quot;) left 0.625em center/1.5em 1.5em no-repeat;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所有经典尺寸都被设为了相对单位：padding、border、border－radius等等，此外，我们还给背景位置和背景尺寸也设置了相对单位。现在，一切都可以很好的进行缩放了。</p>
+<p><a href="http://codepen.io/shadeed/pen/a9eabeb1090744105254dd52fc2f6a6b/" target="_blank" rel="external">demo.</a></p>
+<h3 id="切换"><a href="#切换" class="headerlink" title="切换"></a>切换</h3><p>考虑一个典型的表单勾选框，它有一个可以反复切换的开关：</p>
+<p><img src="http://p4.qhimg.com/t013112188be137e583.jpg" alt=""></p>
+<p>没有什么是我们不能缩放滴！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;form action=&quot;&quot; class=&quot;switch&quot;&gt;</div><div class="line">  &lt;p&gt;Do you want to subscribe?&lt;/p&gt;</div><div class="line">  &lt;input type=&quot;checkbox&quot; name=&quot;&quot; id=&quot;switch&quot; class=&quot;off-screen&quot;&gt;</div><div class="line">  &lt;label for=&quot;switch&quot;&gt;&lt;span class=&quot;off-screen&quot;&gt;Do you want to subscribe?&lt;/span&gt;&lt;/label&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.switch label &#123;</div><div class="line">  width: 5.625em;</div><div class="line">  height: 2.5em;</div><div class="line">  border: 0.125em solid #b4b4b4;</div><div class="line">  border-radius: 2.5em;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.switch label:before &#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  right: 0.25em;</div><div class="line">  top: 0.21875em;</div><div class="line">  width: 2em;</div><div class="line">  height: 2em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>完美缩放：</p>
+<p><a href="http://codepen.io/shadeed/pen/1179b6e57a4fbe914bf099743b4e6945/" target="_blank" rel="external">demo.</a></p>
+<h3 id="只在需要的时候限制行宽"><a href="#只在需要的时候限制行宽" class="headerlink" title="只在需要的时候限制行宽"></a>只在需要的时候限制行宽</h3><p>假如有这样一个内容块：</p>
+<p><img src="http://p8.qhimg.com/t01c7c34b616fd55eb8.jpg" alt=""></p>
+<p>图中，我们还剩余了许多水平空间。当不做任何限制的时候，行的长度可能会太长，以至于看起来不舒服。设置<code>max-width</code>属性可以很好的限制行的长度。我们可能不会选择以像素为单位（正如之前一直提到的，它不能自由缩放）；也可能不会选择百分比，因为只有在更窄的宽度时，100%才会看起来不错。而相对单位则正好满足各项需求。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;hero&quot;&gt;</div><div class="line">  &lt;h2&gt;This is title for this hero section&lt;/h2&gt;</div><div class="line">  &lt;p&gt;And this paragraph is a sub title, as you know I&apos;m writing an article about using em units to build dynamic components.&lt;/p&gt;</div><div class="line">  &lt;a href=&quot;#&quot;&gt;Read about hero&lt;/a&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.hero h2 &#123;</div><div class="line">  margin-bottom: 0.25em;</div><div class="line">  font-size: 1.75em;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.hero p &#123;</div><div class="line">  margin-bottom: 1em;</div><div class="line">  max-width: 28.125em; /* limit line length */</div><div class="line">  font-size: 1.25em;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.hero a &#123;</div><div class="line">  display: inline-block;</div><div class="line">  background: #4a90e2;</div><div class="line">  padding: 0.7em 1.5em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>现在行的最大长度已经被限制住了，当行宽变小的时候，行的长度将会如意料中的那样占满整行。</p>
+<p><a href="http://codepen.io/shadeed/pen/df7e6366a508171035ab9d5c96683eb5/" target="_blank" rel="external">See the demo.</a></p>
+<h3 id="按钮中的SVG小图标"><a href="#按钮中的SVG小图标" class="headerlink" title="按钮中的SVG小图标"></a>按钮中的SVG小图标</h3><p>人们喜欢图标字体的原因之一是，图标大小是随着文本大小自动变化的。不过，这也可以通过小图标实现。</p>
+<p><img src="http://p9.qhimg.com/t0189a628d8aa2512c8.jpg" alt=""></p>
+<p>我们用em值设置<code>width</code>和<code>height</code>，然后，小图标就会随着字体大小的缩放而成比例变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;ul class=&quot;social&quot;&gt;</div><div class="line">    &lt;li class=&quot;social__item&quot;&gt;</div><div class="line">      &lt;a href=&quot;#&quot;&gt;</div><div class="line">        &lt;svg width=&quot;32&quot; height=&quot;32&quot; viewBox=&quot;0 0 32 32&quot;&gt;</div><div class="line">        &lt;!-- SVG Data --&gt;                    </div><div class="line">        &lt;/svg&gt; </div><div class="line">        Like on Facebook</div><div class="line">      &lt;/a&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">    &lt;li class=&quot;social__item&quot;&gt;</div><div class="line">      &lt;a href=&quot;#&quot;&gt;</div><div class="line">        &lt;svg width=&quot;32&quot; height=&quot;32&quot; viewBox=&quot;0 0 32 32&quot;&gt;</div><div class="line">        &lt;!-- SVG Data --&gt;                    </div><div class="line">        &lt;/svg&gt;  </div><div class="line">        Follow on Twitter</div><div class="line">      &lt;/a&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">    &lt;li class=&quot;social__item&quot;&gt;</div><div class="line">      &lt;a href=&quot;#&quot;&gt;</div><div class="line">        &lt;svg width=&quot;32&quot; height=&quot;32&quot; viewBox=&quot;0 0 32 32&quot;&gt;</div><div class="line">        &lt;!-- SVG Data --&gt;                    </div><div class="line">        &lt;/svg&gt; </div><div class="line">        Follow on Dribbble</div><div class="line">      &lt;/a&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.social__item svg &#123;</div><div class="line">  display: inline-block;</div><div class="line">  vertical-align: middle;</div><div class="line">  width: 2.1875em;</div><div class="line">  height: 2.1875em;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://codepen.io/shadeed/pen/06fb18a477bd6f2bf4b4f52db4adc424/" target="_blank" rel="external">demo.</a></p>
+<h3 id="列表序号"><a href="#列表序号" class="headerlink" title="列表序号"></a>列表序号</h3><p>假如我们给一个列表设计了经典的序号样式。如下所示，设置如下内容，那么最好确保所有元素都能成比例缩放，否则，可能出现如下问题：</p>
+<p><img src="http://p4.qhimg.com/t012d7462bb1ca04e84.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;ul class=&quot;list&quot;&gt;</div><div class="line">  &lt;li&gt;Go to example.com and click on Register&lt;/li&gt;</div><div class="line">  &lt;li&gt;Enter your email address&lt;/li&gt;</div><div class="line">  &lt;li&gt;Pick a strong password&lt;/li&gt;</div><div class="line">  &lt;li&gt;Congrats! You now have an account&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.list li &#123;</div><div class="line">  position: relative;</div><div class="line">  padding-left: 3.125em;</div><div class="line">  margin-bottom: 1em;</div><div class="line">  min-height: 2.5em;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.list li:before &#123;</div><div class="line">  font-size: 1em;</div><div class="line">  width: 2.5em;</div><div class="line">  height: 2.5em;</div><div class="line">  text-align: center;</div><div class="line">  line-height: 2.5em;</div><div class="line">  border-radius: 50%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样，就能愉快的缩放了：</p>
+<p><a href="http://codepen.io/shadeed/pen/9eb5d1e604e275a2dce29f161aca1809/" target="_blank" rel="external">demo.</a></p>
+<h3 id="在列表／警告／模态中定位小图标"><a href="#在列表／警告／模态中定位小图标" class="headerlink" title="在列表／警告／模态中定位小图标"></a>在列表／警告／模态中定位小图标</h3><p>我想你现在应该已经掌握了相对单位的要点，那么就让我们看一些只有例子的demo，进一步的展示相对单位的好处：<br><a href="http://codepen.io/shadeed/pen/67bbdf87c292767549ce1ae0f71861f6/" target="_blank" rel="external">demo.</a></p>
+<h3 id="汉堡包菜单图标"><a href="#汉堡包菜单图标" class="headerlink" title="汉堡包菜单图标"></a>汉堡包菜单图标</h3><p>也许你已经通过在元素之外使用伪元素伪造了一个图标。这也是可以缩放的：</p>
+<p><a href="http://codepen.io/shadeed/pen/cf7eac4b80b41bd011a6e7699d05bdb1/" target="_blank" rel="external">demo.</a></p>
+<h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><p>我们已经看过如何使用相对单位来控制背景大小。其实，渐变效果中的颜色断点也能通过相对单位来设置。现在就让我们来试试吧：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">.box-1 &#123;</div><div class="line">  background: </div><div class="line">    linear-gradient(</div><div class="line">      to right, </div><div class="line">      #4a90e2 0, </div><div class="line">      #4a90e2 0.625em, </div><div class="line">      #1b5dab 0.625em, </div><div class="line">      #1b5dab 1.875em, </div><div class="line">      #4a90e2 0, </div><div class="line">      #4a90e2 3.125em</div><div class="line">    );</div><div class="line">  background-size: 1.25em 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://codepen.io/shadeed/pen/c30dacfa463f2862bf845ffd707228b5/" target="_blank" rel="external">See the demo.</a></p>
+<h3 id="雪碧图"><a href="#雪碧图" class="headerlink" title="雪碧图"></a>雪碧图</h3><p>用像素来设置一些具有固定大小的元素是更方便的，比如栅格图片。但是，这并不意味着我们就不能通过相对单位来进行设置。如果将背景位置和背景大小通过em结合，我们就可以使用能自由缩放的<a href="https://css-tricks.com/css-sprites/" target="_blank" rel="external">雪碧图</a>了。</p>
+<p><a href="http://codepen.io/shadeed/pen/a761b067a8b7094bf58d7c6fe450ece5/" target="_blank" rel="external">See the demo.</a></p>
+<hr>
+<h3 id="结合em和rem"><a href="#结合em和rem" class="headerlink" title="结合em和rem"></a>结合<code>em</code>和<code>rem</code></h3><p>本文主要使用的是<code>em</code>单位。我们已经确认过，<code>em</code>值是建立在<code>font-size</code>之上的，并且会产生层叠。<code>em</code>还有一个兄弟单位：<code>rem</code>。rem值也是相对的，不过，是相对于根节点的字体大小（e.g.<code>html{}</code>或<code>:root{}</code>）。所以，rem不会和em值一样发生层叠，不过，如果你改变根节点的<code>font-size</code>，rem的值也会相应改变。<br>结合em和rem，我们可以使一些尺寸固定，而让另一些动态变化。例如，你可能希望一些组件中的文字仅仅相对根节点变化，而另一些元素随着更直接的字体大小变化。如下图所示:</p>
+<p><img src="http://p5.qhimg.com/t01eac0d726ef186c1c.jpg" alt=""></p>
+<p>下面是一个改变直接字体大小对图片大小产生影响的例子：<br><a href="http://codepen.io/shadeed/pen/f7fcc697cb69f606cd45e0a877379337/" target="_blank" rel="external">See the demo.</a></p>
+<hr>
+<h3 id="使用相对单位建立一个完整的站点"><a href="#使用相对单位建立一个完整的站点" class="headerlink" title="使用相对单位建立一个完整的站点"></a>使用相对单位建立一个完整的站点</h3><p>我创建了一个完整的页面来演示我们如何应用动态组件的概念到现实需求中，而不是仅仅写一些小的demo。</p>
+<p><img src="http://p7.qhimg.com/t018916a1889ca7c6e7.jpg" alt=""></p>
+<p>这里的一切都是可动态变化的：logo、标签、标题、作者、小节标题、有序列表、表单输入框、按钮、引用。。。</p>
+<p><img src="http://p7.qhimg.com/t0193912417769614a6.jpg" alt=""></p>
+<p>如果我们将浏览器的默认字体大小从16px增加至20px，下面是整个站点的变化情况：</p>
+<p><img src="http://p7.qhimg.com/t01ca5b3a5514f551e4.gif" alt=""></p>
+<p>这个效果很棒，对不对？你一定注意到了除了字体之外，其他元素也是动态变化的。这就是<code>em</code>的魅力所在！ ?<br><a href="http://codepen.io/shadeed/full/d616aee645f87445b88df2a47d91dc95/" target="_blank" rel="external">Check out the full page demo.</a></p>
+<p>注意，字体大小也会因为媒体查询而变化。</p>
+<h3 id="放大"><a href="#放大" class="headerlink" title="放大"></a>放大</h3><p>我们提出的基于em值的设计方式也是和浏览器放大效果兼容的。</p>
+<p><img src="http://p2.qhimg.com/t01b7709dc9b4055008.jpg" alt=""><br>然而，基于像素的设计就会出现一些问题：</p>
+<p><img src="http://p1.qhimg.com/t011d926b22b1c41ce7.jpg" alt=""></p>
+<h3 id="em的挑战"><a href="#em的挑战" class="headerlink" title="em的挑战"></a><code>em</code>的挑战</h3><p>使用em值时，有一样事情要特别注意，那就是当你设置字体大小时，它是基于最近的父级元素明确声明的字体大小值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.parent &#123;  </div><div class="line">  font-size: 20px;</div><div class="line">  .child &#123; </div><div class="line">    /* This is based on 20px, so it&apos;s 30px */</div><div class="line">    font-size: 1.5em;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我想，我们已经把这点说的够明白了。<br>但是，当我们将其他属性的尺寸设为em值时，它基于的值是当前元素新计算出来的字体大小值。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.parent &#123;</div><div class="line">  font-size: 20px;</div><div class="line">  .child &#123;</div><div class="line"></div><div class="line">    /* This is based on 20px, so it&apos;s 30px */</div><div class="line">    font-size: 1.5em;</div><div class="line"></div><div class="line">    /* This is based on 1.5em (not 20px), so it&apos;s also 30px */</div><div class="line">    border: 1em solid black;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>同一个元素中的两个不同em值，最后得到的计算值却是相同的，这看起来非常奇怪。</p>
+<p>这也再次说明了，em值的继承特性会造成一些困扰。当你在组件中用em设置大小，然后组件发生了层叠，那么尺寸将可能发生难以理解的层叠效果。</p>
+<p><img src="http://p3.qhimg.com/t01d4a25adf9eec9852.png" alt=""></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>使用像素设置大小是<strong>难以维护的</strong>。它们不相对于任何元素发生变化。当需要进行缩放时，你要手动的调整它们。这是困难、耗时且易出错的。</li>
+<li>使用em值设置大小能够让元素<strong>按字体大小成比例缩放</strong>，所以改变字体大小将会改变元素中所有值的大小（子元素也会发生继承）。</li>
+<li>明确的设置字体大小将会阻止用户通过浏览器设置改变他们的默认字体大小，这是<strong>对网页可访问性不利的</strong></li>
+</ul>
+<h3 id="阅读更多"><a href="#阅读更多" class="headerlink" title="阅读更多"></a>阅读更多</h3><ul>
+<li><p><a href="http://simurai.com/blog/2015/09/09/back-to-the-roots" target="_blank" rel="external">Back to the :roots</a></p>
+</li>
+<li><p><a href="https://css-tricks.com/rems-ems/" target="_blank" rel="external">Font Size Idea: px at the Root, rem for Components, em for Text Elements</a></p>
+</li>
+</ul>
+<blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@yuduxyz" target="_blank" rel="external">谢于中</a><br>链接：<a href="http://www.zcfy.cc/article/1276" target="_blank" rel="external">http://www.zcfy.cc/article/1276</a><br>原文：<a href="https://css-tricks.com/building-resizeable-components-relative-css-units/" target="_blank" rel="external">https://css-tricks.com/building-resizeable-components-relative-css-units/</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/10/使用CSS相对单位构建可缩放的组件/">使用CSS相对单位构建可缩放的组件</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
+        <p><span>发布时间:</span>2016-12-10, 19:34:03</p>
+        <p><span>最后更新:</span>2016-12-10, 19:38:20</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/10/使用CSS相对单位构建可缩放的组件/" title="使用CSS相对单位构建可缩放的组件">http://jsgrblog.win/2016/12/10/使用CSS相对单位构建可缩放的组件/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/10/使用CSS相对单位构建可缩放的组件/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">
+                    70个老司机技巧教你更好的进行CSS编程
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/10/关于css定位，你需要知道的5件事/">
+                    关于css定位，你需要知道的5件事
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个关于字体大小比例的简单例子"><span class="toc-number">1.</span> <span class="toc-text">一个关于字体大小比例的简单例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#等比例的按钮"><span class="toc-number">2.</span> <span class="toc-text">等比例的按钮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片宽／高的成比例缩放"><span class="toc-number">3.</span> <span class="toc-text">图片宽／高的成比例缩放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#成比例变化的边界"><span class="toc-number">4.</span> <span class="toc-text">成比例变化的边界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#给图标留出位置"><span class="toc-number">5.</span> <span class="toc-text">给图标留出位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在图片中添加说明文字"><span class="toc-number">6.</span> <span class="toc-text">在图片中添加说明文字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰性背景"><span class="toc-number">7.</span> <span class="toc-text">装饰性背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#带icon的搜索框"><span class="toc-number">8.</span> <span class="toc-text">带icon的搜索框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#切换"><span class="toc-number">9.</span> <span class="toc-text">切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#只在需要的时候限制行宽"><span class="toc-number">10.</span> <span class="toc-text">只在需要的时候限制行宽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#按钮中的SVG小图标"><span class="toc-number">11.</span> <span class="toc-text">按钮中的SVG小图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表序号"><span class="toc-number">12.</span> <span class="toc-text">列表序号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在列表／警告／模态中定位小图标"><span class="toc-number">13.</span> <span class="toc-text">在列表／警告／模态中定位小图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汉堡包菜单图标"><span class="toc-number">14.</span> <span class="toc-text">汉堡包菜单图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#渐变"><span class="toc-number">15.</span> <span class="toc-text">渐变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#雪碧图"><span class="toc-number">16.</span> <span class="toc-text">雪碧图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结合em和rem"><span class="toc-number">17.</span> <span class="toc-text">结合em和rem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用相对单位建立一个完整的站点"><span class="toc-number">18.</span> <span class="toc-text">使用相对单位建立一个完整的站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#放大"><span class="toc-number">19.</span> <span class="toc-text">放大</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#em的挑战"><span class="toc-number">20.</span> <span class="toc-text">em的挑战</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">21.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阅读更多"><span class="toc-number">22.</span> <span class="toc-text">阅读更多</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"使用CSS相对单位构建可缩放的组件　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/10/使用CSS相对单位构建可缩放的组件/" data-title="使用CSS相对单位构建可缩放的组件" data-url="http://jsgrblog.win/2016/12/10/使用CSS相对单位构建可缩放的组件/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jsgr"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/" title="上一篇: 70个老司机技巧教你更好的进行CSS编程">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/10/关于css定位，你需要知道的5件事/" title="下一篇: 关于css定位，你需要知道的5件事">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/148个资源让你成为CSS专家/">148个资源让你成为CSS专家</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">70个老司机技巧教你更好的进行CSS编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/使用CSS相对单位构建可缩放的组件/">使用CSS相对单位构建可缩放的组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/关于css定位，你需要知道的5件事/">关于css定位，你需要知道的5件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/了解并使用CSS中的rem单位/">了解并使用 CSS 中的 rem 单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/网页设计和开发的55个顶尖博客/">网页设计和开发的55个顶尖博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/CSS变量和预处理变量有什么不同？/">CSS变量和预处理变量有什么不同？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/如何创建响应式删格系统/">如何创建响应式删格系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/">既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/H5-1新特性/">HTML 5.1 里的新东西</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 jsgr
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -511,10 +511,12 @@
       <title><![CDATA[一个治愈JavaScript疲劳的学习计划]]></title>
       <url>http://jsgrblog.win/2016/12/11/%E4%B8%80%E4%B8%AA%E6%B2%BB%E6%84%88JavaScript%E7%96%B2%E5%8A%B3%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
       <content type="html"><![CDATA[<p><img src="http://p0.qhimg.com/t0113ad63505cc39203.png" alt=""></p>
+<a id="more"></a>
 <p>像其他人一样，我最近偶然看到 Jose Aguinaga 的文章<a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.5wjpn7svo" target="_blank" rel="external">《在 2016 年学 JavaScript 是一种什么样的体验》</a>”。</p>
 <blockquote>
-<p>译者注：<a href="https://zhuanlan.zhihu.com/p/22782487" target="_blank" rel="external">中文翻译在此</a>。<br><a id="more"></a><br>很显然，这篇文章触到了很多人的痛点：我看到它两次荣登 <a href="http://news.ycombinator.com" target="_blank" rel="external">Hacker News</a> 的榜首。它也是 <a href="http://reddit.com/r/javascript/" target="_blank" rel="external">/r/javascript</a> 上最热门的文章，并且截至目前它在 Medium 上有超过 10K 个喜欢 - 可能比我自己所有文章加在一起还要多。但是谁在乎呢？</p>
+<p>译者注：<a href="https://zhuanlan.zhihu.com/p/22782487" target="_blank" rel="external">中文翻译在此</a>。</p>
 </blockquote>
+<p>很显然，这篇文章触到了很多人的痛点：我看到它两次荣登 <a href="http://news.ycombinator.com" target="_blank" rel="external">Hacker News</a> 的榜首。它也是 <a href="http://reddit.com/r/javascript/" target="_blank" rel="external">/r/javascript</a> 上最热门的文章，并且截至目前它在 Medium 上有超过 10K 个喜欢 - 可能比我自己所有文章加在一起还要多。但是谁在乎呢？</p>
 <p>不过这不足为奇：我早就知道 JavaScript 生态圈会让人困惑。实际上，我做 <a href="http://stateofjs.com" target="_blank" rel="external">JavaScript 2016年的概况</a>调查的最大原因就是想找到哪些库是真正流行的，去芜存菁。</p>
 <p>但是今天，我想更进一步。只是抱怨事物的状态并没有什么卵用，我打算给你一个实实在在的、一步一步征服 JavaScript 生态圈的学习计划。</p>
 <h3 id="目标人群"><a href="#目标人群" class="headerlink" title="目标人群"></a>目标人群</h3><p>如果你是如下之一，那么本学习计划就是为你定制的：</p>

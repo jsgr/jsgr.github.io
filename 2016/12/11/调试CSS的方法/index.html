@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="jsgr" />
+
+
+
+<meta name="description" content="我经历过许多 CSS 代码的调试工作，有别人写的也有自己写的，有移动端平台的也有标准桌面浏览器的，从陈旧的 IE 到最新的基于 Webkit 的每日构建。经验告诉我，很多人并没有一个标准的 CSS 调试流程。
+我发现在大多数情况下，拥有专业的解决问题的方法，能够节省花在 bug 上的时间。
+下面是我总结的经验。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="调试CSS的方法">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/11/调试CSS的方法/index.html">
+<meta property="og:site_name" content="jsgr blog">
+<meta property="og:description" content="我经历过许多 CSS 代码的调试工作，有别人写的也有自己写的，有移动端平台的也有标准桌面浏览器的，从陈旧的 IE 到最新的基于 Webkit 的每日构建。经验告诉我，很多人并没有一个标准的 CSS 调试流程。
+我发现在大多数情况下，拥有专业的解决问题的方法，能够节省花在 bug 上的时间。
+下面是我总结的经验。">
+<meta property="og:updated_time" content="2016-12-11T02:51:57.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="调试CSS的方法">
+<meta name="twitter:description" content="我经历过许多 CSS 代码的调试工作，有别人写的也有自己写的，有移动端平台的也有标准桌面浏览器的，从陈旧的 IE 到最新的基于 Webkit 的每日构建。经验告诉我，很多人并没有一个标准的 CSS 调试流程。
+我发现在大多数情况下，拥有专业的解决问题的方法，能够节省花在 bug 上的时间。
+下面是我总结的经验。">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="jsgr blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>调试CSS的方法 | jsgr blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jsgr</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS动画/">CSS动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS单位/">CSS单位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS变量/">CSS变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS定位/">CSS定位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS资源/">CSS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS预处理/">CSS预处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全栈/">全栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">就是个人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jsgr</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jsgr</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-调试CSS的方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/11/调试CSS的方法/" class="article-date">
+      <time datetime="2016-12-11T02:48:43.000Z" itemprop="datePublished">2016-12-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      调试CSS的方法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>我经历过许多 CSS 代码的调试工作，有别人写的也有自己写的，有移动端平台的也有标准桌面浏览器的，从陈旧的 IE 到最新的基于 Webkit 的每日构建。经验告诉我，很多人并没有一个标准的 CSS 调试流程。</p>
+<p>我发现在大多数情况下，拥有专业的解决问题的方法，能够节省花在 bug 上的时间。</p>
+<p>下面是我总结的经验。<br><a id="more"></a><br>我不保证这是最适合的调试 CSS 的方法，但是确实对我很有效。如何 CSS 不是你的主要编程语言，调试它可能就像暗黑艺术一样；遵循下面的指南能够帮助你更有效地定位和解决 bug。</p>
+<p>概括地说，我把调试流程分为 3 个阶段：</p>
+<ul>
+<li>评估并快速修复</li>
+<li>还原和重现</li>
+<li>定位根源并修复</li>
+</ul>
+<p>我们挨个解释每个阶段并实践一个例子。</p>
+<h2 id="评估并快速修复"><a href="#评估并快速修复" class="headerlink" title="评估并快速修复"></a>评估并快速修复</h2><p>如果 CSS 是你的主要工作语言，或者你对 CSS 有一定的理解和实践经验的话，解决 CSS 问题就有很多简单的方法，否则的话，方法就少一些。</p>
+<p>有经验的 CSS 开发者可能都知道的一些 CSS 陷阱：</p>
+<ul>
+<li>图片周边存在有趣的空白？设置 display: block（图片默认是内联的，因此会有空白）。</li>
+<li>元素排列不正确？你可能有浮动的元素。</li>
+<li>绝对定位元素不显示、位置错误或者被遮挡？你可能没有设置父元素的 position 属性或者用 transform 及 opacity 创建一个 z-index 上下文。</li>
+<li>伪元素不显示？你可能忘记了设置 ‘content’的值。</li>
+</ul>
+<p>这样的 “bug” 有一大堆。实际上根本没有 bug，更多的是开发者缺少对浏览器行为的理解。更准确地说，是 CSS 代码让浏览器怎么做。</p>
+<p>对这些 CSS 特性熟悉的开发者能够快速定位到问题并且修复。他们对 bug 的认识与那些对 CSS 不了解的人会产生分歧。这样在解决 CSS bug 中对‘工作流’需求的重要性的认识就会因人而异。</p>
+<p>对于‘快速修复’中没有覆盖的陌生问题，在开发者工具中靠猜来解决问题的方式已经没什么价值。即使运气好问题被解决了，也很难判断出问题到底是怎样被解决的。</p>
+<p>如果出现的问题不能被轻易解决，先确定问题区域的范围，抓取 HTML 标签（也就是拷贝 DOM），进入下一个调试阶段：还原和重现。</p>
+<p>专业提示：大多数浏览器的开发者工具会让你选择包裹元素并拷贝 HTML 区块。在 Chrome 的开发者工具中，要连同包裹元素一起拷贝，需要点击 ‘Copy &gt; Copy OuterHTML’。</p>
+<h2 id="还原和重现"><a href="#还原和重现" class="headerlink" title="还原和重现"></a>还原和重现</h2><p>本阶段的 CSS bug 修复在类似 <a href="http://codepen.io" target="_blank" rel="external">Codepen</a> 的帮助下异常简单。我们目的主要是复现出此问题 - 也就是引起 bug 的代码。这能让我们快速定位 bug，直捣黄龙。</p>
+<p>为清晰起见，只把相关的 HTML 和 CSS 提取出来复现问题。你既可以手打 HTML 对应的 CSS，也可以复制真实的代码。如果可能的话，不用把所有 CSS 代码一股脑拷贝过去重现问题，保证最精简的要素即可。保持逐步增加 CSS 的习惯，问题就会自己找到你。</p>
+<p>在快要接近真相时，往往只需要一个特殊的 CSS 属性的改变就能让 bug 暴露出来。</p>
+<p>相对应的做法是，把所有 CSS 都扔进入复现问题，然后每次移除一点，直到问题出现。在实践中，我发现这略笨，不用也因人而异，你可能有不同的见解。</p>
+<p>逐步地增加或删除 CSS 代码已经是重现问题和定位故障的固定套路了。</p>
+<h3 id="那么-HTML-标签呢？"><a href="#那么-HTML-标签呢？" class="headerlink" title="那么 HTML 标签呢？"></a>那么 HTML 标签呢？</h3><p>假设使用最少 CSS 代码复现问题时，效果有如原始代码一样。这也是有用的，我们现在看 HTML 标签。</p>
+<p>第一件事要做的，也是不能跳过的，就是检查标签的有效性。即使报告出我们不关心的问题（比如 meta），至少能保证它不会以某种方式破坏美感。我们希望能发现未闭合的标签、没有引号的属性，以及其它任何可能影响浏览器解析的问题。建议你使用 <a href="https://validator.w3.org/#validate_by_input" target="_blank" rel="external">W3C validator</a>。</p>
+<p>一旦标签检查通过，将有助于消除浏览器引入意外样式的可能性。这样做：</p>
+<p>首先，把所有元素改成 div（块级元素）和 span（行内元素），保证它们只被 CSS 的类选择器选中。也许有必要把额外的选择器移除，如把 <code>a.link</code> 改为 <code>.link</code>。</p>
+<p>通过使用固定的标签我们消除了浏览器针对特定元素引入默认样式的可能性。表单元素是个特例（马上会在例子中见到）。</p>
+<p>如果把所有元素改成 div 和 span，问题消失了，那么浏览器引入默认样式的嫌疑就被确定了。现在在 <code>computed styles</code> 面板中寻找浏览器增加了什么样式，想办法覆盖它。总之就是要看计算后的样式。</p>
+<h2 id="定位根源并修复"><a href="#定位根源并修复" class="headerlink" title="定位根源并修复"></a>定位根源并修复</h2><p>如果简化 HTML 标签也没有找到问题，并且是可稳定复现的，那么就该换个浏览器试一试。是否同样的问题出现在 Chrome，IE，Safari 和 Firefox 上？如果不是，哪个的表现是正确的？如果只有一个浏览器是错的，那么就值得去搜索一下对应的 bug 跟踪系统了：</p>
+<ul>
+<li><p><a href="https://bugs.chromium.org/p/chromium/issues/list" target="_blank" rel="external">Chrome bugs</a></p>
+</li>
+<li><p><a href="https://bugzilla.mozilla.org/" target="_blank" rel="external">Firefox bugs</a></p>
+</li>
+<li><p><a href="https://bugs.webkit.org/" target="_blank" rel="external">Safari bugs</a></p>
+</li>
+<li><p><a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/" target="_blank" rel="external">Microsoft bugs</a></p>
+</li>
+</ul>
+<p>是某浏览器的问题吗？或者是某浏览器的特定版本的问题？问题是否在修复中？有没有不影响其它浏览器的解决方案？实在不行你可以为特定的浏览器编写修复代码吗？</p>
+<p><a href="https://benfrain.com/reporting-browser-bugs-chrome-firefox-safari-teams-gets-fixed/" target="_blank" rel="external">过去</a>我曾详细描述过如何向浏览器提 bug，在 2011 年 <a href="https://www.smashingmagazine.com/2011/09/help-the-community-report-browser-bugs" target="_blank" rel="external">Lea Verou 也写过一份描述提 bug 流程的文章</a>。</p>
+<p>另一种情况是可能需要‘无害的’hack。例如，我最近遇到的一个场景是在一个块级元素后面的元素必须是绝对定位的才能显示出来。 <code>left: 100%</code> 只有在 IE 浏览器（移动端是Windows Phone 8，8.1 和 10）中不生效。IE 中在两个元素之间总有一个空隙。看起来像是一个亚像素渲染问题，因此 <code>left: 99.99%</code> 就能解决问题而不会影响其它浏览器。这是个 hack 手段，但我们知道原理（有的浏览器会舍入，其它则不会），标注在 CSS 的注释中，没有任何危害。</p>
+<p>微软的 <a href="https://twitter.com/gregwhitworth" target="_blank" rel="external">Greg Whitworth</a> 告诉我了关于亚像素舍入的更多细节。WebKit 和 Blink 内核舍入 1/64，Gecko 内核舍入 1/60，Edge 舍入 1/100（感谢 Webkit 开发者 <a href="https://twitter.com/smfr" target="_blank" rel="external">‘smfr’</a>）。</p>
+<h2 id="计算后样式"><a href="#计算后样式" class="headerlink" title="计算后样式"></a>计算后样式</h2><p>开发者工具中比较容易被忽视的是 <code>computed styles</code> 面板。如果你对 <code>computed styles</code> 不熟悉的话，顾名思义，就是真正应用到元素上的样式。这很重要，因为你写的样式不一定会生效。同样，你写的样式也不是<strong>所有</strong>生效的样式。下面的例子将解释我的意思：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">fieldset</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"inner"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>对应的 CSS 是：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.outer</span> &#123;</div><div class="line">	<span class="attribute">max-width</span>: <span class="number">400px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.inner</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">overflow-x</span>: auto;</div><div class="line">	<span class="attribute">overflow-y</span>: hidden;</div><div class="line">	<span class="attribute">-ms-overflow-style</span>: -ms-autohiding-scrollbar;</div><div class="line">	<span class="attribute">-webkit-overflow-scrolling</span>: touch;</div><div class="line">	<span class="attribute">white-space</span>: nowrap;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.item</span> &#123;</div><div class="line">	<span class="attribute">display</span>: inline-block;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>outer</code> 的宽度会是多少？如果你认为是 <code>max-width</code> 的 400px，我会原谅你的。但是不是我们看到的宽度，看 Ben Frain 编写的 <a href="http://codepen.io/benfrain/pen/mPYqYd/" target="_blank" rel="external">codepen</a>。</p>
+<p>什么情况？为什么不是 <code>max-width</code> 的值？给你个思路，打开 <code>Computed Styles</code> 面板。</p>
+<p>找到问题的根源了吗？</p>
+<p>我来给你解释下。默认地，fieldset 元素的宽度会等于其内容的宽度。在 Chrome 的 <code>Computed Styles</code> 面板中，<code>min-width</code> 的值是一个新的 <code>min-content</code>。</p>
+<p>给 <code>min-width</code> 设置一个新值来“修复”它。这个例子中，<code>min-width: 0</code> 就会让 <code>max-width</code> 按照我们期望的那样进行工作。</p>
+<p>这正是开发者工具的 <code>Computed Styles</code> 面板中看到的值。记住你写的代码不一定是浏览器计算后的。</p>
+<h1 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h1><p>页面出现异常的原因可能很多并且不尽相同。不同浏览器对规范的实现存在差异是普遍存在的现象。相比于编写一个疯狂的浏览器 bug 目录，解决问题的最有效流程还是始终保持条理性。总结来看有效的措施包括：</p>
+<ul>
+<li>评估 bug，执行快速修复</li>
+<li>使用最少的代码重现问题</li>
+<li>利用工具和 bug 追踪描述原因</li>
+<li>使用更灵活的代码修复问题，或者使用注释过的hack手段，亦或拷贝副本修复</li>
+</ul>
+<blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@yanni4night" target="_blank" rel="external">yanni4night</a><br>链接：<a href="http://www.zcfy.cc/article/1061" target="_blank" rel="external">http://www.zcfy.cc/article/1061</a><br>原文：<a href="https://benfrain.com/debugging-css/" target="_blank" rel="external">https://benfrain.com/debugging-css/</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/11/调试CSS的方法/">调试CSS的方法</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
+        <p><span>发布时间:</span>2016-12-11, 10:48:43</p>
+        <p><span>最后更新:</span>2016-12-11, 10:51:57</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/11/调试CSS的方法/" title="调试CSS的方法">http://jsgrblog.win/2016/12/11/调试CSS的方法/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/11/调试CSS的方法/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/11/jQuery3-0的新特性/">
+                    jQuery3.0的新特性
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/10/148个资源让你成为CSS专家/">
+                    148个资源让你成为CSS专家
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#评估并快速修复"><span class="toc-number">1.</span> <span class="toc-text">评估并快速修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#还原和重现"><span class="toc-number">2.</span> <span class="toc-text">还原和重现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#那么-HTML-标签呢？"><span class="toc-number">2.1.</span> <span class="toc-text">那么 HTML 标签呢？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定位根源并修复"><span class="toc-number">3.</span> <span class="toc-text">定位根源并修复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#计算后样式"><span class="toc-number">4.</span> <span class="toc-text">计算后样式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#讨论"><span class="toc-number"></span> <span class="toc-text">讨论</span></a>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"调试CSS的方法　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/11/调试CSS的方法/" data-title="调试CSS的方法" data-url="http://jsgrblog.win/2016/12/11/调试CSS的方法/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jsgr"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/11/jQuery3-0的新特性/" title="上一篇: jQuery3.0的新特性">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/10/148个资源让你成为CSS专家/" title="下一篇: 148个资源让你成为CSS专家">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/">每个JavaScript开发者都该懂的Unicode</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery还有意义吗/">jQuery还有意义吗</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/一个治愈JavaScript疲劳的学习计划/">一个治愈JavaScript疲劳的学习计划</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/2016年学习JavaScript是怎样的一种体验/">2016年学习JavaScript是怎样的一种体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/">为什么你需要成为一个全栈开发工程师？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/">jQuery3.1.0发布–不再隐藏错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery3-0的新特性/">jQuery3.0的新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/调试CSS的方法/">调试CSS的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/148个资源让你成为CSS专家/">148个资源让你成为CSS专家</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">70个老司机技巧教你更好的进行CSS编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/使用CSS相对单位构建可缩放的组件/">使用CSS相对单位构建可缩放的组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/关于css定位，你需要知道的5件事/">关于css定位，你需要知道的5件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/了解并使用CSS中的rem单位/">了解并使用 CSS 中的 rem 单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/网页设计和开发的55个顶尖博客/">网页设计和开发的55个顶尖博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/CSS变量和预处理变量有什么不同？/">CSS变量和预处理变量有什么不同？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/如何创建响应式删格系统/">如何创建响应式删格系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/">既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/H5-1新特性/">HTML 5.1 里的新东西</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 jsgr
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

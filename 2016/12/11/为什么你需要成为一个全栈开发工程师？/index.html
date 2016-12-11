@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="jsgr" />
+
+
+
+<meta name="description" content="最近几年，我们开始给开发者划分两种不同的职业路径：前端和后端。但是我们总是忘记了第三种选择：全栈
+全栈开发已经被提出有一段时间了，它曾经被直接叫做“开发”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么你需要成为一个全栈开发工程师？">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/11/为什么你需要成为一个全栈开发工程师？/index.html">
+<meta property="og:site_name" content="jsgr blog">
+<meta property="og:description" content="最近几年，我们开始给开发者划分两种不同的职业路径：前端和后端。但是我们总是忘记了第三种选择：全栈
+全栈开发已经被提出有一段时间了，它曾经被直接叫做“开发”。">
+<meta property="og:image" content="http://p0.qhimg.com/t013a4f0cd68ed92d96.gif">
+<meta property="og:updated_time" content="2016-12-11T03:15:05.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为什么你需要成为一个全栈开发工程师？">
+<meta name="twitter:description" content="最近几年，我们开始给开发者划分两种不同的职业路径：前端和后端。但是我们总是忘记了第三种选择：全栈
+全栈开发已经被提出有一段时间了，它曾经被直接叫做“开发”。">
+<meta name="twitter:image" content="http://p0.qhimg.com/t013a4f0cd68ed92d96.gif">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="jsgr blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>为什么你需要成为一个全栈开发工程师？ | jsgr blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jsgr</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS动画/">CSS动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS单位/">CSS单位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS变量/">CSS变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS定位/">CSS定位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS资源/">CSS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS预处理/">CSS预处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全栈/">全栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">就是个人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jsgr</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jsgr</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-为什么你需要成为一个全栈开发工程师？" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/" class="article-date">
+      <time datetime="2016-12-11T03:12:47.000Z" itemprop="datePublished">2016-12-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      为什么你需要成为一个全栈开发工程师？
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/转载/">转载</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/全栈/">全栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>最近几年，我们开始给开发者划分两种不同的职业路径：<strong>前端</strong>和<strong>后端</strong>。但是我们总是忘记了第三种选择：<strong>全栈</strong></p>
+<p>全栈开发已经被提出有一段时间了，它曾经被直接叫做“开发”。<br><a id="more"></a><br>但是由于开发工作的复杂性持续增长，我们的UI（用户界面）需要从其背后的逻辑中解耦出来。于是，现在，我们也就有了两个不同的领域，前端和后端。</p>
+<p>让我们探索全栈开发，看看当考虑到各方面与之关联的挑战时，沿着这样一条路径走下去，是不是行得通。</p>
+<p>我在一家名叫<a href="http://fortech.ro/" target="_blank" rel="external">Fortech</a> 的公司担任全栈开发工程师，我工作的一大部分是来领导一支全栈开发工程师团队。</p>
+<p>在我们的团队里，如果需要的话，每个人都能够在前端和后端之间切换，我们团队的文化也基于此。</p>
+<h3 id="但是什么是全栈呢？"><a href="#但是什么是全栈呢？" class="headerlink" title="但是什么是全栈呢？"></a>但是什么是全栈呢？</h3><p>全栈不特指网页开发，或者任何其他形式的开发工作。</p>
+<p>全栈意味着你能够献身于一个系统的每一个层面。无论这个子系统被分割地怎样支离破碎，你都能够看到更广阔的图景。</p>
+<p>今天，你可能在做一个酷炸天的下拉菜单组件。到了明天，你可能要做一个适应这个下拉菜单的接口出来，可是到了后天，你可能又要不得不潜入到数据库中，来提高你的接口获取数据的能力。</p>
+<p>在技术分享会上，我和很多人都探讨过全栈开发，我注意到越来越多的开发者对全栈开发持怀疑态度。</p>
+<p>反对全栈开发的人说，为了能够在各方面都有所涉猎，你首先需要在一个特定的子领域成为专家。</p>
+<p>我不同意他们的观点。</p>
+<p>我认为技术是以一种让我们更加易于开发的方式来进化的，只要我们首先能够掌握一整套正确的技术栈。</p>
+<h3 id="对怀疑者的一些回答"><a href="#对怀疑者的一些回答" class="headerlink" title="对怀疑者的一些回答"></a>对怀疑者的一些回答</h3><p>前面，我已经解释了为什么我认为全栈开发是一条可选择的道路，至少还是一条很不错的道路。</p>
+<h3 id="问题-1-一支全栈开发的团队有哪些优势？"><a href="#问题-1-一支全栈开发的团队有哪些优势？" class="headerlink" title="问题 #1: 一支全栈开发的团队有哪些优势？"></a>问题 #1: 一支全栈开发的团队有哪些优势？</h3><p>作为一个全栈开发者，你可以很容易地从你的应用程序的一部分跳到另外一部分，当设计新的功能时，这会是巨大的优势。</p>
+<p>当你能够明白一个功能背后的业务需求然后据此着手工作时，全栈开发真正的价值才得以提升。</p>
+<p>有一支多面手的团队也意味着，当新的机遇出现的时候，你能够快速地分配任务。</p>
+<p>有一支多面手的团队也意味着，开发者们在一起工作的时间越长，在你的团队内部产生的化学反应越良好。即使一个项目是从构建一个API接口开始的，然后逐渐拓展到移动端和网页端，这群人也能够一起完成整个过程。</p>
+<h3 id="问题-2-我怎么抽时间来一直跟上这么多技术和框架的脚步？"><a href="#问题-2-我怎么抽时间来一直跟上这么多技术和框架的脚步？" class="headerlink" title="问题 #2 :我怎么抽时间来一直跟上这么多技术和框架的脚步？"></a>问题 #2 :我怎么抽时间来一直跟上这么多技术和框架的脚步？</h3><p>我认为即便只是跟上前端或者后端开发潮流都是不可能的。所以让我们暂时放下追逐潮流，专注于当前你能够做到的。</p>
+<p>任何一个好的全栈开发工程师都从掌握一整套的开发技术做起。你应该能够完成这些基本的任务：写一个cookie，连接到一个REST接口(REST endpoint)，完成一个数据库序列，等等。</p>
+<p>随着时间的推移，你能够在这些技术之上，通过添加一些新的工具和逻辑，来构建起一个完整的项目。</p>
+<p><strong>追逐技术潮流并不是你表现出色的标志，真正地能看出你水平的是：你有能力在需要一项技术的时候快速跟进，学习它，应用它。</strong></p>
+<h3 id="问题-3：是否一个全栈开发工程师需要将他们的工作平均分到前端和后端"><a href="#问题-3：是否一个全栈开发工程师需要将他们的工作平均分到前端和后端" class="headerlink" title="问题 #3：是否一个全栈开发工程师需要将他们的工作平均分到前端和后端"></a>问题 #3：是否一个全栈开发工程师需要将他们的工作平均分到前端和后端</h3><p>不。你需要根据你的项目需求来进行划分。这都是要有语境的，要具体问题，具体分析。</p>
+<p>你需要能够在一个项目的任何时间点接入到这个项目的任何一个部分，这在今天这个敏捷开发时代尤为重要。</p>
+<h3 id="问题-4-有选择地偏好一种类型的开发工作可以吗？"><a href="#问题-4-有选择地偏好一种类型的开发工作可以吗？" class="headerlink" title="问题 #4: 有选择地偏好一种类型的开发工作可以吗？"></a>问题 #4: 有选择地偏好一种类型的开发工作可以吗？</h3><p>当然没问题。大多数人都会有所侧重。</p>
+<p>有些时候，你会专注于系统中的某一部分，并且需要掌握它的生态，但是不要对该系统的其他部分完全视而不见。</p>
+<p>我认为这关乎个人的选择，并不是其他人强加的。有些人就很享受前端开发的工作，那么他就做得越来越好，与此相应的，有些人就热爱后端开发。</p>
+<p>就像是学习怎样使用<a href="https://en.wikipedia.org/wiki/The_Force_%28Star_Wars%29" target="_blank" rel="external">「原力」(the Force)</a>,你首先要学会怎样光剑(lightsaber)的启动和停止。当你已经熟练了这些操作之后，你再决定是学习 <a href="https://www.youtube.com/watch?v=GO_xfR64qSk" target="_blank" rel="external">意念控制</a>还是  <a href="https://www.youtube.com/watch?v=Zzs-OvfG8tE" target="_blank" rel="external">迫使别人窒息</a>.</p>
+<p><img src="http://p0.qhimg.com/t013a4f0cd68ed92d96.gif" alt=""> </p>
+<p>作为一个软件工程师，这正是与星球大战的相似之处。</p>
+<h3 id="但是不要停在代码上"><a href="#但是不要停在代码上" class="headerlink" title="但是不要停在代码上"></a>但是不要停在代码上</h3><p>我们往往将我们的技术实体化，就是我们工作中用到的编程语言或者我们用过的编程工具。</p>
+<p>但是一个更好的方式来思考技术，是从全栈的角度来看待，是将你能够承担的责任进行评估，是把这种评估作为你工作的一部分。</p>
+<p>你能够完成基本的UI(用户界面)开发任务，架构设置，数据分析吗？你能够参与到产品本身的开发流程当中吗？</p>
+<p>我的团队和我们的客户密切配合。我们发现我们的开发者们投入到业务流程之中是非常有用的，一旦开发者们明白了客户的问题所在，他们就开始跃跃欲试想要解决客户们的问题了。</p>
+<p>这个时候，每一个人都能够为一个已知的问题提供一个解决方案，不会出现一个特定的问题只能找特定的人去解决。</p>
+<p>我并不是说我们的整个团队都是开发者才行，而是说要赋予开发者们更多的责任，而不是只让他们负责编写代码，这样一来，他们能够在这样一个灵活的环境下受益更多。</p>
+<p>这样也能够有助于我们将思维方式从单纯地想要解决问题过渡到专注于问题本身。你从一开始就认识到了问题的本质所在，而不只是它的表现特征，那么你就也能够据此设计出最优的方案来解决问题了。</p>
+<h3 id="最后一点说明"><a href="#最后一点说明" class="headerlink" title="最后一点说明"></a>最后一点说明</h3><p>全栈开发意味着跳出你的舒适区，为了产品的成功接受挑战。</p>
+<p>肯定有很多好的论点反对全栈开发文化，但是我希望这篇文章已经反驳了其中那些毫无说服力的观点。</p>
+<p>实现全栈并不总是最好的策略。许多产品大到任何一个个人都不能完全理解。比如，谷歌的代码库里面有20亿行代码。在这个层面上，有所专攻是必要的。</p>
+<p>全栈开发应该是处理问题的方法，而不是一种死板的思维方式。</p>
+<p>你如何看待未来的全栈开发？在下面评论中留下你的观点吧。</p>
+<blockquote>
+<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@zhangolve" target="_blank" rel="external">zhangolve</a><br>链接：<a href="http://www.zcfy.cc/article/1878" target="_blank" rel="external">http://www.zcfy.cc/article/1878</a><br>原文：<a href="https://medium.freecodecamp.com/full-stack-between-reality-and-wishful-thinking-43110005f2a2#.vmvlzet2z" target="_blank" rel="external">https://medium.freecodecamp.com/full-stack-between-reality-and-wishful-thinking-43110005f2a2#.vmvlzet2z</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/">为什么你需要成为一个全栈开发工程师？</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
+        <p><span>发布时间:</span>2016-12-11, 11:12:47</p>
+        <p><span>最后更新:</span>2016-12-11, 11:15:05</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/" title="为什么你需要成为一个全栈开发工程师？">http://jsgrblog.win/2016/12/11/为什么你需要成为一个全栈开发工程师？/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/11/为什么你需要成为一个全栈开发工程师？/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/11/2016年学习JavaScript是怎样的一种体验/">
+                    2016年学习JavaScript是怎样的一种体验
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/">
+                    jQuery3.1.0发布–不再隐藏错误
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#但是什么是全栈呢？"><span class="toc-number">1.</span> <span class="toc-text">但是什么是全栈呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对怀疑者的一些回答"><span class="toc-number">2.</span> <span class="toc-text">对怀疑者的一些回答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-1-一支全栈开发的团队有哪些优势？"><span class="toc-number">3.</span> <span class="toc-text">问题 #1: 一支全栈开发的团队有哪些优势？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-2-我怎么抽时间来一直跟上这么多技术和框架的脚步？"><span class="toc-number">4.</span> <span class="toc-text">问题 #2 :我怎么抽时间来一直跟上这么多技术和框架的脚步？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-3：是否一个全栈开发工程师需要将他们的工作平均分到前端和后端"><span class="toc-number">5.</span> <span class="toc-text">问题 #3：是否一个全栈开发工程师需要将他们的工作平均分到前端和后端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题-4-有选择地偏好一种类型的开发工作可以吗？"><span class="toc-number">6.</span> <span class="toc-text">问题 #4: 有选择地偏好一种类型的开发工作可以吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#但是不要停在代码上"><span class="toc-number">7.</span> <span class="toc-text">但是不要停在代码上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最后一点说明"><span class="toc-number">8.</span> <span class="toc-text">最后一点说明</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"为什么你需要成为一个全栈开发工程师？　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/11/为什么你需要成为一个全栈开发工程师？/" data-title="为什么你需要成为一个全栈开发工程师？" data-url="http://jsgrblog.win/2016/12/11/为什么你需要成为一个全栈开发工程师？/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jsgr"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/11/2016年学习JavaScript是怎样的一种体验/" title="上一篇: 2016年学习JavaScript是怎样的一种体验">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/" title="下一篇: jQuery3.1.0发布–不再隐藏错误">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/">每个JavaScript开发者都该懂的Unicode</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery还有意义吗/">jQuery还有意义吗</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/一个治愈JavaScript疲劳的学习计划/">一个治愈JavaScript疲劳的学习计划</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/2016年学习JavaScript是怎样的一种体验/">2016年学习JavaScript是怎样的一种体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/">为什么你需要成为一个全栈开发工程师？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/">jQuery3.1.0发布–不再隐藏错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery3-0的新特性/">jQuery3.0的新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/调试CSS的方法/">调试CSS的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/148个资源让你成为CSS专家/">148个资源让你成为CSS专家</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">70个老司机技巧教你更好的进行CSS编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/使用CSS相对单位构建可缩放的组件/">使用CSS相对单位构建可缩放的组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/关于css定位，你需要知道的5件事/">关于css定位，你需要知道的5件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/了解并使用CSS中的rem单位/">了解并使用 CSS 中的 rem 单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/网页设计和开发的55个顶尖博客/">网页设计和开发的55个顶尖博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/CSS变量和预处理变量有什么不同？/">CSS变量和预处理变量有什么不同？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/如何创建响应式删格系统/">如何创建响应式删格系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/">既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/H5-1新特性/">HTML 5.1 里的新东西</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 jsgr
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -15,16 +15,21 @@
 
 
 
-<meta name="description" content="不久之前, 我们发布了 jQuery 3.0. jQuery 3.0 适当重写了jQuery的Deferred. 使它兼容了Promises/A+ 设计规范. 通过使用deferred.catch()，错误不会隐藏掉，而会传递给rejection handler(错误处理程序).这有利于防止运行时错误导致Promise的handler阻塞, 但是缺点是如果你没写rejection handler，">
+<meta name="description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery3.1.0发布–不再隐藏错误">
-<meta property="og:url" content="http://jsgrblog.win/2016/12/11/jQuery3-1-0发布–不再隐藏错误/index.html">
+<meta property="og:title" content="浏览器动画兼容">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/12/浏览器动画兼容/index.html">
 <meta property="og:site_name" content="jsgr blog">
-<meta property="og:description" content="不久之前, 我们发布了 jQuery 3.0. jQuery 3.0 适当重写了jQuery的Deferred. 使它兼容了Promises/A+ 设计规范. 通过使用deferred.catch()，错误不会隐藏掉，而会传递给rejection handler(错误处理程序).这有利于防止运行时错误导致Promise的handler阻塞, 但是缺点是如果你没写rejection handler，">
-<meta property="og:updated_time" content="2016-12-11T03:01:48.465Z">
+<meta property="og:description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/360%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif">
+<meta property="og:updated_time" content="2016-12-12T14:32:52.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jQuery3.1.0发布–不再隐藏错误">
-<meta name="twitter:description" content="不久之前, 我们发布了 jQuery 3.0. jQuery 3.0 适当重写了jQuery的Deferred. 使它兼容了Promises/A+ 设计规范. 通过使用deferred.catch()，错误不会隐藏掉，而会传递给rejection handler(错误处理程序).这有利于防止运行时错误导致Promise的handler阻塞, 但是缺点是如果你没写rejection handler，">
+<meta name="twitter:title" content="浏览器动画兼容">
+<meta name="twitter:description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>jQuery3.1.0发布–不再隐藏错误 | jsgr blog</title>
+<title>浏览器动画兼容 | jsgr blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -267,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-jQuery3-1-0发布–不再隐藏错误" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-浏览器动画兼容" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/" class="article-date">
-      <time datetime="2016-12-11T02:59:56.000Z" itemprop="datePublished">2016-12-11</time>
+      <a href="/2016/12/12/浏览器动画兼容/" class="article-date">
+      <time datetime="2016-12-12T11:16:59.000Z" itemprop="datePublished">2016-12-12</time>
 </a>
 
 
@@ -286,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery3.1.0发布–不再隐藏错误
+      浏览器动画兼容
     </h1>
   
 
@@ -295,13 +300,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
+    <a class="article-category-link" href="/categories/踩过的坑/">踩过的坑</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -311,22 +316,236 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>不久之前, 我们发布了 jQuery 3.0. jQuery 3.0 适当重写了jQuery的Deferred. 使它兼容了Promises/A+ 设计规范. 通过使用<code>deferred.catch()</code>，错误不会隐藏掉，而会传递给rejection handler(错误处理程序).这有利于防止运行时错误导致Promise的handler阻塞, 但是缺点是如果你没写rejection handler，错误将会被隐藏（silenced）.  我们也在幕后修改了 <code>jQuery.ready</code> 和 <code>jQuery.fn.ready</code> 来使用新的符合规范的 Deferreds.<br><a id="more"></a><br>遗憾的是，如果你使用常规方法初始化ready handlers（比如 <code>jQuery(function() {})</code> 或者 <code>jQuery(document).ready(function() {})</code>), 你将没有办法添加rejection handler. 特别是你在Deferred里面表现的不明显. 任何运行时错误都会被隐藏和丢失. <a href="http://blog.bugsnag.com/a-warning-about-jquery-3" target="_blank" rel="external">workarounds</a>里面有一些额外的解决方案, 但显然我们不能允许接受这种解决方案.</p>
-<p>我们立刻发布了jQuery3.1.0并修复了它，错误将不会在隐藏了! 默认情况下你将会在控制台里看到这些错误信息. 如果你希望自定义处理这些错误，我们也提供了<a href="http://api.jquery.com/jquery.readyexception/" target="_blank" rel="external"><code>jQuery.readyException</code></a>. 如果你使用了它，那在ready handler里所有的错误都将会抛给它处理.大多数情况下，你并不需要使用它.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">jQuery.readyException = function(error) &#123;</div><div class="line">  // &quot;error&quot; is thrown from any ready handler</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>默认的 <code>jQuery.readyException</code> 将会再次抛出一个异步异常来避免程序停止执行，并打印错误信息到控制台. 我们希望这次jQuery 3.1.0 的更新能解决所有你在使用jQuery 3.0时遇到的调试问题.</p>
-<p>我们并不认为这次jQuery3.1.0的发布有什么重大改动, 但是在这次升级中如果遇到了任何bug，<a href="https://github.com/jquery/jquery/issues" target="_blank" rel="external">请告诉我们</a>.</p>
-<p>如果你想知道如何从jQuery1.x或2.x升级到3.0，请参考<a href="http://jquery.com/upgrade-guide/3.0/" target="_blank" rel="external">3.0 Upgrade Guide</a>和<a href="http://blog.jquery.com/2016/05/19/jquery-migrate-1-4-1-released-and-the-path-to-jquery-3-0/" target="_blank" rel="external">jQuery Migrate 1.4.1 blog post</a>.</p>
-<p><strong>3.1.0</strong> – <a href="https://github.com/jquery/jquery/compare/3.0.0...3.1.0" target="_blank" rel="external">GitHub changelog</a></p>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>你可以直接引用下面的CDN链接或者直接拷贝文件到你本地服务器。</p>
-<p><a href="https://code.jquery.com/jquery-3.1.0.js" target="_blank" rel="external">https://code.jquery.com/jquery-3.1.0.js</a><br><a href="https://code.jquery.com/jquery-3.1.0.min.js" target="_blank" rel="external">https://code.jquery.com/jquery-3.1.0.min.js</a></p>
-<h3 id="更小巧的jQuery版本"><a href="#更小巧的jQuery版本" class="headerlink" title="更小巧的jQuery版本"></a>更小巧的jQuery版本</h3><p>如果你不想使用jQuery的ajax（比如引用了其它单独ajax类库），或者只打算用简单css构建你web系统的特效，你可以下载相对于常规版本的精简（slim）版本. 总体来说，精简版本不包含ajax，特效，以及当前不推荐使用的代码. 对于现在互联网系统，jQuery文件的大小很少会有人关心，但是精简版的6KB压缩版本相对于常规版的23.6~30KB缩减了很多，依然很有魅力。精简版文件可以通过npm package 或下面链接中的CDN来获取安装</p>
-<p><a href="https://code.jquery.com/jquery-3.1.0.slim.js" target="_blank" rel="external">https://code.jquery.com/jquery-3.1.0.slim.js</a><br><a href="https://code.jquery.com/jquery-3.1.0.slim.min.js" target="_blank" rel="external">https://code.jquery.com/jquery-3.1.0.slim.min.js</a></p>
-<p>当前版本的更新在npm和Bower上都可以获取到.所有获取jQuery的方式可以在<a href="https://jquery.com/download/" target="_blank" rel="external">https://jquery.com/download/</a> 上找到. 公共的CDN服务商今天才收到最新文件，请耐心等待几天. 如果你迫不及待的想开始使用，请直接关注jQuery官网的CDN。</p>
-<p>非常感谢那些参与测试，提交bug，提交补丁的所有人，包括 <a href="https://github.com/markelog" target="_blank" rel="external">Oleg Gaidarenko</a>, <a href="https://github.com/mgol" target="_blank" rel="external">Michał Gołębiowski</a>,以及所有jQuery团队成员.</p>
-<blockquote>
-<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@zywzyw12" target="_blank" rel="external">Akashi</a><br>链接：<a href="http://www.zcfy.cc/article/931" target="_blank" rel="external">http://www.zcfy.cc/article/931</a><br>原文：<a href="http://blog.jquery.com/2016/07/07/jquery-3-1-0-released-no-more-silent-errors/" target="_blank" rel="external">http://blog.jquery.com/2016/07/07/jquery-3-1-0-released-no-more-silent-errors/</a></p>
-</blockquote>
+        <p>现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。<br>作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。<br>今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，这里就分享一下，自己挖坑自己填。</p>
+<a id="more"></a>
+<h2 id="首先先上动画在三个浏览器里的gif图"><a href="#首先先上动画在三个浏览器里的gif图" class="headerlink" title="首先先上动画在三个浏览器里的gif图"></a>首先先上动画在三个浏览器里的gif图</h2><ol>
+<li><p>谷歌浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="浏览器动画兼容chrome.gif"></p>
+</li>
+<li><p>火狐浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="firefo浏览器动画兼容.gif"></p>
+</li>
+<li><p>360浏览器8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="浏览器动画兼容360.gif"></p>
+</li>
+</ol>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>明显可以看到360浏览器的动画会闪动一下，只要操作频繁，还有鼠标快速移动才会出现，正常情况下是不会出现的。既然有坑那就先填了再说，不能找借口，是的，说是这样说，问题是什么原因造成的呢？中医讲究对症下药，那我们也要找到坑才知道要往哪儿填啊。</p>
+<p>先把代码贴上再说：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;浏览器兼容&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            .grid {
+                text-align: center;
+            }
+
+            .grid figure {
+                position: relative;
+                float: left;
+                overflow: hidden;
+                min-width: 320px;
+                max-width: 480px;
+                max-height: 360px;
+                width: 48%;
+                height: auto;
+                background: #3085a3;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .grid figure img {
+                position: relative;
+                display: block;
+                min-height: 100%;
+                max-width: 100%;
+                opacity: 0.8;
+            }
+
+            .grid figure figcaption {
+                padding: 2em;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 1.25em;
+            }
+
+            figure.effect-goliath {
+                background: #df4e4e;
+            }
+
+            figure.effect-goliath img,
+            figure.effect-goliath h2,
+            figure.effect-goliath p {
+                -webkit-transition: 0.35s all;
+                transition: 0.35s all;
+            }
+
+            figure.effect-goliath h2,
+            figure.effect-goliath p {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 15px;
+            }
+
+            figure.effect-goliath p {
+                text-transform: none;
+                font-size: 90%;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 40px, 0);
+                transform: translate3d(0, 40px, 0);
+            }
+
+            figure.effect-goliath:hover img {
+                -webkit-transform: translate3d(0, -80px, 0);
+                transform: translate3d(0, -80px, 0);
+            }
+
+            figure.effect-goliath:hover h2 {
+                -webkit-transform: translate3d(0, -100px, 0);
+                transform: translate3d(0, -100px, 0);
+            }
+
+            figure.effect-goliath:hover p {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+            &lt;figure class=&quot;effect-goliath&quot;&gt;
+                &lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.jpg&quot; /&gt;
+                &lt;figcaption&gt;
+                    &lt;h2&gt;Thoughtful &lt;span&gt;Goliath&lt;/span&gt;&lt;/h2&gt;
+                    &lt;p&gt;When Goliath comes out, you should run.&lt;/p&gt;
+                &lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre><p>动画都是用CSS3 transform 属性来实现的，难道问题就是在这个？好像猜对了，试试看，哈哈。</p>
+<p>再把修改后的代码放上来：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;浏览器兼容&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            .grid {
+                text-align: center;
+            }
+
+            .grid figure {
+                position: relative;
+                float: left;
+                overflow: hidden;
+                min-width: 320px;
+                max-width: 480px;
+                max-height: 360px;
+                width: 48%;
+                height: auto;
+                background: #3085a3;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .grid figure img {
+                position: relative;
+                display: block;
+                min-height: 100%;
+                max-width: 100%;
+                opacity: 0.8;
+            }
+
+            .grid figure figcaption {
+                padding: 1em;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 1.25em;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+
+            .grid figure figcaption::before,
+            .grid figure figcaption::after {
+                pointer-events: none;
+            }
+
+            figure.effect-goliath {
+                background: #df4e4e;
+            }
+
+            figure.effect-goliath img,
+            figure.effect-goliath h2,
+            figure.effect-goliath p {
+                -webkit-transition: 0.35s all;
+                transition: 0.35s all;
+            }
+
+            figure.effect-goliath img {
+                position: relative;
+                top: 0;
+            }
+
+            figure.effect-goliath h2,
+            figure.effect-goliath p {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 15px;
+            }
+
+            figure.effect-goliath p {
+                text-transform: none;
+                font-size: 90%;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 40px, 0);
+                transform: translate3d(0, 40px, 0);
+            }
+
+            figure.effect-goliath:hover img {
+                top: -80px;
+            }
+
+            figure.effect-goliath:hover h2 {
+                -webkit-transform: translate3d(0, -100px, 0);
+                transform: translate3d(0, -100px, 0);
+            }
+
+            figure.effect-goliath:hover p {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+            &lt;figure class=&quot;effect-goliath&quot;&gt;
+                &lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.jpg&quot; /&gt;
+                &lt;figcaption&gt;
+                    &lt;h2&gt;Thoughtful &lt;span&gt;Goliath&lt;/span&gt;&lt;/h2&gt;
+                    &lt;p&gt;When Goliath comes out, you should run.&lt;/p&gt;
+                &lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>附上一张效果图：360浏览器 8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/360%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif" alt="浏览器动画兼容360.gif"><br>这下子鼠标效果就不会出现闪现了，<em>感觉gif录制的有点差，感兴趣的同学可以将代码复制下来，本地测试</em></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这里只将两部分不同的代码粘贴出来</p>
+<p>修改前：<br>   <code>figure.effect-goliath:hover img {
+        -webkit-transform: translate3d(0, -80px, 0);
+        transform: translate3d(0, -80px, 0);
+    }</code></p>
+<p>修改后：<br>    <code>figure.effect-goliath img {
+        position: relative;
+        top: 0;
+    }</code><br>    <code>figure.effect-goliath:hover img {
+        top: -80px;
+    }</code></p>
+<p>就是把之前使用 transform 实现的动画，换成相对定位来实现，然后，然后就可以了···<br>至于原理，一脸懵逼，本人原则是，不管怎样，先做出来再说话。<br>到此，效果虽已实现，坑还未填，期待下一步更新（我也不知道会不会更新，哈哈）<br>有兴趣的同学还可以试试，使用 margin padding 等其他CSS属性来实现同一个动画效果哦 !（目的只有一个，方法有很多）<br>有更好的建议，欢迎交流 QQ:1256961638</p>
 
       
     </div>
@@ -335,13 +554,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/">jQuery3.1.0发布–不再隐藏错误</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/12/浏览器动画兼容/">浏览器动画兼容</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
-        <p><span>发布时间:</span>2016-12-11, 10:59:56</p>
-        <p><span>最后更新:</span>2016-12-11, 11:01:48</p>
+        <p><span>发布时间:</span>2016-12-12, 19:16:59</p>
+        <p><span>最后更新:</span>2016-12-12, 22:32:52</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/" title="jQuery3.1.0发布–不再隐藏错误">http://jsgrblog.win/2016/12/11/jQuery3-1-0发布–不再隐藏错误/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/11/jQuery3-1-0发布–不再隐藏错误/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/12/浏览器动画兼容/" title="浏览器动画兼容">http://jsgrblog.win/2016/12/12/浏览器动画兼容/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/12/浏览器动画兼容/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -353,16 +572,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/">
-                    为什么你需要成为一个全栈开发工程师？
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/11/jQuery3-0的新特性/">
-                    jQuery3.0的新特性
+                <a href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/">
+                    每个JavaScript开发者都该懂的Unicode
                 </a>
             </div>
         
@@ -374,7 +587,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-number">1.</span> <span class="toc-text">下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更小巧的jQuery版本"><span class="toc-number">1.1.</span> <span class="toc-text">更小巧的jQuery版本</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先先上动画在三个浏览器里的gif图"><span class="toc-number">1.</span> <span class="toc-text">首先先上动画在三个浏览器里的gif图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">2.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a></li></ol>
         
     </div>
     <style>
@@ -410,7 +623,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"jQuery3.1.0发布–不再隐藏错误　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"浏览器动画兼容　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -426,7 +639,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/11/jQuery3-1-0发布–不再隐藏错误/" data-title="jQuery3.1.0发布–不再隐藏错误" data-url="http://jsgrblog.win/2016/12/11/jQuery3-1-0发布–不再隐藏错误/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/12/浏览器动画兼容/" data-title="浏览器动画兼容" data-url="http://jsgrblog.win/2016/12/12/浏览器动画兼容/"></div>
     <script>
         var duoshuoQuery = {short_name:"jsgr"};
         var loadComment = function(){
@@ -449,15 +662,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/" title="上一篇: 为什么你需要成为一个全栈开发工程师？">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/11/jQuery3-0的新特性/" title="下一篇: jQuery3.0的新特性">
+            <a href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/" title="下一篇: 每个JavaScript开发者都该懂的Unicode">
                 <i class="fa fa-angle-right"></i>
             </a>
         

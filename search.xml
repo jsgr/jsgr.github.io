@@ -4,6 +4,242 @@
   
     
     <entry>
+      <title><![CDATA[浏览器动画兼容]]></title>
+      <url>http://jsgrblog.win/2016/12/12/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9/</url>
+      <content type="html"><![CDATA[<p>现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。<br>作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。<br>今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，这里就分享一下，自己挖坑自己填。</p>
+<a id="more"></a>
+<h2 id="首先先上动画在三个浏览器里的gif图"><a href="#首先先上动画在三个浏览器里的gif图" class="headerlink" title="首先先上动画在三个浏览器里的gif图"></a>首先先上动画在三个浏览器里的gif图</h2><ol>
+<li><p>谷歌浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="浏览器动画兼容chrome.gif"></p>
+</li>
+<li><p>火狐浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="firefo浏览器动画兼容.gif"></p>
+</li>
+<li><p>360浏览器8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="浏览器动画兼容360.gif"></p>
+</li>
+</ol>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>明显可以看到360浏览器的动画会闪动一下，只要操作频繁，还有鼠标快速移动才会出现，正常情况下是不会出现的。既然有坑那就先填了再说，不能找借口，是的，说是这样说，问题是什么原因造成的呢？中医讲究对症下药，那我们也要找到坑才知道要往哪儿填啊。</p>
+<p>先把代码贴上再说：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;浏览器兼容&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            .grid {
+                text-align: center;
+            }
+
+            .grid figure {
+                position: relative;
+                float: left;
+                overflow: hidden;
+                min-width: 320px;
+                max-width: 480px;
+                max-height: 360px;
+                width: 48%;
+                height: auto;
+                background: #3085a3;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .grid figure img {
+                position: relative;
+                display: block;
+                min-height: 100%;
+                max-width: 100%;
+                opacity: 0.8;
+            }
+
+            .grid figure figcaption {
+                padding: 2em;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 1.25em;
+            }
+
+            figure.effect-goliath {
+                background: #df4e4e;
+            }
+
+            figure.effect-goliath img,
+            figure.effect-goliath h2,
+            figure.effect-goliath p {
+                -webkit-transition: 0.35s all;
+                transition: 0.35s all;
+            }
+
+            figure.effect-goliath h2,
+            figure.effect-goliath p {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 15px;
+            }
+
+            figure.effect-goliath p {
+                text-transform: none;
+                font-size: 90%;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 40px, 0);
+                transform: translate3d(0, 40px, 0);
+            }
+
+            figure.effect-goliath:hover img {
+                -webkit-transform: translate3d(0, -80px, 0);
+                transform: translate3d(0, -80px, 0);
+            }
+
+            figure.effect-goliath:hover h2 {
+                -webkit-transform: translate3d(0, -100px, 0);
+                transform: translate3d(0, -100px, 0);
+            }
+
+            figure.effect-goliath:hover p {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+            &lt;figure class=&quot;effect-goliath&quot;&gt;
+                &lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.jpg&quot; /&gt;
+                &lt;figcaption&gt;
+                    &lt;h2&gt;Thoughtful &lt;span&gt;Goliath&lt;/span&gt;&lt;/h2&gt;
+                    &lt;p&gt;When Goliath comes out, you should run.&lt;/p&gt;
+                &lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre><p>动画都是用CSS3 transform 属性来实现的，难道问题就是在这个？好像猜对了，试试看，哈哈。</p>
+<p>再把修改后的代码放上来：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;浏览器兼容&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            .grid {
+                text-align: center;
+            }
+
+            .grid figure {
+                position: relative;
+                float: left;
+                overflow: hidden;
+                min-width: 320px;
+                max-width: 480px;
+                max-height: 360px;
+                width: 48%;
+                height: auto;
+                background: #3085a3;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .grid figure img {
+                position: relative;
+                display: block;
+                min-height: 100%;
+                max-width: 100%;
+                opacity: 0.8;
+            }
+
+            .grid figure figcaption {
+                padding: 1em;
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 1.25em;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+            }
+
+            .grid figure figcaption::before,
+            .grid figure figcaption::after {
+                pointer-events: none;
+            }
+
+            figure.effect-goliath {
+                background: #df4e4e;
+            }
+
+            figure.effect-goliath img,
+            figure.effect-goliath h2,
+            figure.effect-goliath p {
+                -webkit-transition: 0.35s all;
+                transition: 0.35s all;
+            }
+
+            figure.effect-goliath img {
+                position: relative;
+                top: 0;
+            }
+
+            figure.effect-goliath h2,
+            figure.effect-goliath p {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 15px;
+            }
+
+            figure.effect-goliath p {
+                text-transform: none;
+                font-size: 90%;
+                opacity: 0;
+                -webkit-transform: translate3d(0, 40px, 0);
+                transform: translate3d(0, 40px, 0);
+            }
+
+            figure.effect-goliath:hover img {
+                top: -80px;
+            }
+
+            figure.effect-goliath:hover h2 {
+                -webkit-transform: translate3d(0, -100px, 0);
+                transform: translate3d(0, -100px, 0);
+            }
+
+            figure.effect-goliath:hover p {
+                opacity: 1;
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class=&quot;grid&quot;&gt;
+            &lt;figure class=&quot;effect-goliath&quot;&gt;
+                &lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.jpg&quot; /&gt;
+                &lt;figcaption&gt;
+                    &lt;h2&gt;Thoughtful &lt;span&gt;Goliath&lt;/span&gt;&lt;/h2&gt;
+                    &lt;p&gt;When Goliath comes out, you should run.&lt;/p&gt;
+                &lt;/figcaption&gt;
+            &lt;/figure&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>附上一张效果图：360浏览器 8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/360%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif" alt="浏览器动画兼容360.gif"><br>这下子鼠标效果就不会出现闪现了，<em>感觉gif录制的有点差，感兴趣的同学可以将代码复制下来，本地测试</em></p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这里只将两部分不同的代码粘贴出来</p>
+<p>修改前：<br>   <code>figure.effect-goliath:hover img {
+        -webkit-transform: translate3d(0, -80px, 0);
+        transform: translate3d(0, -80px, 0);
+    }</code></p>
+<p>修改后：<br>    <code>figure.effect-goliath img {
+        position: relative;
+        top: 0;
+    }</code><br>    <code>figure.effect-goliath:hover img {
+        top: -80px;
+    }</code></p>
+<p>就是把之前使用 transform 实现的动画，换成相对定位来实现，然后，然后就可以了···<br>至于原理，一脸懵逼，本人原则是，不管怎样，先做出来再说话。<br>到此，效果虽已实现，坑还未填，期待下一步更新（我也不知道会不会更新，哈哈）<br>有兴趣的同学还可以试试，使用 margin padding 等其他CSS属性来实现同一个动画效果哦 !（目的只有一个，方法有很多）<br>有更好的建议，欢迎交流 QQ:1256961638</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[每个JavaScript开发者都该懂的Unicode]]></title>
       <url>http://jsgrblog.win/2016/12/11/%E6%AF%8F%E4%B8%AAJavaScript%E5%BC%80%E5%8F%91%E8%80%85%E9%83%BD%E8%AF%A5%E6%87%82%E7%9A%84Unicode/</url>
       <content type="html"><![CDATA[<p>在动笔写这篇文章之前，我得先忏悔一下：在很长一段时间里我对Unicode充满了恐惧。</p>

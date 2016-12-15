@@ -21,15 +21,15 @@
 <meta property="og:url" content="http://jsgrblog.win/2016/12/12/浏览器动画兼容/index.html">
 <meta property="og:site_name" content="jsgr blog">
 <meta property="og:description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/firefo%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif">
 <meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
 <meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/360%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif">
-<meta property="og:updated_time" content="2016-12-12T14:32:52.783Z">
+<meta property="og:updated_time" content="2016-12-15T13:05:37.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器动画兼容">
 <meta name="twitter:description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
-<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -319,9 +319,9 @@
         <p>现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。<br>作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。<br>今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，这里就分享一下，自己挖坑自己填。</p>
 <a id="more"></a>
 <h2 id="首先先上动画在三个浏览器里的gif图"><a href="#首先先上动画在三个浏览器里的gif图" class="headerlink" title="首先先上动画在三个浏览器里的gif图"></a>首先先上动画在三个浏览器里的gif图</h2><ol>
-<li><p>谷歌浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="浏览器动画兼容chrome.gif"></p>
+<li><p>谷歌浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif" alt="浏览器动画兼容chrome.gif"></p>
 </li>
-<li><p>火狐浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="firefo浏览器动画兼容.gif"></p>
+<li><p>火狐浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/firefo%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif" alt="firefo浏览器动画兼容.gif"></p>
 </li>
 <li><p>360浏览器8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="浏览器动画兼容360.gif"></p>
 </li>
@@ -557,7 +557,7 @@
         <p><span>本文标题:</span><a href="/2016/12/12/浏览器动画兼容/">浏览器动画兼容</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
         <p><span>发布时间:</span>2016-12-12, 19:16:59</p>
-        <p><span>最后更新:</span>2016-12-12, 22:32:52</p>
+        <p><span>最后更新:</span>2016-12-15, 21:05:37</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/12/浏览器动画兼容/" title="浏览器动画兼容">http://jsgrblog.win/2016/12/12/浏览器动画兼容/</a>
             <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/12/浏览器动画兼容/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

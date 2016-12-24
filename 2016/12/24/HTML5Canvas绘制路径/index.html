@@ -15,19 +15,29 @@
 
 
 
-<meta name="description" content="变量是 CSS 预处理器 存在的最主要的原因之一。设置变量的能力是有用的，比如把一个颜色设置成变量，用那个变量贯穿你写的CSS，你会发现它是一致的，抽离的，并且容易修改。你也可以用原生 CSS变量（CSS自定义变量）做同样的事。但是也有一些重要的区别应该搞清楚。">
+<meta name="description" content="Canvas 绘制路径图形的基本元素是路径。路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。一个路径，甚至一个子路径，都是闭合的。使用路径绘制图形需要一些额外的步骤。
+1.创建路径起始点。2.画出路径。3.路径闭合。4.通过描边或填充路径区域来渲染图形。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS变量和预处理变量有什么不同？">
-<meta property="og:url" content="http://jsgrblog.win/2016/12/10/CSS变量和预处理变量有什么不同？/index.html">
+<meta property="og:title" content="HTML5 Canvas(三) 绘制路径">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/24/HTML5Canvas绘制路径/index.html">
 <meta property="og:site_name" content="jsgr blog">
-<meta property="og:description" content="变量是 CSS 预处理器 存在的最主要的原因之一。设置变量的能力是有用的，比如把一个颜色设置成变量，用那个变量贯穿你写的CSS，你会发现它是一致的，抽离的，并且容易修改。你也可以用原生 CSS变量（CSS自定义变量）做同样的事。但是也有一些重要的区别应该搞清楚。">
-<meta property="og:image" content="http://p0.qhimg.com/t01c28f4d0f8b30ab0e.gif">
-<meta property="og:image" content="http://p0.qhimg.com/t01b546e0e692ac4535.gif">
-<meta property="og:updated_time" content="2016-12-10T11:14:05.066Z">
+<meta property="og:description" content="Canvas 绘制路径图形的基本元素是路径。路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。一个路径，甚至一个子路径，都是闭合的。使用路径绘制图形需要一些额外的步骤。
+1.创建路径起始点。2.画出路径。3.路径闭合。4.通过描边或填充路径区域来渲染图形。">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas006.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas007.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas008.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas009.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas010.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas011.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas012.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas013.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas014.jpg">
+<meta property="og:updated_time" content="2016-12-24T09:51:39.105Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS变量和预处理变量有什么不同？">
-<meta name="twitter:description" content="变量是 CSS 预处理器 存在的最主要的原因之一。设置变量的能力是有用的，比如把一个颜色设置成变量，用那个变量贯穿你写的CSS，你会发现它是一致的，抽离的，并且容易修改。你也可以用原生 CSS变量（CSS自定义变量）做同样的事。但是也有一些重要的区别应该搞清楚。">
-<meta name="twitter:image" content="http://p0.qhimg.com/t01c28f4d0f8b30ab0e.gif">
+<meta name="twitter:title" content="HTML5 Canvas(三) 绘制路径">
+<meta name="twitter:description" content="Canvas 绘制路径图形的基本元素是路径。路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。一个路径，甚至一个子路径，都是闭合的。使用路径绘制图形需要一些额外的步骤。
+1.创建路径起始点。2.画出路径。3.路径闭合。4.通过描边或填充路径区域来渲染图形。">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas006.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +69,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>CSS变量和预处理变量有什么不同？ | jsgr blog</title>
+<title>HTML5 Canvas(三) 绘制路径 | jsgr blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -270,11 +280,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-CSS变量和预处理变量有什么不同？" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HTML5Canvas绘制路径" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/10/CSS变量和预处理变量有什么不同？/" class="article-date">
-      <time datetime="2016-12-10T11:07:44.000Z" itemprop="datePublished">2016-12-10</time>
+      <a href="/2016/12/24/HTML5Canvas绘制路径/" class="article-date">
+      <time datetime="2016-12-24T09:26:59.000Z" itemprop="datePublished">2016-12-24</time>
 </a>
 
 
@@ -289,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CSS变量和预处理变量有什么不同？
+      HTML5 Canvas(三) 绘制路径
     </h1>
   
 
@@ -298,13 +308,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS变量/">CSS变量</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS预处理/">CSS预处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -314,60 +324,201 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>变量是 CSS 预处理器 存在的最主要的原因之一。设置变量的能力是有用的，比如把一个颜色设置成变量，用那个变量贯穿你写的CSS，你会发现它是一致的，抽离的，并且容易修改。你也可以用原生 CSS变量（CSS自定义变量）做同样的事。但是也有一些重要的区别应该搞清楚。<br><a id="more"></a></p>
-<h3 id="一个简单的预处理变量的用法像是这样："><a href="#一个简单的预处理变量的用法像是这样：" class="headerlink" title="一个简单的预处理变量的用法像是这样："></a>一个简单的预处理变量的用法像是这样：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$brandColor: #F06D06;</div><div class="line"></div><div class="line">.main-header &#123;</div><div class="line">  color: $brandColor;</div><div class="line">&#125;</div><div class="line">.main-footer &#123;</div><div class="line">  background-color: $brandColor;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这是使用 <a href="http://sass-lang.com/" target="_blank" rel="external">Sass</a> 写的 SCSS 变量，但是所有的 <strong>CSS预处理器</strong> 都提供这种变量的概念：<a href="http://stylus-lang.com/docs/variables.html" target="_blank" rel="external">Stylus</a>，<a href="http://lesscss.org/features/" target="_blank" rel="external">Less</a>，<a href="https://github.com/postcss/postcss-simple-vars" target="_blank" rel="external">PostCSS</a>，等等。</p>
-<p>上面这段代码如果放入浏览器里什么都不会做。因为浏览器不理解这种声明并且忽略它。预处理器需要把它编译成浏览器能够理解的 CSS。这段代码会编译成这样：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">.main-header &#123;</div><div class="line">  color: #F06D06;</div><div class="line">&#125;</div><div class="line">.main-footer &#123;</div><div class="line">  background-color: #F06D06;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>它现在是有效的 CSS 了。那个变量是预处理器语言的一个部分，而不是 CSS 本身。一旦编译完成，变量就消失了。</p>
-<p>最近，原生 CSS 开始支持 CSS变量，或者叫做 “CSS自定义属性”。它允许你直接在CSS里使用变量。不需要编译。</p>
-<h3 id="一个简单的自定义-CSS-属性的用法像这样："><a href="#一个简单的自定义-CSS-属性的用法像这样：" class="headerlink" title="一个简单的自定义 CSS 属性的用法像这样："></a>一个简单的自定义 CSS 属性的用法像这样：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">:root &#123;</div><div class="line">  --main-color: #F06D06;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.main-header &#123;</div><div class="line">  color: var(--main-color);</div><div class="line">&#125;</div><div class="line">.main-footer &#123;</div><div class="line">  background-color: var(--main-color);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这两个例子达到了完全相同的结果。我们可以定义一个颜色，使用两次。</p>
-<p>那么，问题来了…… 为什么要使用 <strong>原生CSS</strong> 重复造轮子呢？</p>
-<h3 id="为什么你要用原生的-CSS-自定义属性？"><a href="#为什么你要用原生的-CSS-自定义属性？" class="headerlink" title="为什么你要用原生的 CSS 自定义属性？"></a>为什么你要用原生的 CSS 自定义属性？</h3><ul>
-<li><p>你用这些属性 <strong>不需要一个预处理器</strong>。</p>
-</li>
-<li><p><strong>他们是顺序执行的</strong>。 你可以在任何选择器中设置一个变量或覆盖现有变量。</p>
-</li>
-<li><p>当它们的值变了 (e.g. 媒体查询或其他状态)， <strong>浏览器会在需要的时候重绘</strong>.</p>
-</li>
-<li><p>你可以访问并且 <strong>用 JavaScript 操纵它们</strong>.</p>
-</li>
-</ul>
-<p>对于顺序执行，这有一个简单的例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">:root &#123;</div><div class="line">  --color: red;</div><div class="line">&#125;</div><div class="line">body &#123;</div><div class="line">  --color: orange;</div><div class="line">&#125;</div><div class="line">h2 &#123;</div><div class="line">  color: var(--color);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>任何 <code>h2</code> 都会是 orange，因为所有 <code>h2</code> 都是 <code>body</code> 的孩子，而 <code>body</code> 有更高的应用特权。</p>
-<p>你甚至能在媒体查询中重置变量并且把这些变量级联到任何地方去使用，有些事仅用预处理器变量是处理不了的。</p>
-<p>查看 <a href="http://codepen.io/chriscoyier/pen/ORdLvq?editors=0110" target="_blank" rel="external">这个例子</a> 当媒体查询改变那些用来设置简单网格的变量：</p>
-<p><img src="http://p0.qhimg.com/t01c28f4d0f8b30ab0e.gif" alt=""></p>
-<p>Rob Dodson 对 CSS自定义属性的见解 <a href="https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care" target="_blank" rel="external">CSS 变量：你为什么要关心？</a></p>
-<blockquote>
-<p>那些 [预处理器] 使用的变量面临一个重要的缺点，那就是它们是静态的，无法在运行时改变。加入可在运行时更改变量的能力，不仅仅为像动态应用主题打开了大门，也对响应式设计和多边形填充的CSS未来潜力具有深远的影响。</p>
-</blockquote>
-<p>他提到 <a href="https://googlechrome.github.io/samples/css-custom-properties/index.html" target="_blank" rel="external">一个例子</a> 当 JavaScript 改变样式时。它不直接在元素上改变样式，而仅仅是在<strong>运行时</strong>重置一些变量：</p>
-<p><img src="http://p0.qhimg.com/t01b546e0e692ac4535.gif" alt=""></p>
-<p>Wes Bos 也有一个关于这个的很好示例：</p>
-<p>看源码 <a href="https://codepen.io/wesbos/pen/adQjoY/" target="_blank" rel="external">用 JS 更新 CSS 变量</a> by Wes Bos (<a href="http://codepen.io/wesbos" target="_blank" rel="external">@wesbos</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
-<p>注意有一大串我留在这的关于 CSS自定义属性的东西。你可以设置回滚。也可以把它们和 <code>calc()</code> 一起使用。你可以有很多技巧使用它们。看下面的家庭作业部分：</p>
-<h3 id="为什么使用预处理器变量？"><a href="#为什么使用预处理器变量？" class="headerlink" title="为什么使用预处理器变量？"></a>为什么使用预处理器变量？</h3><ul>
-<li><p>最重要的一点：没有传统浏览器支持的条件。它们被编译成一般CSS。</p>
-</li>
-<li><p>其次：你可以用值传递单位，如果你一定要的话。</p>
-</li>
-</ul>
-<h3 id="你可以一起使用它们"><a href="#你可以一起使用它们" class="headerlink" title="你可以一起使用它们"></a>你可以一起使用它们</h3><p>有很多令人信服的原因去一起使用它们。你绝对可以用一个预处理器生成 CSS自定义属性。Ivan Ivanov 写了一个示例，允许你通过 Sass 写 CSS自定义属性的语法，输出的代码如下：</p>
-<p>查看源代码 <a href="http://codepen.io/vank0/pen/kkGvAb/" target="_blank" rel="external">现在就使用 CSS4 变量</a> by $i.van(ov) (<a href="http://codepen.io/vank0" target="_blank" rel="external">@vank0</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
-<p>我试图去思考，当我们使用 CSS自定义属性而不用担心浏览器支持时，那我们就用它们去处理所有我们的变量正在处理的事。我们也许还在用预编译器为了其他方便，但是变量处理在原生CSS看起来不错，它可能值得把所有都搬到这个上面来。</p>
-<h3 id="关于CSS自定义属性的浏览器支持"><a href="#关于CSS自定义属性的浏览器支持" class="headerlink" title="关于CSS自定义属性的浏览器支持"></a>关于CSS自定义属性的浏览器支持</h3><p>这个浏览器支持数据事从 <a href="http://caniuse.com/#feat=css-variables" target="_blank" rel="external">Caniuse</a>来的，它也报告了这个功能在 W3C 候选推荐位置。</p>
-<h4 id="桌面"><a href="#桌面" class="headerlink" title="桌面"></a>桌面</h4><p>Google Chrome，Mozilla Firefox，Internet Explorer，Opera，Apple Safar i4931No369.1</p>
-<h4 id="手机-平板电脑"><a href="#手机-平板电脑" class="headerlink" title="手机 / 平板电脑"></a>手机 / 平板电脑</h4><p>iOS Safari，Android，Opera Mobile，Android Chrome，Android Firefox 9.353375349</p>
-<h3 id="家庭作业时间-强化"><a href="#家庭作业时间-强化" class="headerlink" title="家庭作业时间: 强化!"></a>家庭作业时间: 强化!</h3><h4 id="1-看-Lea-Verou-的-CSS-变量：-var-–subtitle"><a href="#1-看-Lea-Verou-的-CSS-变量：-var-–subtitle" class="headerlink" title="1) 看 Lea Verou 的 CSS 变量： var(–subtitle);"></a>1) 看 Lea Verou 的 <em>CSS 变量： var(–subtitle);</em></h4><p>她涵盖了大量的实际应用，还有一些技巧例如当变量顺序执行时控制一些陷阱。</p>
-<h4 id="2-看-David-Khourshid-的-CSS-的响应式动画【Reactive-Animations-with-CSS】"><a href="#2-看-David-Khourshid-的-CSS-的响应式动画【Reactive-Animations-with-CSS】" class="headerlink" title="2) 看 David Khourshid 的 CSS 的响应式动画【Reactive Animations with CSS】"></a>2) 看 David Khourshid 的 <em>CSS 的响应式动画【Reactive Animations with CSS】</em></h4><p>David 分享了这个主意用CSS变量去连接 DOM 事件，能够做一些非常牛X的UI，而不用太多代码。查看他的网站 (<a href="http://slides.com/davidkhourshid/reactanim#/26" target="_blank" rel="external">从 #26 开始</a>) 那个展示了他是多么牛X。</p>
-<h4 id="3-读-Harry-Roberts-Pragmatic-Practical-and-Progressive-Theming-with-Custom-Properties"><a href="#3-读-Harry-Roberts-Pragmatic-Practical-and-Progressive-Theming-with-Custom-Properties" class="headerlink" title="3) 读 Harry Roberts Pragmatic, Practical, and Progressive Theming with Custom Properties"></a>3) 读 Harry Roberts <em>Pragmatic, Practical, and Progressive Theming with Custom Properties</em></h4><p><a href="http://csswizardry.com/2016/10/pragmatic-practical-progressive-theming-with-custom-properties/" target="_blank" rel="external">他的文章</a> 解释怎么用CSS变量让站点的用户自定义主题更容易。</p>
-<h4 id="4-阅读-Roman-Komarov-的-关于-CSS-变量的条件【Conditions-for-CSS-Variables】"><a href="#4-阅读-Roman-Komarov-的-关于-CSS-变量的条件【Conditions-for-CSS-Variables】" class="headerlink" title="4) 阅读 Roman Komarov 的 关于 CSS 变量的条件【Conditions for CSS Variables】"></a>4) 阅读 Roman Komarov 的 <em>关于 CSS 变量的条件【Conditions for CSS Variables】</em></h4><p>尽管它已经被所有人谈论很久了，但却没有逻辑门在CSS中 (e.g. <code>@if (true) { }</code>)。我们用一些东西来伪装成逻辑门，比如 <code>:checked</code>，但是那依赖 DOM。 <a href="http://kizu.ru/en/fun/conditions-for-css-variables/" target="_blank" rel="external">Roman 展示了一个技巧</a> 你能够用 <code>0</code> 或 <code>1</code> 在一个变量上，然后通过 <code>calc()</code> 来模拟布尔逻辑。</p>
-<blockquote>
-<p>本文转载自：<a href="http://www.zcfy.cc" target="_blank" rel="external">众成翻译</a><br>译者：<a href="http://www.zcfy.cc/@llq" target="_blank" rel="external">千罹</a><br>链接：<a href="http://www.zcfy.cc/article/1567" target="_blank" rel="external">http://www.zcfy.cc/article/1567</a><br>原文：<a href="https://css-tricks.com/difference-between-types-of-css-variables/" target="_blank" rel="external">https://css-tricks.com/difference-between-types-of-css-variables/</a></p>
-</blockquote>
+        <h2 id="Canvas-绘制路径"><a href="#Canvas-绘制路径" class="headerlink" title="Canvas 绘制路径"></a>Canvas 绘制路径</h2><p>图形的基本元素是路径。路径是通过不同颜色和宽度的线段或曲线相连形成的不同形状的点的集合。一个路径，甚至一个子路径，都是闭合的。使用路径绘制图形需要一些额外的步骤。</p>
+<p>1.创建路径起始点。<br>2.画出路径。<br>3.路径闭合。<br>4.通过描边或填充路径区域来渲染图形。<br><a id="more"></a></p>
+<h3 id="开始和关闭一条路径"><a href="#开始和关闭一条路径" class="headerlink" title="开始和关闭一条路径"></a>开始和关闭一条路径</h3><pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas  = document.getElementById(&quot;ex1&quot;);
+    var context = canvas.getContext(&quot;2d&quot;);
+    context.beginPath();
+    context.closePath()；
+&lt;/script&gt;
+</code></pre><h3 id="moveTo"><a href="#moveTo" class="headerlink" title="moveTo()"></a>moveTo()</h3><p>在canvas中绘制一条路径的时候，可以想象自己正在使用一支“虚拟笔”。这支虚拟笔总是位于某个位置，你可以使用2D上下文的moveTo(x, y)函数来移动这支虚拟笔。<br><code>context.moveTo(10,10);</code> 将“虚拟笔”移动到(10,10)这个坐标点上。</p>
+<h3 id="lineTo-函数"><a href="#lineTo-函数" class="headerlink" title="lineTo()函数"></a>lineTo()函数</h3><p>lineTo函数用于从虚拟笔的当前位置绘制一条直线到lineTo()函数中指定的点。</p>
+<pre><code>context.beginPath();
+context.moveTo(20,20);
+context.lineTo(100,100);
+context.closePath();
+</code></pre><p>首先移动虚拟笔到(20,20)坐标点位置，然后从这个点绘制一条直线到(100,100)坐标点。<br>lineTo()函数还会将虚拟笔移动到执行的结束点位置。上面的例子中是移动到（100,100）的位置。</p>
+<h3 id="stroke-函数-fill-函数"><a href="#stroke-函数-fill-函数" class="headerlink" title="stroke()函数 + fill()函数"></a>stroke()函数 + fill()函数</h3><p>stroke()函数用于路径操作指定的图形的外轮廓。<br>fill()函数用于填充有路径操作指定的图形。</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.moveTo(10, 10);
+        context.lineTo(10, 100);
+        context.lineTo(100, 100);
+        context.lineTo(10, 10);
+        context.closePath();
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(150, 10);
+        context.lineTo(150, 100);
+        context.lineTo(250, 100);
+        context.lineTo(150, 10);
+        context.closePath();
+        context.fill();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas006.jpg" alt="canvas绘制路径006"></p>
+<h3 id="线条的宽度"><a href="#线条的宽度" class="headerlink" title="线条的宽度"></a>线条的宽度</h3><p><code>context.lineWidth = 5;</code></p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.beginPath();
+        context.moveTo(10, 10);
+        context.lineTo(10, 100);
+        context.lineWidth = 5;
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.moveTo(50, 10);
+        context.lineTo(50, 100);
+        context.lineWidth = 10;
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.moveTo(90, 10);
+        context.lineTo(90, 100);
+        context.lineWidth = 15;
+        context.stroke();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas007.jpg" alt="canvas007"><br>当绘制的线条宽度大于1的时候，扩展的线条宽度将平均分配在线条中心线的两侧。<br>距离来说，如果你从(10,10)这个点绘制一条直线到(10,100)这个点，线条的宽度为10，那么，实际上是从(5,10)这个点开始绘制，然后扩展到(5,15)这个点。<br>在垂直绘制(5,10)和(15,10)这两个点，就像是绘制一个矩形。</p>
+<h3 id="线条的线头样式（Line-Cap）"><a href="#线条的线头样式（Line-Cap）" class="headerlink" title="线条的线头样式（Line Cap）"></a>线条的线头样式（Line Cap）</h3><p>可以设置线条的线头样式。线头的样式通过2D上下文的lineCap属性来设置。它有三个可选值：<br>1.butt : 线头是扁平且和线正交的样式<br>2.round : 线头是一个圆角的线头，圆的半径等于线条宽度的1/2<br>3.square : 线头会在线的末端绘制一个矩形。矩形的大小为：线条的宽度 * 线条的宽/2</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.lineWidth = 10;
+        context.beginPath();
+        context.moveTo(10, 10);
+        context.lineTo(10, 100);
+        context.lineCap = &quot;butt&quot;;
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.moveTo(50, 10);
+        context.lineTo(50, 100);
+        context.lineCap = &quot;round&quot;;
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.moveTo(90, 10);
+        context.lineTo(90, 100);
+        context.lineCap = &quot;square&quot;;
+        context.stroke();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas008.jpg" alt="canvas008"></p>
+<p>上面是几个不同线头样式的线条的例子。所有的线条的宽度都是10。<br>最左边线条的lineCap的取值为butt，中间的线条的lineCap的取值为round，最右边的线条的lineCap的取值为square。</p>
+<p>正如上面的结果所示：<br>1.square线头的线条和round线头的线条要比butt线头的线条要长。<br>2.square线头的线条和round线头的线条一样长。</p>
+<h3 id="线条的连接"><a href="#线条的连接" class="headerlink" title="线条的连接"></a>线条的连接</h3><p>lineJoin属性用于定义两条线条连接处的点如何绘制。两条线条连接处的点被称为“连接点”。<br>lineJoin属性有下面的三种取值：<br>1.miter ：连接点是一个三角形的连接点<br>2.bevel ：连接点是一个平头的连接点<br>3.round ：连接点是一个圆角的连接点</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.lineWidth = 10;
+        context.beginPath();
+        context.moveTo(10, 10);
+        context.lineTo(10, 100);
+        context.lineTo(100, 100);
+        context.lineJoin = &quot;miter&quot;;
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.moveTo(130, 10);
+        context.lineTo(130, 100);
+        context.lineTo(220, 100);
+        context.lineJoin = &quot;bevel&quot;;
+        context.stroke();
+        context.closePath();
+
+        context.beginPath();
+        context.moveTo(250, 10);
+        context.lineTo(250, 100);
+        context.lineTo(340, 100);
+        context.lineJoin = &quot;round&quot;;
+        context.stroke();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas009.jpg" alt="canvas009"><br>上面分别是三种线条连接点的例子，从左到右的lineJoin属性分别是：miter，bevel和round。</p>
+<h3 id="绘制曲线"><a href="#绘制曲线" class="headerlink" title="绘制曲线"></a>绘制曲线</h3><p>arc(x, y, radius, startAngle, endAngle, anticlockwise) 函数可以用于绘制一条曲线。<br>arc()函数有6个参数：<br>1.x：圆弧的中心点的X坐标位置。<br>2.y：圆弧的中心点的Y坐标位置。<br>3.radius：圆弧的半径。<br>4.startAngle：圆弧开始的角弧度。<br>5.endAngle：圆弧结束的角弧度。<br>6.anticlockwise：设置是以顺时针还是逆时针绘制圆弧，false为顺时针。</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.lineWidth = 5;
+        context.beginPath();
+        context.arc(100, 50, 50, 0, (Math.PI / 180) * 145, false);
+        context.stroke();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas010.jpg" alt="canvas010"><br>上面的代码绘制了一条弧线，它的中心点位于(100,50)坐标点，半径为50，从0度开始到145度结束。</p>
+<p>上面的例子如果将anticlockwise设置为true，会得到下面的结果：<br><img src="http://ohyo58iyo.bkt.clouddn.com/canvas011.jpg" alt="canvas011"><br>如果你要画一个完整的圆，可以简单的设置startAngle为0，endAngle设置为2 <em> Math.PI，它相当于(Math.PI / 180) </em> 360。</p>
+<h3 id="arcTo-函数"><a href="#arcTo-函数" class="headerlink" title="arcTo()函数"></a>arcTo()函数</h3><p>arcTo()函数 ：从当前的点绘制一条曲线到参数指定的点，曲线的半径也由参数指定。<br>它的语法为：arcTo(x1, y1, x2, y2, radius)。<br>注意：参数中x1, y1, x2, y2指的是这个点的控制点。<br>arcTo()函数可以使用lineTo()和arc函数来模仿。</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.lineWidth = 5;
+        context.beginPath();
+        context.arc(100, 55, 50, 0, (Math.PI / 180) * 145, true);
+        context.arcTo(50, 50, 100, 100, 50);
+        context.stroke();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas012.jpg" alt="canvas012"></p>
+<h3 id="quadraticCurveTo-函数"><a href="#quadraticCurveTo-函数" class="headerlink" title="quadraticCurveTo()函数"></a>quadraticCurveTo()函数</h3><p>quadraticCurveTo()函数用于绘制一条二次贝兹曲线。<br>这条曲线由一个控制点来控制，它的语法为：quadraticCurveTo(cp1x, cp1y, x, y)。</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.lineWidth = 5;
+        context.beginPath();
+        context.moveTo(50, 50);
+        context.quadraticCurveTo(50, 150, 150, 150);
+        context.stroke();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas013.jpg" alt="canvas013"><br>上面的代码绘制一条从(50,50)开始到(150,150)的二次贝兹曲线，这条曲线的控制点为(50,150)</p>
+<h3 id="bezierCurveTo-函数"><a href="#bezierCurveTo-函数" class="headerlink" title="bezierCurveTo()函数"></a>bezierCurveTo()函数</h3><p>bezierCurveTo()函数用于从一个点到另一个点绘制一条三次贝兹曲线。<br>三次贝兹曲线有两个控制点，而二次贝兹曲线只有一个控制点。<br>它的语法为：bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)。</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.lineWidth = 5;
+        context.beginPath();
+        context.moveTo(50, 50);
+        context.bezierCurveTo(10, 75, 10, 125, 50, 150);
+        context.stroke();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas014.jpg" alt="canvas014"><br>上面的代码绘制一条从(50,50)绘制一条三次贝兹曲线到(50,150)，两个控制点分别为：(10,75)和(10,125)。</p>
 
       
     </div>
@@ -376,13 +527,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/10/CSS变量和预处理变量有什么不同？/">CSS变量和预处理变量有什么不同？</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/24/HTML5Canvas绘制路径/">HTML5 Canvas(三) 绘制路径</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
-        <p><span>发布时间:</span>2016-12-10, 19:07:44</p>
-        <p><span>最后更新:</span>2016-12-10, 19:14:05</p>
+        <p><span>发布时间:</span>2016-12-24, 17:26:59</p>
+        <p><span>最后更新:</span>2016-12-24, 17:51:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/10/CSS变量和预处理变量有什么不同？/" title="CSS变量和预处理变量有什么不同？">http://jsgrblog.win/2016/12/10/CSS变量和预处理变量有什么不同？/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/10/CSS变量和预处理变量有什么不同？/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/24/HTML5Canvas绘制路径/" title="HTML5 Canvas(三) 绘制路径">http://jsgrblog.win/2016/12/24/HTML5Canvas绘制路径/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/24/HTML5Canvas绘制路径/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -395,15 +546,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/10/网页设计和开发的55个顶尖博客/">
-                    网页设计和开发的55个顶尖博客
+                <a href="/2016/12/24/HTML5Canvas绘制渐变色/">
+                    HTML5 Canvas(四) 绘制渐变色
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/10/如何创建响应式删格系统/">
-                    如何创建响应式删格系统
+                <a href="/2016/12/24/HTML5Canvas绘制矩形/">
+                    HTML5 Canvas(二) 绘制矩形
                 </a>
             </div>
         
@@ -415,7 +566,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个简单的预处理变量的用法像是这样："><span class="toc-number">1.</span> <span class="toc-text">一个简单的预处理变量的用法像是这样：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个简单的自定义-CSS-属性的用法像这样："><span class="toc-number">2.</span> <span class="toc-text">一个简单的自定义 CSS 属性的用法像这样：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么你要用原生的-CSS-自定义属性？"><span class="toc-number">3.</span> <span class="toc-text">为什么你要用原生的 CSS 自定义属性？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么使用预处理器变量？"><span class="toc-number">4.</span> <span class="toc-text">为什么使用预处理器变量？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你可以一起使用它们"><span class="toc-number">5.</span> <span class="toc-text">你可以一起使用它们</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于CSS自定义属性的浏览器支持"><span class="toc-number">6.</span> <span class="toc-text">关于CSS自定义属性的浏览器支持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#桌面"><span class="toc-number">6.1.</span> <span class="toc-text">桌面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#手机-平板电脑"><span class="toc-number">6.2.</span> <span class="toc-text">手机 / 平板电脑</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#家庭作业时间-强化"><span class="toc-number">7.</span> <span class="toc-text">家庭作业时间: 强化!</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-看-Lea-Verou-的-CSS-变量：-var-–subtitle"><span class="toc-number">7.1.</span> <span class="toc-text">1) 看 Lea Verou 的 CSS 变量： var(–subtitle);</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-看-David-Khourshid-的-CSS-的响应式动画【Reactive-Animations-with-CSS】"><span class="toc-number">7.2.</span> <span class="toc-text">2) 看 David Khourshid 的 CSS 的响应式动画【Reactive Animations with CSS】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-读-Harry-Roberts-Pragmatic-Practical-and-Progressive-Theming-with-Custom-Properties"><span class="toc-number">7.3.</span> <span class="toc-text">3) 读 Harry Roberts Pragmatic, Practical, and Progressive Theming with Custom Properties</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-阅读-Roman-Komarov-的-关于-CSS-变量的条件【Conditions-for-CSS-Variables】"><span class="toc-number">7.4.</span> <span class="toc-text">4) 阅读 Roman Komarov 的 关于 CSS 变量的条件【Conditions for CSS Variables】</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas-绘制路径"><span class="toc-number">1.</span> <span class="toc-text">Canvas 绘制路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#开始和关闭一条路径"><span class="toc-number">1.1.</span> <span class="toc-text">开始和关闭一条路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#moveTo"><span class="toc-number">1.2.</span> <span class="toc-text">moveTo()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lineTo-函数"><span class="toc-number">1.3.</span> <span class="toc-text">lineTo()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stroke-函数-fill-函数"><span class="toc-number">1.4.</span> <span class="toc-text">stroke()函数 + fill()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线条的宽度"><span class="toc-number">1.5.</span> <span class="toc-text">线条的宽度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线条的线头样式（Line-Cap）"><span class="toc-number">1.6.</span> <span class="toc-text">线条的线头样式（Line Cap）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线条的连接"><span class="toc-number">1.7.</span> <span class="toc-text">线条的连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制曲线"><span class="toc-number">1.8.</span> <span class="toc-text">绘制曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arcTo-函数"><span class="toc-number">1.9.</span> <span class="toc-text">arcTo()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#quadraticCurveTo-函数"><span class="toc-number">1.10.</span> <span class="toc-text">quadraticCurveTo()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bezierCurveTo-函数"><span class="toc-number">1.11.</span> <span class="toc-text">bezierCurveTo()函数</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -451,7 +602,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"CSS变量和预处理变量有什么不同？　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"HTML5 Canvas(三) 绘制路径　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -467,7 +618,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/10/CSS变量和预处理变量有什么不同？/" data-title="CSS变量和预处理变量有什么不同？" data-url="http://jsgrblog.win/2016/12/10/CSS变量和预处理变量有什么不同？/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/24/HTML5Canvas绘制路径/" data-title="HTML5 Canvas(三) 绘制路径" data-url="http://jsgrblog.win/2016/12/24/HTML5Canvas绘制路径/"></div>
     <script>
         var duoshuoQuery = {short_name:"jsgr"};
         var loadComment = function(){
@@ -490,7 +641,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/10/网页设计和开发的55个顶尖博客/" title="上一篇: 网页设计和开发的55个顶尖博客">
+            <a href="/2016/12/24/HTML5Canvas绘制渐变色/" title="上一篇: HTML5 Canvas(四) 绘制渐变色">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -498,7 +649,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/10/如何创建响应式删格系统/" title="下一篇: 如何创建响应式删格系统">
+            <a href="/2016/12/24/HTML5Canvas绘制矩形/" title="下一篇: HTML5 Canvas(二) 绘制矩形">
                 <i class="fa fa-angle-right"></i>
             </a>
         

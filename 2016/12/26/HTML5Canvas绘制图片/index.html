@@ -15,21 +15,23 @@
 
 
 
-<meta name="description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
+<meta name="description" content="Canvas 绘制图片在canvas中绘制图片元素，有以下3种类型：
+1.由Image()构造函数创建的图片，也可以是任何的&amp;lt;img&amp;gt;元素2.HTML&amp;lt;video&amp;gt;元素作为图片源，会从视频中截取当前帧作为图片源3.另一个&amp;lt;canvas&amp;gt;元素作为图片源">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器动画兼容">
-<meta property="og:url" content="http://jsgrblog.win/2016/12/12/浏览器动画兼容/index.html">
+<meta property="og:title" content="HTML5 Canvas(八) 绘制图片">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/26/HTML5Canvas绘制图片/index.html">
 <meta property="og:site_name" content="jsgr blog">
-<meta property="og:description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/firefo%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/360%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif">
-<meta property="og:updated_time" content="2016-12-15T13:08:02.165Z">
+<meta property="og:description" content="Canvas 绘制图片在canvas中绘制图片元素，有以下3种类型：
+1.由Image()构造函数创建的图片，也可以是任何的&amp;lt;img&amp;gt;元素2.HTML&amp;lt;video&amp;gt;元素作为图片源，会从视频中截取当前帧作为图片源3.另一个&amp;lt;canvas&amp;gt;元素作为图片源">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas027.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas028.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas029.jpg">
+<meta property="og:updated_time" content="2016-12-26T12:24:10.285Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器动画兼容">
-<meta name="twitter:description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
-<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif">
+<meta name="twitter:title" content="HTML5 Canvas(八) 绘制图片">
+<meta name="twitter:description" content="Canvas 绘制图片在canvas中绘制图片元素，有以下3种类型：
+1.由Image()构造函数创建的图片，也可以是任何的&amp;lt;img&amp;gt;元素2.HTML&amp;lt;video&amp;gt;元素作为图片源，会从视频中截取当前帧作为图片源3.另一个&amp;lt;canvas&amp;gt;元素作为图片源">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas027.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -61,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>浏览器动画兼容 | jsgr blog</title>
+<title>HTML5 Canvas(八) 绘制图片 | jsgr blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-浏览器动画兼容" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-HTML5Canvas绘制图片" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/12/浏览器动画兼容/" class="article-date">
-      <time datetime="2016-12-12T11:16:59.000Z" itemprop="datePublished">2016-12-12</time>
+      <a href="/2016/12/26/HTML5Canvas绘制图片/" class="article-date">
+      <time datetime="2016-12-26T13:10:50.000Z" itemprop="datePublished">2016-12-26</time>
 </a>
 
 
@@ -291,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      浏览器动画兼容
+      HTML5 Canvas(八) 绘制图片
     </h1>
   
 
@@ -300,13 +302,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/踩过的坑/">踩过的坑</a>
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -316,236 +318,58 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。<br>作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。<br>今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，这里就分享一下，自己挖坑自己填。</p>
-<a id="more"></a>
-<h2 id="首先先上动画在三个浏览器里的gif图"><a href="#首先先上动画在三个浏览器里的gif图" class="headerlink" title="首先先上动画在三个浏览器里的gif图"></a>首先先上动画在三个浏览器里的gif图</h2><ol>
-<li><p>谷歌浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif" alt="浏览器动画兼容chrome.gif"></p>
-</li>
-<li><p>火狐浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/firefo%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif" alt="firefo浏览器动画兼容.gif"></p>
-</li>
-<li><p>360浏览器8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="浏览器动画兼容360.gif"></p>
-</li>
-</ol>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>明显可以看到360浏览器的动画会闪动一下，只要操作频繁，还有鼠标快速移动才会出现，正常情况下是不会出现的。既然有坑那就先填了再说，不能找借口，是的，说是这样说，问题是什么原因造成的呢？中医讲究对症下药，那我们也要找到坑才知道要往哪儿填啊。</p>
-<p>先把代码贴上再说：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot;&gt;
-        &lt;title&gt;浏览器兼容&lt;/title&gt;
-        &lt;style type=&quot;text/css&quot;&gt;
-            .grid {
-                text-align: center;
-            }
+        <h2 id="Canvas-绘制图片"><a href="#Canvas-绘制图片" class="headerlink" title="Canvas 绘制图片"></a>Canvas 绘制图片</h2><p>在canvas中绘制图片元素，有以下3种类型：</p>
+<p>1.由Image()构造函数创建的图片，也可以是任何的<code>&lt;img&gt;</code>元素<br>2.HTML<code>&lt;video&gt;</code>元素作为图片源，会从视频中截取当前帧作为图片源<br>3.另一个<code>&lt;canvas&gt;</code>元素作为图片源<br><a id="more"></a></p>
+<h3 id="绘制图方式"><a href="#绘制图方式" class="headerlink" title="绘制图方式"></a>绘制图方式</h3><p>1.drawImage(image, dx, dy);<br>2.drawImage(image, dx, dy, dw, dh);<br>3.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dw, dh);</p>
+<h4 id="基本绘制图片方法：drawImage-image-dx-dy"><a href="#基本绘制图片方法：drawImage-image-dx-dy" class="headerlink" title="基本绘制图片方法：drawImage(image, dx, dy)"></a>基本绘制图片方法：drawImage(image, dx, dy)</h4><p>1.image ：是要绘制的图片<br>2.dx(destinationX) : X轴起始位置<br>3.dy(destinationY) : Y轴起始位置</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
 
-            .grid figure {
-                position: relative;
-                float: left;
-                overflow: hidden;
-                min-width: 320px;
-                max-width: 480px;
-                max-height: 360px;
-                width: 48%;
-                height: auto;
-                background: #3085a3;
-                text-align: center;
-                cursor: pointer;
-            }
+        var img = new Image();
+        img.onload = function() {
+            context.drawImage(img, 0, 0);
+        };
+        img.src = &apos;images/1.png&apos;;
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas027.jpg" alt="canvas027"></p>
+<h4 id="绘制并缩放图片：drawImage-image-dx-dy-dw-dh"><a href="#绘制并缩放图片：drawImage-image-dx-dy-dw-dh" class="headerlink" title="绘制并缩放图片：drawImage(image, dx, dy, dw, dh)"></a>绘制并缩放图片：drawImage(image, dx, dy, dw, dh)</h4><p>1.dw(destinationWidth) : X轴缩放<br>2.dh(destinationHeight) : Y轴缩放</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
 
-            .grid figure img {
-                position: relative;
-                display: block;
-                min-height: 100%;
-                max-width: 100%;
-                opacity: 0.8;
+        var img = new Image();
+        img.onload = function() {
+            for(var i = 0; i &lt; 5; i++) {
+                for(var j = 0; j &lt; 5; j++) {
+                    context.drawImage(img, i * 60, j * 60, 60, 60);
+                }
             }
+        };
+        img.src = &apos;images/1.png&apos;;
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas028.jpg" alt="canvas028"></p>
+<h4 id="图片裁剪方法：drawImage-image-sx-sy-sWidth-sHeight-dx-dy-dw-dh"><a href="#图片裁剪方法：drawImage-image-sx-sy-sWidth-sHeight-dx-dy-dw-dh" class="headerlink" title="图片裁剪方法：drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dw, dh)"></a>图片裁剪方法：drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dw, dh)</h4><p>1.sx(sourceX) : 在源图片的X轴位置<br>2.sy(sourceY) : 在源图片的Y轴位置<br>3.sWidth : 裁剪源图片的宽度<br>4.sHeight : 裁剪源图片的高度</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
 
-            .grid figure figcaption {
-                padding: 2em;
-                color: #fff;
-                text-transform: uppercase;
-                font-size: 1.25em;
-            }
-
-            figure.effect-goliath {
-                background: #df4e4e;
-            }
-
-            figure.effect-goliath img,
-            figure.effect-goliath h2,
-            figure.effect-goliath p {
-                -webkit-transition: 0.35s all;
-                transition: 0.35s all;
-            }
-
-            figure.effect-goliath h2,
-            figure.effect-goliath p {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                padding: 15px;
-            }
-
-            figure.effect-goliath p {
-                text-transform: none;
-                font-size: 90%;
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0);
-                transform: translate3d(0, 40px, 0);
-            }
-
-            figure.effect-goliath:hover img {
-                -webkit-transform: translate3d(0, -80px, 0);
-                transform: translate3d(0, -80px, 0);
-            }
-
-            figure.effect-goliath:hover h2 {
-                -webkit-transform: translate3d(0, -100px, 0);
-                transform: translate3d(0, -100px, 0);
-            }
-
-            figure.effect-goliath:hover p {
-                opacity: 1;
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-
-    &lt;body&gt;
-        &lt;div class=&quot;grid&quot;&gt;
-            &lt;figure class=&quot;effect-goliath&quot;&gt;
-                &lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.jpg&quot; /&gt;
-                &lt;figcaption&gt;
-                    &lt;h2&gt;Thoughtful &lt;span&gt;Goliath&lt;/span&gt;&lt;/h2&gt;
-                    &lt;p&gt;When Goliath comes out, you should run.&lt;/p&gt;
-                &lt;/figcaption&gt;
-            &lt;/figure&gt;
-        &lt;/div&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
-</code></pre><p>动画都是用CSS3 transform 属性来实现的，难道问题就是在这个？好像猜对了，试试看，哈哈。</p>
-<p>再把修改后的代码放上来：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot;&gt;
-        &lt;title&gt;浏览器兼容&lt;/title&gt;
-        &lt;style type=&quot;text/css&quot;&gt;
-            .grid {
-                text-align: center;
-            }
-
-            .grid figure {
-                position: relative;
-                float: left;
-                overflow: hidden;
-                min-width: 320px;
-                max-width: 480px;
-                max-height: 360px;
-                width: 48%;
-                height: auto;
-                background: #3085a3;
-                text-align: center;
-                cursor: pointer;
-            }
-
-            .grid figure img {
-                position: relative;
-                display: block;
-                min-height: 100%;
-                max-width: 100%;
-                opacity: 0.8;
-            }
-
-            .grid figure figcaption {
-                padding: 1em;
-                color: #fff;
-                text-transform: uppercase;
-                font-size: 1.25em;
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-            }
-
-            .grid figure figcaption::before,
-            .grid figure figcaption::after {
-                pointer-events: none;
-            }
-
-            figure.effect-goliath {
-                background: #df4e4e;
-            }
-
-            figure.effect-goliath img,
-            figure.effect-goliath h2,
-            figure.effect-goliath p {
-                -webkit-transition: 0.35s all;
-                transition: 0.35s all;
-            }
-
-            figure.effect-goliath img {
-                position: relative;
-                top: 0;
-            }
-
-            figure.effect-goliath h2,
-            figure.effect-goliath p {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                padding: 15px;
-            }
-
-            figure.effect-goliath p {
-                text-transform: none;
-                font-size: 90%;
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0);
-                transform: translate3d(0, 40px, 0);
-            }
-
-            figure.effect-goliath:hover img {
-                top: -80px;
-            }
-
-            figure.effect-goliath:hover h2 {
-                -webkit-transform: translate3d(0, -100px, 0);
-                transform: translate3d(0, -100px, 0);
-            }
-
-            figure.effect-goliath:hover p {
-                opacity: 1;
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-
-    &lt;body&gt;
-        &lt;div class=&quot;grid&quot;&gt;
-            &lt;figure class=&quot;effect-goliath&quot;&gt;
-                &lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.jpg&quot; /&gt;
-                &lt;figcaption&gt;
-                    &lt;h2&gt;Thoughtful &lt;span&gt;Goliath&lt;/span&gt;&lt;/h2&gt;
-                    &lt;p&gt;When Goliath comes out, you should run.&lt;/p&gt;
-                &lt;/figcaption&gt;
-            &lt;/figure&gt;
-        &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>附上一张效果图：360浏览器 8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/360%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif" alt="浏览器动画兼容360.gif"><br>这下子鼠标效果就不会出现闪现了，<em>感觉gif录制的有点差，感兴趣的同学可以将代码复制下来，本地测试</em></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这里只将两部分不同的代码粘贴出来</p>
-<p>修改前：<br>   <code>figure.effect-goliath:hover img {
-        -webkit-transform: translate3d(0, -80px, 0);
-        transform: translate3d(0, -80px, 0);
-    }</code></p>
-<p>修改后：<br>    <code>figure.effect-goliath img {
-        position: relative;
-        top: 0;
-    }</code><br>    <code>figure.effect-goliath:hover img {
-        top: -80px;
-    }</code></p>
-<p>就是把之前使用 transform 实现的动画，换成相对定位来实现，然后，然后就可以了···<br>至于原理，一脸懵逼，本人原则是，不管怎样，先做出来再说话。<br>到此，效果虽已实现，坑还未填，期待下一步更新（我也不知道会不会更新，哈哈）<br>有兴趣的同学还可以试试，使用 margin padding 等其他CSS属性来实现同一个动画效果哦 !（目的只有一个，方法有很多）<br>有更好的建议，欢迎交流 QQ:1256961638</p>
+        var img = new Image();
+        img.onload = function() {
+            context.drawImage(img, 0, 0, 80, 80, 10, 10, 120, 120);
+        }
+        img.src = &quot;images/1.png&quot;;
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas029.jpg" alt="canvas029"></p>
 
       
     </div>
@@ -554,13 +378,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/12/浏览器动画兼容/">浏览器动画兼容</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/26/HTML5Canvas绘制图片/">HTML5 Canvas(八) 绘制图片</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
-        <p><span>发布时间:</span>2016-12-12, 19:16:59</p>
-        <p><span>最后更新:</span>2016-12-15, 21:08:02</p>
+        <p><span>发布时间:</span>2016-12-26, 21:10:50</p>
+        <p><span>最后更新:</span>2016-12-26, 20:24:10</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/12/浏览器动画兼容/" title="浏览器动画兼容">http://jsgrblog.win/2016/12/12/浏览器动画兼容/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/12/浏览器动画兼容/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/26/HTML5Canvas绘制图片/" title="HTML5 Canvas(八) 绘制图片">http://jsgrblog.win/2016/12/26/HTML5Canvas绘制图片/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/26/HTML5Canvas绘制图片/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -572,16 +396,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/24/HTML5Canvas学习前言/">
-                    HTML5 Canvas(一) 学习前言
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/">
-                    每个JavaScript开发者都该懂的Unicode
+                <a href="/2016/12/26/HTML5Canvas绘制文本/">
+                    HTML5 Canvas(七) 绘制文本
                 </a>
             </div>
         
@@ -593,7 +411,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先先上动画在三个浏览器里的gif图"><span class="toc-number">1.</span> <span class="toc-text">首先先上动画在三个浏览器里的gif图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">2.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas-绘制图片"><span class="toc-number">1.</span> <span class="toc-text">Canvas 绘制图片</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#绘制图方式"><span class="toc-number">1.1.</span> <span class="toc-text">绘制图方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本绘制图片方法：drawImage-image-dx-dy"><span class="toc-number">1.1.1.</span> <span class="toc-text">基本绘制图片方法：drawImage(image, dx, dy)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绘制并缩放图片：drawImage-image-dx-dy-dw-dh"><span class="toc-number">1.1.2.</span> <span class="toc-text">绘制并缩放图片：drawImage(image, dx, dy, dw, dh)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图片裁剪方法：drawImage-image-sx-sy-sWidth-sHeight-dx-dy-dw-dh"><span class="toc-number">1.1.3.</span> <span class="toc-text">图片裁剪方法：drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dw, dh)</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -629,7 +447,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"浏览器动画兼容　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"HTML5 Canvas(八) 绘制图片　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -645,7 +463,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/12/浏览器动画兼容/" data-title="浏览器动画兼容" data-url="http://jsgrblog.win/2016/12/12/浏览器动画兼容/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/26/HTML5Canvas绘制图片/" data-title="HTML5 Canvas(八) 绘制图片" data-url="http://jsgrblog.win/2016/12/26/HTML5Canvas绘制图片/"></div>
     <script>
         var duoshuoQuery = {short_name:"jsgr"};
         var loadComment = function(){
@@ -668,15 +486,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/24/HTML5Canvas学习前言/" title="上一篇: HTML5 Canvas(一) 学习前言">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/" title="下一篇: 每个JavaScript开发者都该懂的Unicode">
+            <a href="/2016/12/26/HTML5Canvas绘制文本/" title="下一篇: HTML5 Canvas(七) 绘制文本">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -15,12 +15,21 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="jsgr blog">
-<meta property="og:url" content="http://jsgrblog.win/archives/page/2/index.html">
+<meta name="description" content="Canvas 绘制阴影canvas可以绘制出图形或文字的阴影效果。书写方式和CSS类型，又有点区别。
+canvas的阴影有4个属性：1.shadowOffsetX ：阴影和图形之间的距离 X轴方向（正值表示在图形的右边，负值表示在图形的左边）2.shadowOffsetY ：阴影和图形之间的距离 Y轴方向（正值表示在图形的下边，负值表示在图形的上边）3.shadowBlur ：阴影的模糊效果（数值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5 Canvas(五) 绘制阴影">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/26/HTML5Canvas绘制阴影/index.html">
 <meta property="og:site_name" content="jsgr blog">
+<meta property="og:description" content="Canvas 绘制阴影canvas可以绘制出图形或文字的阴影效果。书写方式和CSS类型，又有点区别。
+canvas的阴影有4个属性：1.shadowOffsetX ：阴影和图形之间的距离 X轴方向（正值表示在图形的右边，负值表示在图形的左边）2.shadowOffsetY ：阴影和图形之间的距离 Y轴方向（正值表示在图形的下边，负值表示在图形的上边）3.shadowBlur ：阴影的模糊效果（数值">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas020.jpg">
+<meta property="og:updated_time" content="2016-12-26T01:25:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jsgr blog">
+<meta name="twitter:title" content="HTML5 Canvas(五) 绘制阴影">
+<meta name="twitter:description" content="Canvas 绘制阴影canvas可以绘制出图形或文字的阴影效果。书写方式和CSS类型，又有点区别。
+canvas的阴影有4个属性：1.shadowOffsetX ：阴影和图形之间的距离 X轴方向（正值表示在图形的右边，负值表示在图形的左边）2.shadowOffsetY ：阴影和图形之间的距离 Y轴方向（正值表示在图形的下边，负值表示在图形的上边）3.shadowBlur ：阴影的模糊效果（数值">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas020.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives | jsgr blog</title>
+<title>HTML5 Canvas(五) 绘制阴影 | jsgr blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,8 +71,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -263,397 +272,219 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-HTML5Canvas绘制阴影" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/12/26/HTML5Canvas绘制阴影/" class="article-date">
+      <time datetime="2016-12-26T11:39:20.000Z" itemprop="datePublished">2016-12-26</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML5 Canvas(五) 绘制阴影
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/11/jQuery还有意义吗/" class="archive-article-date">
-      <time datetime="2016-12-11T03:24:45.000Z" itemprop="datePublished">12-11</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/jQuery还有意义吗/">jQuery还有意义吗</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
+        <h2 id="Canvas-绘制阴影"><a href="#Canvas-绘制阴影" class="headerlink" title="Canvas 绘制阴影"></a>Canvas 绘制阴影</h2><p>canvas可以绘制出图形或文字的阴影效果。书写方式和CSS类型，又有点区别。</p>
+<p>canvas的阴影有4个属性：<br>1.shadowOffsetX ：阴影和图形之间的距离 X轴方向（正值表示在图形的右边，负值表示在图形的左边）<br>2.shadowOffsetY ：阴影和图形之间的距离 Y轴方向（正值表示在图形的下边，负值表示在图形的上边）<br>3.shadowBlur ：阴影的模糊效果（数值越大，阴影越模糊 1 ：最模糊；数值越小，用于越清晰 0 ：不模糊）<br>4.shadowColor ：阴影的颜色（标准的 CSS 颜色值）默认黑色<br><a id="more"></a></p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.shadowOffsetX = 10;
+        context.shadowOffsetY = 10;
+        context.shadowBlur = 10;
+        context.shadowColor = &quot;#ff0000&quot;;
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.fillRect(10, 10, 100, 100);
+
+        context.shadowOffsetX = 5;
+        context.shadowOffsetY = 5;
+        context.shadowBlur = 5;
+        context.shadowColor = &quot;#00ffff&quot;;
+        context.fillStyle = &quot;#ff00ff&quot;;
+        context.font = &quot;30px Arial&quot;;
+        context.fillText(&quot;Canvas 绘制阴影&quot;, 10, 150);
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas020.jpg" alt="canvas020"><br>canvas的阴影4个值可以按具体需要设置。上面的例子，文字和矩形的值是不同的。效果也是不同的。</p>
+
+      
     </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/11/一个治愈JavaScript疲劳的学习计划/" class="archive-article-date">
-      <time datetime="2016-12-11T03:20:25.000Z" itemprop="datePublished">12-11</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/一个治愈JavaScript疲劳的学习计划/">一个治愈JavaScript疲劳的学习计划</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/26/HTML5Canvas绘制阴影/">HTML5 Canvas(五) 绘制阴影</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
+        <p><span>发布时间:</span>2016-12-26, 19:39:20</p>
+        <p><span>最后更新:</span>2016-12-26, 09:25:12</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/26/HTML5Canvas绘制阴影/" title="HTML5 Canvas(五) 绘制阴影">http://jsgrblog.win/2016/12/26/HTML5Canvas绘制阴影/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/26/HTML5Canvas绘制阴影/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/11/2016年学习JavaScript是怎样的一种体验/" class="archive-article-date">
-      <time datetime="2016-12-11T03:17:09.000Z" itemprop="datePublished">12-11</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/2016年学习JavaScript是怎样的一种体验/">2016年学习JavaScript是怎样的一种体验</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/" class="archive-article-date">
-      <time datetime="2016-12-11T03:12:47.000Z" itemprop="datePublished">12-11</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/">为什么你需要成为一个全栈开发工程师？</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/全栈/">全栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/" class="archive-article-date">
-      <time datetime="2016-12-11T02:59:56.000Z" itemprop="datePublished">12-11</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/">jQuery3.1.0发布–不再隐藏错误</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/11/jQuery3-0的新特性/" class="archive-article-date">
-      <time datetime="2016-12-11T02:54:07.000Z" itemprop="datePublished">12-11</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/jQuery3-0的新特性/">jQuery3.0的新特性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/11/调试CSS的方法/" class="archive-article-date">
-      <time datetime="2016-12-11T02:48:43.000Z" itemprop="datePublished">12-11</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/调试CSS的方法/">调试CSS的方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/10/148个资源让你成为CSS专家/" class="archive-article-date">
-      <time datetime="2016-12-10T12:14:16.000Z" itemprop="datePublished">12-10</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/10/148个资源让你成为CSS专家/">148个资源让你成为CSS专家</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/资源链接/">资源链接</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS资源/">CSS资源</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/10/运动曲线提升CSS动画效果/" class="archive-article-date">
-      <time datetime="2016-12-10T12:09:28.000Z" itemprop="datePublished">12-10</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS动画/">CSS动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/" class="archive-article-date">
-      <time datetime="2016-12-10T11:44:15.000Z" itemprop="datePublished">12-10</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">70个老司机技巧教你更好的进行CSS编程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/转载/">转载</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/26/HTML5Canvas填充模式/">
+                    HTML5 Canvas(六) 填充模式
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/24/HTML5Canvas绘制渐变色/">
+                    HTML5 Canvas(四) 绘制渐变色
+                </a>
+            </div>
+        
     </nav>
-  
 
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas-绘制阴影"><span class="toc-number">1.</span> <span class="toc-text">Canvas 绘制阴影</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"HTML5 Canvas(五) 绘制阴影　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/26/HTML5Canvas绘制阴影/" data-title="HTML5 Canvas(五) 绘制阴影" data-url="http://jsgrblog.win/2016/12/26/HTML5Canvas绘制阴影/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jsgr"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/26/HTML5Canvas填充模式/" title="上一篇: HTML5 Canvas(六) 填充模式">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/24/HTML5Canvas绘制渐变色/" title="下一篇: HTML5 Canvas(四) 绘制渐变色">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/HTML5Canvas绘制图片/">HTML5 Canvas(八) 绘制图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/HTML5Canvas绘制文本/">HTML5 Canvas(七) 绘制文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/HTML5Canvas填充模式/">HTML5 Canvas(六) 填充模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/HTML5Canvas绘制阴影/">HTML5 Canvas(五) 绘制阴影</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/HTML5Canvas绘制渐变色/">HTML5 Canvas(四) 绘制渐变色</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/HTML5Canvas绘制路径/">HTML5 Canvas(三) 绘制路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/HTML5Canvas绘制矩形/">HTML5 Canvas(二) 绘制矩形</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/HTML5Canvas学习前言/">HTML5 Canvas(一) 学习前言</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/浏览器动画兼容/">浏览器动画兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/">每个JavaScript开发者都该懂的Unicode</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery还有意义吗/">jQuery还有意义吗</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/一个治愈JavaScript疲劳的学习计划/">一个治愈JavaScript疲劳的学习计划</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/2016年学习JavaScript是怎样的一种体验/">2016年学习JavaScript是怎样的一种体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/">为什么你需要成为一个全栈开发工程师？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/">jQuery3.1.0发布–不再隐藏错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery3-0的新特性/">jQuery3.0的新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/调试CSS的方法/">调试CSS的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/148个资源让你成为CSS专家/">148个资源让你成为CSS专家</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">70个老司机技巧教你更好的进行CSS编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/使用CSS相对单位构建可缩放的组件/">使用CSS相对单位构建可缩放的组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/关于css定位，你需要知道的5件事/">关于css定位，你需要知道的5件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/了解并使用CSS中的rem单位/">了解并使用 CSS 中的 rem 单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/网页设计和开发的55个顶尖博客/">网页设计和开发的55个顶尖博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/CSS变量和预处理变量有什么不同？/">CSS变量和预处理变量有什么不同？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/如何创建响应式删格系统/">如何创建响应式删格系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/">既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/H5-1新特性/">HTML 5.1 里的新东西</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">

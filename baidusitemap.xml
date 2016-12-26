@@ -4,6 +4,116 @@
 
     
   <url>
+    <loc>http://jsgrblog.win/2016/12/24/HTML5Canvas%E7%BB%98%E5%88%B6%E7%9F%A9%E5%BD%A2/</loc>
+    <lastmod>2016-12-26T13:51:28.531Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 Canvas(二) 绘制矩形</title>
+        <pubTime>2016-12-24T01:50:59.000Z</pubTime>
+        
+        <tag>Canvas</tag>
+         
+        <tag>HTML5</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="http://jsgrblog.win/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jsgrblog.win/2016/12/26/HTML5Canvas%E7%BB%98%E5%88%B6%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2016-12-26T12:24:10.285Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 Canvas(八) 绘制图片</title>
+        <pubTime>2016-12-26T13:10:50.000Z</pubTime>
+        
+        <tag>Canvas</tag>
+         
+        <tag>HTML5</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="http://jsgrblog.win/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jsgrblog.win/2016/12/26/HTML5Canvas%E7%BB%98%E5%88%B6%E6%96%87%E6%9C%AC/</loc>
+    <lastmod>2016-12-26T06:42:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 Canvas(七) 绘制文本</title>
+        <pubTime>2016-12-26T12:15:50.000Z</pubTime>
+        
+        <tag>Canvas</tag>
+         
+        <tag>HTML5</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="http://jsgrblog.win/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jsgrblog.win/2016/12/26/HTML5Canvas%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2016-12-26T03:32:50.000Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 Canvas(六) 填充模式</title>
+        <pubTime>2016-12-26T11:58:50.000Z</pubTime>
+        
+        <tag>Canvas</tag>
+         
+        <tag>HTML5</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="http://jsgrblog.win/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://jsgrblog.win/2016/12/26/HTML5Canvas%E7%BB%98%E5%88%B6%E9%98%B4%E5%BD%B1/</loc>
+    <lastmod>2016-12-26T01:25:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 Canvas(五) 绘制阴影</title>
+        <pubTime>2016-12-26T11:39:20.000Z</pubTime>
+        
+        <tag>Canvas</tag>
+         
+        <tag>HTML5</tag>
+         
+         
+           
+             
+              <breadCrumb title="学习笔记" url="http://jsgrblog.win/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://jsgrblog.win/2016/12/24/HTML5Canvas%E7%BB%98%E5%88%B6%E6%B8%90%E5%8F%98%E8%89%B2/</loc>
     <lastmod>2016-12-24T15:08:34.098Z</lastmod>
     <data>
@@ -32,28 +142,6 @@
         <display>
         <title>HTML5 Canvas(三) 绘制路径</title>
         <pubTime>2016-12-24T09:26:59.000Z</pubTime>
-        
-        <tag>Canvas</tag>
-         
-        <tag>HTML5</tag>
-         
-         
-           
-             
-              <breadCrumb title="学习笔记" url="http://jsgrblog.win/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://jsgrblog.win/2016/12/24/HTML5Canvas%E7%BB%98%E5%88%B6%E7%9F%A9%E5%BD%A2/</loc>
-    <lastmod>2016-12-24T02:36:02.805Z</lastmod>
-    <data>
-        <display>
-        <title>HTML5 Canvas(二) 绘制矩形</title>
-        <pubTime>2016-12-24T01:26:59.000Z</pubTime>
         
         <tag>Canvas</tag>
          

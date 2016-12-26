@@ -4,6 +4,243 @@
   
     
     <entry>
+      <title><![CDATA[HTML5 Canvas(八) 绘制图片]]></title>
+      <url>http://jsgrblog.win/2016/12/26/HTML5Canvas%E7%BB%98%E5%88%B6%E5%9B%BE%E7%89%87/</url>
+      <content type="html"><![CDATA[<h2 id="Canvas-绘制图片"><a href="#Canvas-绘制图片" class="headerlink" title="Canvas 绘制图片"></a>Canvas 绘制图片</h2><p>在canvas中绘制图片元素，有以下3种类型：</p>
+<p>1.由Image()构造函数创建的图片，也可以是任何的<code>&lt;img&gt;</code>元素<br>2.HTML<code>&lt;video&gt;</code>元素作为图片源，会从视频中截取当前帧作为图片源<br>3.另一个<code>&lt;canvas&gt;</code>元素作为图片源<br><a id="more"></a></p>
+<h3 id="绘制图方式"><a href="#绘制图方式" class="headerlink" title="绘制图方式"></a>绘制图方式</h3><p>1.drawImage(image, dx, dy);<br>2.drawImage(image, dx, dy, dw, dh);<br>3.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dw, dh);</p>
+<h4 id="基本绘制图片方法：drawImage-image-dx-dy"><a href="#基本绘制图片方法：drawImage-image-dx-dy" class="headerlink" title="基本绘制图片方法：drawImage(image, dx, dy)"></a>基本绘制图片方法：drawImage(image, dx, dy)</h4><p>1.image ：是要绘制的图片<br>2.dx(destinationX) : X轴起始位置<br>3.dy(destinationY) : Y轴起始位置</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        var img = new Image();
+        img.onload = function() {
+            context.drawImage(img, 0, 0);
+        };
+        img.src = &apos;images/1.png&apos;;
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas027.jpg" alt="canvas027"></p>
+<h4 id="绘制并缩放图片：drawImage-image-dx-dy-dw-dh"><a href="#绘制并缩放图片：drawImage-image-dx-dy-dw-dh" class="headerlink" title="绘制并缩放图片：drawImage(image, dx, dy, dw, dh)"></a>绘制并缩放图片：drawImage(image, dx, dy, dw, dh)</h4><p>1.dw(destinationWidth) : X轴缩放<br>2.dh(destinationHeight) : Y轴缩放</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        var img = new Image();
+        img.onload = function() {
+            for(var i = 0; i &lt; 5; i++) {
+                for(var j = 0; j &lt; 5; j++) {
+                    context.drawImage(img, i * 60, j * 60, 60, 60);
+                }
+            }
+        };
+        img.src = &apos;images/1.png&apos;;
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas028.jpg" alt="canvas028"></p>
+<h4 id="图片裁剪方法：drawImage-image-sx-sy-sWidth-sHeight-dx-dy-dw-dh"><a href="#图片裁剪方法：drawImage-image-sx-sy-sWidth-sHeight-dx-dy-dw-dh" class="headerlink" title="图片裁剪方法：drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dw, dh)"></a>图片裁剪方法：drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dw, dh)</h4><p>1.sx(sourceX) : 在源图片的X轴位置<br>2.sy(sourceY) : 在源图片的Y轴位置<br>3.sWidth : 裁剪源图片的宽度<br>4.sHeight : 裁剪源图片的高度</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        var img = new Image();
+        img.onload = function() {
+            context.drawImage(img, 0, 0, 80, 80, 10, 10, 120, 120);
+        }
+        img.src = &quot;images/1.png&quot;;
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas029.jpg" alt="canvas029"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[HTML5 Canvas(七) 绘制文本]]></title>
+      <url>http://jsgrblog.win/2016/12/26/HTML5Canvas%E7%BB%98%E5%88%B6%E6%96%87%E6%9C%AC/</url>
+      <content type="html"><![CDATA[<h2 id="Canvas-绘制文本"><a href="#Canvas-绘制文本" class="headerlink" title="Canvas 绘制文本"></a>Canvas 绘制文本</h2><p>canvas 提供了两种方法来渲染文本:<br>1.fillText(text, x, y [, maxWidth])<br>2.strokeText(text, x, y [, maxWidth])<br>text ：要绘制的文字<br>x ：开始绘制的X轴坐标<br>Y ：开始绘制的Y轴坐标<br>maxWidth ：绘制的最大宽度（可选）<br><a id="more"></a></p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.font = &quot;normal normal 30px Verdana&quot;;
+        context.fillStyle = &quot;#000000&quot;;
+        context.fillText(&quot;HTML5 Canvas 绘制文本&quot;, 50, 50);
+
+        context.font = &quot;normal normal 30px Arial&quot;;
+        context.strokeStyle = &quot;#000000&quot;;
+        context.strokeText(&quot;HTML5 Canvas 绘制文本&quot;, 50, 100);
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas024.jpg" alt="canvas024"></p>
+<h3 id="设置字体样式"><a href="#设置字体样式" class="headerlink" title="设置字体样式"></a>设置字体样式</h3><p>这些属性和CSS中设置字体的属性是兼容的 ：<code>[font style][font weight][font size][font face]</code><br>1.font style可取值有：<br><code>normal</code><br><code>italic</code><br><code>oblique</code><br><code>inherit</code><br>2.font weight可取值有：<br><code>normal</code><br><code>bold</code><br><code>bolder</code><br><code>lighter</code><br><code>auto</code><br><code>inherit</code><br><code>100</code><br><code>200</code><br><code>300</code><br><code>400</code><br><code>500</code><br><code>600</code><br><code>700</code><br><code>800</code><br><code>900</code><br>3.font size：字体的大小(px)<br>4.ont face：字体：verdana, arial, serif, sans-serif, cursive, fantasy, monospace等</p>
+<h3 id="文本对齐（水平）"><a href="#文本对齐（水平）" class="headerlink" title="文本对齐（水平）"></a>文本对齐（水平）</h3><p>textAlign : 定义文字在水平方向对齐方式<br>context.textAlign = “left” || “right” || “center” || “start” || “end”;</p>
+<p>1.start    : 从x左边开始绘制<br>2.left : 从x左边开始绘制，和start属性相同<br>3.center : x坐标位于文本的中心<br>4.end ： x坐标位于文本的末尾<br>5.right ：x坐标位于文本的末尾，和end属性相同</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.stokeStyle = &quot;#000&quot;;
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(250, 0);
+        context.lineTo(250, 250);
+        context.stroke();
+        context.closePath();
+
+        context.font = &quot;normal normal 30px arial&quot;;
+        context.fillStyle = &quot;#000&quot;;
+
+        context.textAlign = &quot;start&quot;;
+        context.fillText(&quot;start&quot;, 250, 30);
+
+        context.textAlign = &quot;left&quot;;
+        context.fillText(&quot;left&quot;, 250, 80);
+
+        context.textAlign = &quot;center&quot;;
+        context.fillText(&quot;center&quot;, 250, 130);
+
+        context.textAlign = &quot;right&quot;;
+        context.fillText(&quot;right&quot;, 250, 180);
+
+        context.textAlign = &quot;end&quot;;
+        context.fillText(&quot;end&quot;, 250, 230);
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas025.jpg" alt="canvas025"></p>
+<h3 id="文本对齐-垂直"><a href="#文本对齐-垂直" class="headerlink" title="文本对齐(垂直)"></a>文本对齐(垂直)</h3><p>textBaseline : 定义文字在垂直方向对齐方式<br>context.textBaseline = “top” || “hanging” || “middle” || “alphabetic” || “ideographic” || “bottom”;</p>
+<p>1.top : 以文本中最高的字符为基线进行对齐<br>2.hanging ：文本的基线是悬停线（hanging baseline）和top取值基本相同，多数情况下看不出有什么区别<br>3.middle ：文本的基线是文字的中心线<br>4.alphabetic ：文本的基线是正常的文字基线<br>5.ideographic ：文本的基线是水平方向的字形底部<br>6.bottom　：文本以文本中最低的字符为基线进行对齐</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;800&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.stokeStyle = &quot;#000&quot;;
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(0, 75);
+        context.lineTo(800, 75);
+        context.stroke();
+        context.closePath();
+
+        context.font = &quot;normal normal 30px arial&quot;;
+        context.fillStyle = &quot;#000&quot;;
+
+        context.textBaseline = &quot;top&quot;;
+        context.fillText(&quot;top&quot;, 0, 75);
+
+        context.textBaseline = &quot;hanging&quot;;
+        context.fillText(&quot;hanging&quot;, 50, 75);
+
+        context.textBaseline = &quot;middle&quot;;
+        context.fillText(&quot;middle&quot;, 170, 75);
+
+        context.textBaseline = &quot;alphabetic&quot;;
+        context.fillText(&quot;alphabetic&quot;, 270, 75);
+
+        context.textBaseline = &quot;ideographic&quot;;
+        context.fillText(&quot;ideographic&quot;, 430, 75);
+
+        context.textBaseline = &quot;bottom&quot;;
+        context.fillText(&quot;bottom-glyph&quot;, 600, 75);
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas026.jpg" alt="canvas026"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[HTML5 Canvas(六) 填充模式]]></title>
+      <url>http://jsgrblog.win/2016/12/26/HTML5Canvas%E5%A1%AB%E5%85%85%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<h2 id="Canvas-填充模式"><a href="#Canvas-填充模式" class="headerlink" title="Canvas 填充模式"></a>Canvas 填充模式</h2><p>填充模式 ：canvas中使用某张图片作为一种模式来填充图形<br>通过createPattern(image, type)方法来创建一种填充模式</p>
+<p>canvas的填充模式有2个属性：<br>1.image : 一个HTML图片，另一个<code>&lt;canvas&gt;</code>或一个<code>&lt;video&gt;</code>等<br>2.type  ：使用图片来创建特定的模式(repeat的值和表示的意思和CSS同样)<br>repeat：在水平和垂直方向上重复图片<br>repeat-x：只在水平方向上重复图片<br>repeat-y：只在垂直方向上重复图片<br>no-repeat：不重复图片，只显示一次<br><a id="more"></a></p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        var img = new Image();
+        img.src = &apos;images/canvas021.png&apos;
+        //使用 Image 对象的 onload 来确保设置图案之前图像已经装载完毕
+        img.onload = function() {
+            var pattern = context.createPattern(img, &apos;repeat&apos;);
+            context.fillStyle = pattern;
+            context.fillRect(0, 0, 200, 200)
+        }
+    }
+    &lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas021.jpg" alt="canvas021"><br>上面的例子是图片canvas021.png <img src="http://ohyo58iyo.bkt.clouddn.com/canvas021.png" alt="canvas021">（23px*23px）使用canvas填充模式生成的大图</p>
+<h3 id="Canvas-填充规则"><a href="#Canvas-填充规则" class="headerlink" title="Canvas 填充规则"></a>Canvas 填充规则</h3><p>使用fill（clip和isPointinPath ）可以选择一个填充规则。<br>填充规则根据某处在路径的外面或者里面来决定该处是否被填充，对于路径相交或者路径被嵌套的时候是有用的。<br>有2个值 ：<br>1.nonzero（默认值）</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.arc(100, 100, 50, 0, Math.PI * 2, true);
+        context.arc(100, 100, 20, 0, Math.PI * 2, true);
+        context.fill(&quot;nonzero&quot;);
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas022.jpg" alt="canvas022"></p>
+<p>2.evenodd</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+        context.arc(100, 100, 50, 0, Math.PI * 2, true);
+        context.arc(100, 100, 20, 0, Math.PI * 2, true);
+        context.fill(&quot;evenodd&quot;);
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas023.jpg" alt="canvas023"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[HTML5 Canvas(五) 绘制阴影]]></title>
+      <url>http://jsgrblog.win/2016/12/26/HTML5Canvas%E7%BB%98%E5%88%B6%E9%98%B4%E5%BD%B1/</url>
+      <content type="html"><![CDATA[<h2 id="Canvas-绘制阴影"><a href="#Canvas-绘制阴影" class="headerlink" title="Canvas 绘制阴影"></a>Canvas 绘制阴影</h2><p>canvas可以绘制出图形或文字的阴影效果。书写方式和CSS类型，又有点区别。</p>
+<p>canvas的阴影有4个属性：<br>1.shadowOffsetX ：阴影和图形之间的距离 X轴方向（正值表示在图形的右边，负值表示在图形的左边）<br>2.shadowOffsetY ：阴影和图形之间的距离 Y轴方向（正值表示在图形的下边，负值表示在图形的上边）<br>3.shadowBlur ：阴影的模糊效果（数值越大，阴影越模糊 1 ：最模糊；数值越小，用于越清晰 0 ：不模糊）<br>4.shadowColor ：阴影的颜色（标准的 CSS 颜色值）默认黑色<br><a id="more"></a></p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.shadowOffsetX = 10;
+        context.shadowOffsetY = 10;
+        context.shadowBlur = 10;
+        context.shadowColor = &quot;#ff0000&quot;;
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.fillRect(10, 10, 100, 100);
+
+        context.shadowOffsetX = 5;
+        context.shadowOffsetY = 5;
+        context.shadowBlur = 5;
+        context.shadowColor = &quot;#00ffff&quot;;
+        context.fillStyle = &quot;#ff00ff&quot;;
+        context.font = &quot;30px Arial&quot;;
+        context.fillText(&quot;Canvas 绘制阴影&quot;, 10, 150);
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas020.jpg" alt="canvas020"><br>canvas的阴影4个值可以按具体需要设置。上面的例子，文字和矩形的值是不同的。效果也是不同的。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTML5 Canvas(四) 绘制渐变色]]></title>
       <url>http://jsgrblog.win/2016/12/24/HTML5Canvas%E7%BB%98%E5%88%B6%E6%B8%90%E5%8F%98%E8%89%B2/</url>
       <content type="html"><![CDATA[<h2 id="Canvas-绘制渐变色"><a href="#Canvas-绘制渐变色" class="headerlink" title="Canvas 绘制渐变色"></a>Canvas 绘制渐变色</h2><p>Canvas渐变是一种用于填充或描边图形的颜色模式。渐变色是由不同的颜色进行过渡，而不是单一的颜色。</p>

@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="jsgr" />
+
+
+
+<meta name="description" content="Canvas 合成与裁剪在我绘制图形时，不同的图形会因为绘制的先后而有了层级关系。如果新绘制的图形和原有内容有重叠部分，在默认情况下，新绘制的图形是会覆盖在原有内容之上。在HTML中，可以使用z-index属性来修改层级关系在canvas里，两个属性用于控制图形合成模式：1.globalAlpha ：透明度（取值 ：0 - 1） 例 ：context.globalAlpha = 0.5;2.glo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5 Canvas(九) 合成与裁剪">
+<meta property="og:url" content="http://jsgrblog.win/2016/12/27/HTML5Canvas合成与裁剪/index.html">
+<meta property="og:site_name" content="jsgr blog">
+<meta property="og:description" content="Canvas 合成与裁剪在我绘制图形时，不同的图形会因为绘制的先后而有了层级关系。如果新绘制的图形和原有内容有重叠部分，在默认情况下，新绘制的图形是会覆盖在原有内容之上。在HTML中，可以使用z-index属性来修改层级关系在canvas里，两个属性用于控制图形合成模式：1.globalAlpha ：透明度（取值 ：0 - 1） 例 ：context.globalAlpha = 0.5;2.glo">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas030.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas031.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas032.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas033.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas034.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas035.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas036.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas037.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas037.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas038.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas039.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas040.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas041.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas042.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas043.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas044.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas045.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas046.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas047.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas048.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas049.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas034.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas048.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas049.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas034.jpg">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas050.jpg">
+<meta property="og:updated_time" content="2016-12-27T03:29:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5 Canvas(九) 合成与裁剪">
+<meta name="twitter:description" content="Canvas 合成与裁剪在我绘制图形时，不同的图形会因为绘制的先后而有了层级关系。如果新绘制的图形和原有内容有重叠部分，在默认情况下，新绘制的图形是会覆盖在原有内容之上。在HTML中，可以使用z-index属性来修改层级关系在canvas里，两个属性用于控制图形合成模式：1.globalAlpha ：透明度（取值 ：0 - 1） 例 ：context.globalAlpha = 0.5;2.glo">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas030.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="jsgr blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>HTML5 Canvas(九) 合成与裁剪 | jsgr blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">jsgr</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS动画/">CSS动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS单位/">CSS单位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS变量/">CSS变量</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS定位/">CSS定位</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS技巧/">CSS技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS资源/">CSS资源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS预处理/">CSS预处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/H5/">H5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jquery/">Jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/全栈/">全栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动画/">动画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/转载/">转载</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">就是个人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">jsgr</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">jsgr</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">我胡扯起来，连我自己都怕</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1256961638@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="/jsgr.dithub.io" title="GitHub"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="/1256961638" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-HTML5Canvas合成与裁剪" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/27/HTML5Canvas合成与裁剪/" class="article-date">
+      <time datetime="2016-12-27T11:15:50.000Z" itemprop="datePublished">2016-12-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML5 Canvas(九) 合成与裁剪
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Canvas-合成与裁剪"><a href="#Canvas-合成与裁剪" class="headerlink" title="Canvas 合成与裁剪"></a>Canvas 合成与裁剪</h2><p>在我绘制图形时，不同的图形会因为绘制的先后而有了层级关系。如果新绘制的图形和原有内容有重叠部分，在默认情况下，新绘制的图形是会覆盖在原有内容之上。<br>在HTML中，可以使用z-index属性来修改层级关系<br>在canvas里，两个属性用于控制图形合成模式：<br>1.globalAlpha ：透明度（取值 ：0 - 1） 例 ：context.globalAlpha = 0.5;<br>2.globalCompositeOperation ：绘制的图形如何与已经存在的图形进行混合 例 ：globalCompositeOperation = type<br><a id="more"></a><br>1.source-over：新绘制的图形位于canvas中已经存在的图形之上（默认值）</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+        context.globalCompositeOperation = &quot;source-over&quot;;  
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas030.jpg" alt="canvas030"></p>
+<p>2.source-in：新绘制的图形和目标canvas中已经存在的图形重叠且都不透明的部分才被绘制</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;source-in&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas031.jpg" alt="canvas031"></p>
+<p>3.source-out ：新绘制的图形和目标canvas中已经存在的图形不重叠的部分会被绘制</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;source-out&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas032.jpg" alt="canvas032"></p>
+<p>4.source-atop ：新绘制的图形和目标canvas中已经存在的图形内容重叠的部分的新图形会被绘制</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;source-atop&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas033.jpg" alt="canvas033"></p>
+<p>5.destination-over ：新绘制的图形和目标canvas中已经存在的图形内容后面的新图形会被绘制</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;destination-over&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas034.jpg" alt="canvas034"></p>
+<p>6.destination-in ：新绘制的图形和目标canvas中已经存在的图形内容重叠的部分的canvas内容会被保留，其余显示为透明</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;destination-in&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas035.jpg" alt="canvas035"></p>
+<p>7.destination-out ：新绘制的图形和目标canvas中已经存在的图形内容不重叠的部分的会被保留</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;destination-out&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas036.jpg" alt="canvas036"></p>
+<p>8.destination-atop ：新绘制的图形和目标canvas中已经存在的图形内容重叠部分会被保留，新图形绘制在后面</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;destination-atop&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas037.jpg" alt="canvas037"></p>
+<p>9.destination-atop ：新绘制的图形和目标canvas中已经存在的图形内容重叠部分会被保留，新图形绘制在后面</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;destination-atop&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas037.jpg" alt="canvas037"></p>
+<p>10.luminosity ：保留底层的亮度和色度，采用顶层的亮度</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;luminosity&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas038.jpg" alt="canvas038"></p>
+<p>11.color ：保留底层的亮度和色度，采用顶层的色调和色度</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;color&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas039.jpg" alt="canvas039"></p>
+<p>12.saturation ：保留底层的亮度和色度，采用顶层的色度</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;saturation&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas040.jpg" alt="canvas040"></p>
+<p>13.hue ：保留底层的亮度和色度，采用顶层的色调</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;hue&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas041.jpg" alt="canvas041"></p>
+<p>14.difference,exclusion ：从顶层减去底层</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;difference&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas042.jpg" alt="canvas042"></p>
+<p>15.soft-light ：柔光模式(纯黑色或白色不会产生纯黑色或白色)</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;soft-light&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas043.jpg" alt="canvas043"></p>
+<p>16.hard-light ：新绘制的图形和目标canvas中已经存在的图形的像素相乘，新绘制的图形和已经存在的图形图层交换</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;hard-light&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas044.jpg" alt="canvas044"></p>
+<p>17.lighter ：新绘制的图形和目标canvas中已经存在的图形的重叠部分的颜色由添加的颜色值决定</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;lighter&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas045.jpg" alt="canvas045"></p>
+<p>18.copy ：只有新图形会被保留，其他都被清除掉</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;copy&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas046.jpg" alt="canvas046"></p>
+<p>19.xor ：新绘制的图形和目标canvas中已经存在的图形的重叠部分变透明</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;xor&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas047.jpg" alt="canvas047"></p>
+<p>20.multiply ：新绘制的图形和目标canvas中已经存在的图形像素相乘，图片会变暗</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;multiply&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas048.jpg" alt="canvas048"></p>
+<p>21.screen ：新绘制的图形和目标canvas中已经存在的图形像素会被反转，相乘，然后再反转，图片会变亮</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;screen&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas049.jpg" alt="canvas049"></p>
+<p>22.overlay ：multiply 和 screen模式的组合。暗的图层会变得更暗，亮的图层会变得更亮</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;overlay&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas034.jpg" alt="canvas034"></p>
+<p>23.darken ：保留新绘制的图形和目标canvas中已经存在的图形的最暗像素</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;darken&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas048.jpg" alt="canvas048"></p>
+<p>24.lighten ：保留新绘制的图形和目标canvas中已经存在的图形的最亮像素</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;lighten&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas049.jpg" alt="canvas049"></p>
+<p>24.color-dodge,color-burn ：通过反转的源图层来分类底部的目标图层</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        context.beginPath();
+        context.fillStyle = &quot;#ff0000&quot;;
+        context.arc(100, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+
+       context.globalCompositeOperation = &quot;color-dodge&quot;;
+
+        context.beginPath();
+        context.fillStyle = &quot;#00ff00&quot;;
+        context.arc(150, 100, 50, 0, (Math.PI / 180) * 2, true);
+        context.fill();
+        context.closePath();
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas034.jpg" alt="canvas034"></p>
+<h2 id="裁切路径"><a href="#裁切路径" class="headerlink" title="裁切路径"></a>裁切路径</h2><p>使用 clip 方法来创建一个新的裁切路径。<br>默认情况下，canvas 有一个与它自身一样大的裁切路径（也就是没有裁切效果）。</p>
+<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var canvas = document.getElementById(&quot;canvas&quot;);
+    if(canvas.getContext) {
+        var context = canvas.getContext(&apos;2d&apos;);
+
+        var img = new Image();
+        img.onload = function() {
+            context.beginPath();
+            context.arc(210, 80, 50, 0, (Math.PI / 180) * 2, true);
+            context.clip();
+            context.drawImage(img, 10, 10)
+        }
+        img.src = &quot;images/works3.jpg&quot;;
+    }
+&lt;/script&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas050.jpg" alt="canvas050"><br>上面的例子 ：用 clip 方法创建一个圆形的裁切路径，裁切路径创建之后所有出现在它里面的东西才会画出来</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/27/HTML5Canvas合成与裁剪/">HTML5 Canvas(九) 合成与裁剪</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
+        <p><span>发布时间:</span>2016-12-27, 19:15:50</p>
+        <p><span>最后更新:</span>2016-12-27, 11:29:42</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/27/HTML5Canvas合成与裁剪/" title="HTML5 Canvas(九) 合成与裁剪">http://jsgrblog.win/2016/12/27/HTML5Canvas合成与裁剪/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/27/HTML5Canvas合成与裁剪/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/27/HTML5Canvas绘制状态与变形/">
+                    HTML5 Canvas(十)绘制状态与变形
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/26/HTML5Canvas绘制图片/">
+                    HTML5 Canvas(八) 绘制图片
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas-合成与裁剪"><span class="toc-number">1.</span> <span class="toc-text">Canvas 合成与裁剪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#裁切路径"><span class="toc-number">2.</span> <span class="toc-text">裁切路径</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"HTML5 Canvas(九) 合成与裁剪　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/27/HTML5Canvas合成与裁剪/" data-title="HTML5 Canvas(九) 合成与裁剪" data-url="http://jsgrblog.win/2016/12/27/HTML5Canvas合成与裁剪/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"jsgr"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/27/HTML5Canvas绘制状态与变形/" title="上一篇: HTML5 Canvas(十)绘制状态与变形">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/26/HTML5Canvas绘制图片/" title="下一篇: HTML5 Canvas(八) 绘制图片">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/27/HTML5Canvas像素/">HTML5 Canvas(十一)像素</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/27/HTML5Canvas绘制状态与变形/">HTML5 Canvas(十)绘制状态与变形</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/27/HTML5Canvas合成与裁剪/">HTML5 Canvas(九) 合成与裁剪</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/HTML5Canvas绘制图片/">HTML5 Canvas(八) 绘制图片</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/HTML5Canvas绘制文本/">HTML5 Canvas(七) 绘制文本</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/HTML5Canvas填充模式/">HTML5 Canvas(六) 填充模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/26/HTML5Canvas绘制阴影/">HTML5 Canvas(五) 绘制阴影</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/HTML5Canvas绘制渐变色/">HTML5 Canvas(四) 绘制渐变色</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/HTML5Canvas绘制路径/">HTML5 Canvas(三) 绘制路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/HTML5Canvas绘制矩形/">HTML5 Canvas(二) 绘制矩形</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/HTML5Canvas学习前言/">HTML5 Canvas(一) 学习前言</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/12/浏览器动画兼容/">浏览器动画兼容</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/">每个JavaScript开发者都该懂的Unicode</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery还有意义吗/">jQuery还有意义吗</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/一个治愈JavaScript疲劳的学习计划/">一个治愈JavaScript疲劳的学习计划</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/2016年学习JavaScript是怎样的一种体验/">2016年学习JavaScript是怎样的一种体验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/为什么你需要成为一个全栈开发工程师？/">为什么你需要成为一个全栈开发工程师？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery3-1-0发布–不再隐藏错误/">jQuery3.1.0发布–不再隐藏错误</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/jQuery3-0的新特性/">jQuery3.0的新特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/11/调试CSS的方法/">调试CSS的方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/148个资源让你成为CSS专家/">148个资源让你成为CSS专家</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/运动曲线提升CSS动画效果/">运动曲线提升CSS动画效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/70个老司机技巧教你更好的进行CSS编程/">70个老司机技巧教你更好的进行CSS编程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/使用CSS相对单位构建可缩放的组件/">使用CSS相对单位构建可缩放的组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/关于css定位，你需要知道的5件事/">关于css定位，你需要知道的5件事</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/了解并使用CSS中的rem单位/">了解并使用 CSS 中的 rem 单位</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/网页设计和开发的55个顶尖博客/">网页设计和开发的55个顶尖博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/CSS变量和预处理变量有什么不同？/">CSS变量和预处理变量有什么不同？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/如何创建响应式删格系统/">如何创建响应式删格系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？/">既然写CSS很容易，那为什么大家还是把CSS写的那么烂呢？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/流畅web动画的十个法则/">流畅web动画的十个法则</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/10/H5-1新特性/">HTML 5.1 里的新东西</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 jsgr
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

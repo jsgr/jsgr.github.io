@@ -4,6 +4,173 @@
   
     
     <entry>
+      <title><![CDATA[SVG系列（四）绘制直线，折线，多边形]]></title>
+      <url>http://jsgrblog.win/2016/12/28/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%E7%BB%98%E5%88%B6%E7%9B%B4%E7%BA%BF%EF%BC%8C%E6%8A%98%E7%BA%BF%EF%BC%8C%E5%A4%9A%E8%BE%B9%E5%BD%A2/</url>
+      <content type="html"><![CDATA[<h2 id="SVG直线"><a href="#SVG直线" class="headerlink" title="SVG直线"></a>SVG直线</h2><p><code>&lt;line x1=&quot;0&quot; y1=&quot;10&quot; x2=&quot;0&quot; y2=&quot;100&quot; style=&quot;stroke:#ff0000; stroke-width: 5;&quot; /&gt;</code></p>
+<p>1.x1 : X轴起始点<br>2.y1 : Y轴起始点<br>3.x2 : X轴终点<br>4.stroke ： 描边颜色<br>5.troke-width : 描边宽度<br><a id="more"></a></p>
+<h3 id="绘制基本直线"><a href="#绘制基本直线" class="headerlink" title="绘制基本直线"></a>绘制基本直线</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;line x1=&quot;10&quot; y1=&quot;10&quot; x2=&quot;10&quot; y2=&quot;100&quot; style=&quot;stroke:#ff0000; stroke-width: 5;&quot;&gt;&lt;/line&gt;
+    &lt;line x1=&quot;40&quot; y1=&quot;10&quot; x2=&quot;60&quot; y2=&quot;120&quot; style=&quot;stroke:#ff0000; stroke-width: 8;&quot;&gt;&lt;/line&gt;
+    &lt;line x1=&quot;100&quot; y1=&quot;10&quot; x2=&quot;60&quot; y2=&quot;120&quot; style=&quot;stroke:#ff0000; stroke-width: 8;&quot;&gt;&lt;/line&gt;
+    &lt;line x1=&quot;10&quot; y1=&quot;140&quot; x2=&quot;200&quot; y2=&quot;140&quot; style=&quot;stroke: #00ff00; stroke-width: 10;&quot;&gt;&lt;/line&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg015.jpg" alt="svg015"></p>
+<h2 id="SVG折线"><a href="#SVG折线" class="headerlink" title="SVG折线"></a>SVG折线</h2><p><code>&lt;polyline points=&quot;0,0  30,0  15,30 0,0&quot; style=&quot;stroke:#ff0000; stroke-width: 10; fill: #00ff00;&quot;/&gt;</code></p>
+<p><code>&lt;polyline&gt;</code>元素用于绘制SVG折线</p>
+<h3 id="绘制基本折线-描边"><a href="#绘制基本折线-描边" class="headerlink" title="绘制基本折线-描边"></a>绘制基本折线-描边</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;polyline points=&quot;10,50  30,10  50,50&quot; style=&quot;stroke:#ff0000;fill: none;&quot;&gt;&lt;/polyline&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg016.jpg" alt="svg016"></p>
+<h3 id="绘制基本折线-描边-填充"><a href="#绘制基本折线-描边-填充" class="headerlink" title="绘制基本折线-描边+填充"></a>绘制基本折线-描边+填充</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;polyline points=&quot;10,50  30,10  50,50&quot; style=&quot;stroke:#ff0000;fill: #00ff00;&quot;&gt;&lt;/polyline&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg017.jpg" alt="svg017"></p>
+<h3 id="绘制基本折线-描边-填充-闭合路径"><a href="#绘制基本折线-描边-填充-闭合路径" class="headerlink" title="绘制基本折线-描边+填充(闭合路径)"></a>绘制基本折线-描边+填充(闭合路径)</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;polyline points=&quot;10,50  30,10  50,50 10,50&quot; style=&quot;stroke:#ff0000;stroke-width: 5; fill: #00ff00;&quot;&gt;&lt;/polyline&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg018.jpg" alt="svg018"></p>
+<h3 id="绘制多边形"><a href="#绘制多边形" class="headerlink" title="绘制多边形"></a>绘制多边形</h3><p><code>&lt;polygon points=&quot;100,10  150,10  250,140 10,140&quot; style=&quot;stroke:#ff0000;stroke-width: 5; fill: #00ff00;&quot;&gt;&lt;/polygon&gt;</code></p>
+<p><code>&lt;polygon&gt;</code>元素用于绘制SVG多边形，多边形是指三条或三条边以上的几何图形</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;polygon points=&quot;100,10  150,10  250,140 10,140&quot; style=&quot;stroke:#ff0000;stroke-width: 5; fill: #00ff00;&quot;&gt;&lt;/polygon&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg019.jpg" alt="svg019"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SVG系列（三）绘制圆形和椭圆]]></title>
+      <url>http://jsgrblog.win/2016/12/28/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%E7%BB%98%E5%88%B6%E5%9C%86%E5%BD%A2/</url>
+      <content type="html"><![CDATA[<h2 id="绘制SVG圆形和椭圆"><a href="#绘制SVG圆形和椭圆" class="headerlink" title="绘制SVG圆形和椭圆"></a>绘制SVG圆形和椭圆</h2><p>1.circle ：绘制圆形<br><code>&lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;40&quot; style=&quot;stroke:#006600;stroke-dasharray: 20 10;stroke-width: 5; fill:#00cc00&quot;/&gt;</code></p>
+<p>2.ellipse ：绘制椭圆<br><code>&lt;ellipse cx=&quot;100&quot; cy=&quot;100&quot; rx=&quot;40&quot; ry=&quot;60&quot; style=&quot;stroke:#006600;stroke-dasharray: 20 10;stroke-width: 5; fill:#00cc00&quot;/&gt;</code></p>
+<p>cx ：圆心X轴起始位置<br>cy ：圆心Y轴起始位置<br>r : 半径<br>stroke ：描边的颜色<br>stroke-width ：描边的宽度<br>stroke-dasharray ：边框设置为虚线（第一个值：虚线长度，第二个值：虚线间距）<br>fill ：填充的颜色</p>
+<a id="more"></a>
+<h3 id="绘制基本圆形"><a href="#绘制基本圆形" class="headerlink" title="绘制基本圆形"></a>绘制基本圆形</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+    &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;50&quot; style=&quot;stroke: #ff0000; fill: #00ff00;&quot;&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg011.jpg" alt="svg011"></p>
+<h3 id="圆形描边-实线"><a href="#圆形描边-实线" class="headerlink" title="圆形描边-实线"></a>圆形描边-实线</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+    &lt;circle cx=&quot;80&quot; cy=&quot;80&quot; r=&quot;50&quot; style=&quot;stroke: #ff0000;stroke-width: 5; fill: #00ff00;&quot;&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg012.jpg" alt="svg012"></p>
+<h3 id="圆形描边-虚线"><a href="#圆形描边-虚线" class="headerlink" title="圆形描边-虚线"></a>圆形描边-虚线</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+    &lt;circle cx=&quot;80&quot; cy=&quot;80&quot; r=&quot;50&quot; style=&quot;stroke: #ff0000;stroke-width: 5;stroke-dasharray: 20 10; fill: #00ff00;&quot;&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg013.jpg" alt="svg013"></p>
+<h3 id="圆形填充-设置透明度"><a href="#圆形填充-设置透明度" class="headerlink" title="圆形填充-设置透明度"></a>圆形填充-设置透明度</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 300px;&quot;&gt;
+    &lt;circle cx=&quot;80&quot; cy=&quot;80&quot; r=&quot;50&quot; style=&quot;fill: #ff00ff;&quot;&gt;&lt;/circle&gt;
+    &lt;circle cx=&quot;110&quot; cy=&quot;110&quot; r=&quot;50&quot; style=&quot;fill: #00ff00; fill-opacity: 0.5;&quot;&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg014.jpg" alt="svg014"></p>
+<h3 id="SVG椭圆"><a href="#SVG椭圆" class="headerlink" title="SVG椭圆"></a>SVG椭圆</h3><p>SVG椭圆和圆形类似，只是它的半径不相等 rx!=ry<br>具体案例参考圆形的绘制</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SVG系列（二）绘制矩形]]></title>
+      <url>http://jsgrblog.win/2016/12/28/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%E7%BB%98%E5%88%B6%E7%9F%A9%E5%BD%A2/</url>
+      <content type="html"><![CDATA[<h2 id="绘制SVG矩形"><a href="#绘制SVG矩形" class="headerlink" title="绘制SVG矩形"></a>绘制SVG矩形</h2><p><code>&lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;100&quot; height=&quot;100&quot; rx=&quot;10&quot; ry=&quot;10&quot; style=&quot;stroke:#ff0000; stroke-width: 5; stroke-dasharray: 10 5; fill: #00ffff&quot; /&gt;</code></p>
+<p>x ：X轴起始位置<br>y ：Y轴起始位置<br>width : 矩形的宽度<br>height : 矩形的高度<br>rx ：圆角的宽度<br>ry ：圆角的高度<br>stroke ：描边的颜色<br>stroke-width ：描边的宽度<br>stroke-dasharray ：边框设置为虚线（第一个值：虚线长度，第二个值：虚线间距）<br>fill ：填充的颜色<br><a id="more"></a></p>
+<h3 id="基本矩形"><a href="#基本矩形" class="headerlink" title="基本矩形"></a>基本矩形</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; height=&quot;120&quot; width=&quot;120&quot; style=&quot;stroke:#ff0000; fill: #00ffff&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg004.jpg" alt="svg004"></p>
+<h3 id="圆角矩形"><a href="#圆角矩形" class="headerlink" title="圆角矩形"></a>圆角矩形</h3><p>1.rx=ry</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 500px;&quot;&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;100&quot; height=&quot;100&quot; rx=&quot;10&quot; ry=&quot;10&quot; style=&quot;stroke:#ff0000;stroke-width:5;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;120&quot; width=&quot;100&quot; height=&quot;100&quot; rx=&quot;20&quot; ry=&quot;20&quot; style=&quot;stroke:#ff0000;stroke-width:5;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;230&quot; width=&quot;100&quot; height=&quot;100&quot; rx=&quot;30&quot; ry=&quot;30&quot; style=&quot;stroke:#ff0000;stroke-width:5;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg005.jpg" alt="svg005"></p>
+<p>2.rx!=ry</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 500px;&quot;&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;100&quot; height=&quot;100&quot; rx=&quot;10&quot; ry=&quot;30&quot; style=&quot;stroke:#ff0000;stroke-width:5;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;120&quot; width=&quot;100&quot; height=&quot;100&quot; rx=&quot;30&quot; ry=&quot;10&quot; style=&quot;stroke:#ff0000;stroke-width:5;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg006.jpg" alt="svg006"></p>
+<h3 id="填充矩形"><a href="#填充矩形" class="headerlink" title="填充矩形"></a>填充矩形</h3><p>1.不透明</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; height=&quot;120&quot; width=&quot;120&quot; style=&quot;fill: #00ffff&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg007.jpg" alt="svg007"></p>
+<p>2.设置透明度</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; style=&quot;height: 300px;&quot;&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; height=&quot;120&quot; width=&quot;120&quot; style=&quot;fill: #ff0000;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;60&quot; y=&quot;60&quot; height=&quot;120&quot; width=&quot;120&quot; style=&quot;fill: #00ff00;fill-opacity: 0.5;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg010.jpg" alt="svg010"></p>
+<h3 id="描边矩形"><a href="#描边矩形" class="headerlink" title="描边矩形"></a>描边矩形</h3><p>1.边框实线</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; height=&quot;120&quot; width=&quot;120&quot; style=&quot;stroke: #00ffff;fill:none;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg008.jpg" alt="svg008"></p>
+<p>2.边框虚线</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; height=&quot;120&quot; width=&quot;120&quot; style=&quot;stroke: #00ffff;stroke-dasharray:15 10;fill:none;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg009.jpg" alt="svg009"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SVG系列（一）学习前言]]></title>
+      <url>http://jsgrblog.win/2016/12/28/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%E5%AD%A6%E4%B9%A0%E5%89%8D%E8%A8%80/</url>
+      <content type="html"><![CDATA[<h2 id="什么是SVG"><a href="#什么是SVG" class="headerlink" title="什么是SVG"></a>什么是SVG</h2><p>SVG是”Scalable Vector Graphics”的简称。中文可以理解成“可缩放矢量图形”</p>
+<p>1.可伸缩矢量图形<br>2.定义用于网络的基于矢量的图形<br>3.使用XML格式定义图形<br>4.SVG图像在放大或缩小的情况下，其图形质量不受影响（矢量图）</p>
+<a id="more"></a>
+<h2 id="SVG优势"><a href="#SVG优势" class="headerlink" title="SVG优势"></a>SVG优势</h2><p>1.被非常多的工具读取和修改（比如记事本）<br>2.与JPEG和GIF图像比起来，尺寸更小，且可压缩性更强。<br>3.可伸缩<br>4.可在任何的分辨率下被高质量地打印<br>5.放大或缩小的情况下，其图形质量不受影响<br>6.SVG文件是纯粹的XML</p>
+<h2 id="在浏览器中显示SVG"><a href="#在浏览器中显示SVG" class="headerlink" title="在浏览器中显示SVG"></a>在浏览器中显示SVG</h2><p>1.将SVG图像作为背景图像嵌入<br>2.使用<code>&lt;iframe&gt;</code>元素来嵌入SVG图像<br>3.使用<code>&lt;img&gt;</code>元素来嵌入SVG图像<br>4.直接使用<code>&lt;svg&gt;</code>元素<br>5.使用<code>&lt;embed&gt;</code>元素来嵌入SVG图像<br>6.使用<code>&lt;object&gt;</code>元素来嵌入SVG图像</p>
+<h3 id="将SVG图像作为背景图像嵌入"><a href="#将SVG图像作为背景图像嵌入" class="headerlink" title="将SVG图像作为背景图像嵌入"></a>将SVG图像作为背景图像嵌入</h3><pre><code>&lt;div&gt;&lt;/div&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+    div {
+        width: 200px;
+        height: 200px;
+        background: url(&apos;http://ohyo58iyo.bkt.clouddn.com/svg001.svg&apos;) no-repeat center;
+        background-size: 200px 200px;
+    }
+&lt;/style&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg001.jpg" alt="svg001"></p>
+<h3 id="使用-iframe-元素来嵌入SVG图像"><a href="#使用-iframe-元素来嵌入SVG图像" class="headerlink" title="使用 iframe 元素来嵌入SVG图像"></a>使用 iframe 元素来嵌入SVG图像</h3><pre><code>&lt;iframe src=&quot;http://ohyo58iyo.bkt.clouddn.com/svg001.svg&quot; width=&quot;300&quot; height=&quot;300&quot; &gt;&lt;/iframe&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg002.jpg" alt="svg002"></p>
+<h3 id="使用-lt-img-gt-元素来嵌入SVG图像"><a href="#使用-lt-img-gt-元素来嵌入SVG图像" class="headerlink" title="使用&lt;img&gt;元素来嵌入SVG图像"></a>使用<code>&lt;img&gt;</code>元素来嵌入SVG图像</h3><pre><code>&lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/svg001.svg&quot;/&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg003.jpg" alt="svg003"></p>
+<h3 id="直接使用-svg-元素"><a href="#直接使用-svg-元素" class="headerlink" title="直接使用 svg 元素"></a>直接使用 svg 元素</h3><pre><code>&lt;div&gt;
+    &lt;svg version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot; width=&quot;208px&quot; height=&quot;240px&quot; viewBox=&quot;0 0 208 240&quot; style=&quot;enable-background:new 0 0 208 240;&quot; xml:space=&quot;preserve&quot;&gt;
+        &lt;g id=&quot;Layer_116&quot;&gt;
+            &lt;g&gt;
+                &lt;g&gt;
+                    &lt;circle style=&quot;fill:#F28C13;&quot; cx=&quot;104&quot; cy=&quot;120&quot; r=&quot;104&quot; /&gt;
+                    &lt;polygon style=&quot;fill:#FFFFFF;&quot; points=&quot;56,236 104,116 52,116 96,4 152,4 124,76 180,76 64,236&quot; /&gt;
+
+                    &lt;polygon style=&quot;fill:none;stroke:#4D5152;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;&quot; points=&quot;
+        56,236 104,116 52,116 96,4 152,4 124,76 180,76 64,236&quot; /&gt;
+
+                    &lt;line style=&quot;fill:none;stroke:#4D5152;stroke-width:8;stroke-linejoin:round;stroke-miterlimit:10;&quot; x1=&quot;108&quot; y1=&quot;36&quot; x2=&quot;116&quot; y2=&quot;36&quot; /&gt;
+
+                    &lt;line style=&quot;fill:none;stroke:#4D5152;stroke-width:8;stroke-linejoin:round;stroke-miterlimit:10;&quot; x1=&quot;100&quot; y1=&quot;56&quot; x2=&quot;108&quot; y2=&quot;56&quot; /&gt;
+
+                    &lt;line style=&quot;fill:none;stroke:#4D5152;stroke-width:8;stroke-linejoin:round;stroke-miterlimit:10;&quot; x1=&quot;92&quot; y1=&quot;76&quot; x2=&quot;100&quot; y2=&quot;76&quot; /&gt;
+                &lt;/g&gt;
+            &lt;/g&gt;
+        &lt;/g&gt;
+        &lt;g id=&quot;Layer_1&quot;&gt;&lt;/g&gt;
+    &lt;/svg&gt;
+&lt;/div&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg003.jpg" alt="svg003"></p>
+<h3 id="使用-embed-元素来嵌入SVG图像"><a href="#使用-embed-元素来嵌入SVG图像" class="headerlink" title="使用 embed 元素来嵌入SVG图像"></a>使用 embed 元素来嵌入SVG图像</h3><pre><code>&lt;div&gt;
+    &lt;embed src=&quot;http://ohyo58iyo.bkt.clouddn.com/svg001.svg&quot; width=&quot;300&quot; height=&quot;300&quot; /&gt;
+&lt;/div&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg003.jpg" alt="svg003"></p>
+<h3 id="使用-object-元素来嵌入SVG图像"><a href="#使用-object-元素来嵌入SVG图像" class="headerlink" title="使用 object 元素来嵌入SVG图像"></a>使用 object 元素来嵌入SVG图像</h3><pre><code>&lt;div&gt;
+    &lt;object data=&quot;http://ohyo58iyo.bkt.clouddn.com/svg001.svg&quot; width=&quot;300&quot; height=&quot;300&quot; /&gt;
+&lt;/div&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg003.jpg" alt="svg003"></p>
+<p>虽然SVG图像在浏览器显示，方法有很多种，比较常用的是<br>1.<code>&lt;img&gt;</code><br>2.<code>&lt;svg&gt;</code><br>3.background-image方式引入</p>
+<p><a href="http://caniuse.com/#search=SVG" target="_blank" rel="external">点击这里查看SVG的支持情况</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTML5 Canvas(十一)像素]]></title>
       <url>http://jsgrblog.win/2016/12/27/HTML5Canvas%E5%83%8F%E7%B4%A0/</url>
       <content type="html"><![CDATA[<h2 id="Canvas-像素"><a href="#Canvas-像素" class="headerlink" title="Canvas 像素"></a>Canvas 像素</h2><h3 id="ImageData对象"><a href="#ImageData对象" class="headerlink" title="ImageData对象"></a>ImageData对象</h3><p>context.createImageData(width, height);</p>

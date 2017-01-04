@@ -4,6 +4,254 @@
   
     
     <entry>
+      <title><![CDATA[SVG系列（十三） transform]]></title>
+      <url>http://jsgrblog.win/2017/01/04/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E4%B8%89%EF%BC%89transform/</url>
+      <content type="html"><![CDATA[<h2 id="transform-属性"><a href="#transform-属性" class="headerlink" title="transform 属性"></a>transform 属性</h2><p>SVG元素可以被缩放,移动,倾斜,旋转和CSS的transform相似<br><a id="more"></a></p>
+<h3 id="缩放-scale-x-y"><a href="#缩放-scale-x-y" class="headerlink" title="缩放 : scale(x,y)"></a>缩放 : scale(x,y)</h3><p>1.x : 在X轴缩放比例<br>2.y : 在Y轴缩放比例</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;100&quot; y=&quot;100&quot; width=&quot;100&quot; height=&quot;100&quot;  transform=&quot;scale(1.5,1.5)&quot; style=&quot;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg066.png" alt="svg066"></p>
+<h3 id="缩放-translate-x-y"><a href="#缩放-translate-x-y" class="headerlink" title="缩放 : translate(x,y)"></a>缩放 : translate(x,y)</h3><p>1.x : 在X轴偏移<br>2.y : 在Y轴偏移</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; transform= &quot;translate(100,100)&quot; style=&quot;fill: #0000ff;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg067.png" alt="svg067"></p>
+<h3 id="倾斜-skew"><a href="#倾斜-skew" class="headerlink" title="倾斜 : skew"></a>倾斜 : skew</h3><p>1.skewX(倾斜角度) : 在X轴倾斜角度</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;150&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; transform= &quot;skewX(45)&quot; style=&quot;fill: #0000ff;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg068.png" alt="svg068"></p>
+<p>2.skewY(倾斜角度) : 在Y轴倾斜角度</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;150&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; transform= &quot;skewY(45)&quot; style=&quot;fill: #0000ff;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg069.png" alt="svg069"></p>
+<h3 id="旋转-rotate-rotate-angle-x-y"><a href="#旋转-rotate-rotate-angle-x-y" class="headerlink" title="旋转 : rotate(rotate-angle x y)"></a>旋转 : rotate(rotate-angle x y)</h3><p>1.rotate-angle : 旋转角度<br>2.x ：绕x轴旋转的点<br>3.y ：绕y轴旋转的点</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;150&quot; y=&quot;50&quot; width=&quot;100&quot; height=&quot;100&quot; transform= &quot;rotate(45 200 150)&quot; style=&quot;fill: #0000ff;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg070.png" alt="svg070"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SVG系列（十二） fill]]></title>
+      <url>http://jsgrblog.win/2017/01/04/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89%20fill/</url>
+      <content type="html"><![CDATA[<h2 id="fill-属性"><a href="#fill-属性" class="headerlink" title="fill 属性"></a>fill 属性</h2><p>stroke : 定义图形的填充样式<br><a id="more"></a></p>
+<h3 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg062.png" alt="svg062"></p>
+<h3 id="fill-stroke"><a href="#fill-stroke" class="headerlink" title="fill+stroke"></a>fill+stroke</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;fill: #00ff00; stroke: #0000ff;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg061.png" alt="svg061"></p>
+<h3 id="fill-opacity-透明度"><a href="#fill-opacity-透明度" class="headerlink" title="fill-opacity(透明度)"></a>fill-opacity(透明度)</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;50&quot; height=&quot;50&quot; style=&quot;fill: #00ff00; fill-opacity: 0.1;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;120&quot; y=&quot;50&quot; width=&quot;50&quot; height=&quot;50&quot; style=&quot;fill: #00ff00; fill-opacity: 0.5;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;190&quot; y=&quot;50&quot; width=&quot;50&quot; height=&quot;50&quot; style=&quot;fill: #00ff00; fill-opacity: 1;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg063.png" alt="svg063"></p>
+<h3 id="fill-rule"><a href="#fill-rule" class="headerlink" title="fill-rule"></a>fill-rule</h3><p>1.nonzero</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;path d=&quot;M50,50 L250,50 L250,250 L50,250 M100,100 L150,100 L150,150 L100 150&quot; style=&quot;fill: #00ff00; fill-rule: nonzero;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg064.png" alt="svg064"></p>
+<p>2.evenodd</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+        &lt;path d=&quot;M50,50 L250,50 L250,250 L50,250 M100,100 L150,100 L150,150 L100 150&quot; style=&quot;fill: #00ff00; fill-rule: evenodd;&quot;&gt;&lt;/path&gt;
+    &lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg065.png" alt="svg065"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SVG系列（十一） stroke]]></title>
+      <url>http://jsgrblog.win/2017/01/04/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89%20stroke/</url>
+      <content type="html"><![CDATA[<h2 id="stroke-属性"><a href="#stroke-属性" class="headerlink" title="stroke 属性"></a>stroke 属性</h2><p>stroke : 定义图形的描边样式<br><a id="more"></a></p>
+<h3 id="stroke"><a href="#stroke" class="headerlink" title="stroke"></a>stroke</h3><pre><code>&lt;svg xmlns=&quot;htttp://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;150&quot; height=&quot;150&quot; style=&quot;stroke: #00ff00; fill: none;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg053.png" alt="svg053"></p>
+<h3 id="stroke-width"><a href="#stroke-width" class="headerlink" title="stroke-width"></a>stroke-width</h3><pre><code>&lt;svg xmlns=&quot;htttp://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;150&quot; height=&quot;150&quot; style=&quot;stroke: #00ff00; stroke-width: 5px; fill: none;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg054.png" alt="svg054"></p>
+<h3 id="stroke-linecap-线头类型"><a href="#stroke-linecap-线头类型" class="headerlink" title="stroke-linecap (线头类型)"></a>stroke-linecap (线头类型)</h3><p>1.butt<br>2.round<br>3.square</p>
+<pre><code>&lt;svg xmlns=&quot;htttp://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;line x1=&quot;50&quot; y1=&quot;50&quot; x2=&quot;300&quot; y2=&quot;50&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linecap: butt; fill: none;&quot;&gt;&lt;/line&gt;
+    &lt;line x1=&quot;50&quot; y1=&quot;80&quot; x2=&quot;300&quot; y2=&quot;80&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linecap: round ;fill: none;&quot;&gt;&lt;/line&gt;
+    &lt;line x1=&quot;50&quot; y1=&quot;110&quot; x2=&quot;300&quot; y2=&quot;110&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linecap: square; fill: none;&quot;&gt;&lt;/line&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg055.png" alt="svg055"></p>
+<h3 id="stroke-linejoin-连线类型"><a href="#stroke-linejoin-连线类型" class="headerlink" title="stroke-linejoin (连线类型)"></a>stroke-linejoin (连线类型)</h3><p>1.miter<br>2.round<br>3.bevel</p>
+<pre><code>&lt;svg xmlns=&quot;htttp://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;path d=&quot;M10,10 L10,150 L100,150&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linejoin: miter; fill: none;&quot;&gt;&lt;/path&gt;
+    &lt;path d=&quot;M130,10 L130,150 L220,150&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linejoin: round; fill: none;&quot;&gt;&lt;/path&gt;
+    &lt;path d=&quot;M250,10 L250,150 L340,150&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linejoin: bevel; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg056.png" alt="svg056"></p>
+<h3 id="stroke-dasharray-虚线"><a href="#stroke-dasharray-虚线" class="headerlink" title="stroke-dasharray (虚线)"></a>stroke-dasharray (虚线)</h3><p>stroke-dasharray: 20 10</p>
+<ol>
+<li>20 : 虚线的长度</li>
+<li>10 : 两条虚线的间距</li>
+</ol>
+<pre><code>&lt;svg xmlns=&quot;htttp://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;line x1=&quot;50&quot; y1=&quot;50&quot; x2=&quot;300&quot; y2=&quot;50&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-dasharray: 20 10; fill: none;&quot;&gt;&lt;/line&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg057.png" alt="svg057"></p>
+<h3 id="stroke-dashoffset-指定位置开始执行指定的虚线模式"><a href="#stroke-dashoffset-指定位置开始执行指定的虚线模式" class="headerlink" title="stroke-dashoffset (指定位置开始执行指定的虚线模式)"></a>stroke-dashoffset (指定位置开始执行指定的虚线模式)</h3><pre><code>&lt;svg xmlns=&quot;htttp://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;line x1=&quot;50&quot; y1=&quot;50&quot; x2=&quot;300&quot; y2=&quot;50&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-dasharray: 20 10; stroke-dashoffset: 10; fill: none;&quot;&gt;&lt;/line&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg058.png" alt="svg058"></p>
+<h3 id="stroke-opacity-透明度"><a href="#stroke-opacity-透明度" class="headerlink" title="stroke-opacity (透明度)"></a>stroke-opacity (透明度)</h3><pre><code>&lt;svg xmlns=&quot;htttp://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;line x1=&quot;50&quot; y1=&quot;50&quot; x2=&quot;300&quot; y2=&quot;50&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linecap: butt; stroke-opacity: 0.1; fill: none;&quot;&gt;&lt;/line&gt;
+    &lt;line x1=&quot;50&quot; y1=&quot;80&quot; x2=&quot;300&quot; y2=&quot;80&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linecap: round ;stroke-opacity: 0.5;fill: none;&quot;&gt;&lt;/line&gt;
+    &lt;line x1=&quot;50&quot; y1=&quot;110&quot; x2=&quot;300&quot; y2=&quot;110&quot; style=&quot;stroke: #00ff00; stroke-width: 10px; stroke-linecap: square;stroke-opacity: 1; fill: none;&quot;&gt;&lt;/line&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg059.png" alt="svg059"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SVG系列（十） path元素]]></title>
+      <url>http://jsgrblog.win/2017/01/03/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%EF%BC%89%20path/</url>
+      <content type="html"><![CDATA[<h2 id="path-元素"><a href="#path-元素" class="headerlink" title="path 元素"></a>path 元素</h2><p><code>&lt;path&gt;</code> : 定义一些复杂的图形</p>
+<p>1.大写的指令通常将参数坐标解析为绝对坐标<br>2.小写的指令通常将参数坐标解析为相对坐标<br><a id="more"></a></p>
+<h3 id="指令大全-大小写间隔，便于区分"><a href="#指令大全-大小写间隔，便于区分" class="headerlink" title="指令大全(大小写间隔，便于区分)"></a>指令大全(大小写间隔，便于区分)</h3><p>以下列出大写字母的作用，小写字母只写出与大写字母的不同之处（个人觉得作用比较方便理解）</p>
+<p>1.M(指令)</p>
+<ol>
+<li>参数：x,y</li>
+<li>名称 ：moveto</li>
+<li>描述 ：移动虚拟画笔到指定的（x,y）坐标，仅移动不绘制</li>
+</ol>
+<p>2.m (指令)</p>
+<ol>
+<li>坐标是相对于当前画笔的坐标</li>
+</ol>
+<p>3.L(指令)</p>
+<ol>
+<li>参数：x,y</li>
+<li>名称 ：lineto</li>
+<li>描述 ：从当前画笔所在位置绘制一条直线到指定的（x,y）坐标</li>
+</ol>
+<p>4.l (指令)</p>
+<ol>
+<li>坐标是相对于当前画笔的坐标</li>
+</ol>
+<p>5.H(指令)</p>
+<ol>
+<li>参数：x</li>
+<li>名称 ：horizontal lineto</li>
+<li>描述 ：绘制一条水平直线到参数指定的x坐标</li>
+</ol>
+<p>6.h (指令)</p>
+<ol>
+<li>坐标是相对于当前画笔的坐标</li>
+</ol>
+<p>7.V(指令)</p>
+<ol>
+<li>参数：y</li>
+<li>名称 ：vertical lineto</li>
+<li>描述 ：绘制一条垂直直线到参数指定的y坐标</li>
+</ol>
+<p>8.v (指令)</p>
+<ol>
+<li>坐标是相对于当前画笔的坐标</li>
+</ol>
+<p>9.C(指令)</p>
+<ol>
+<li>参数：x1,y1 x2,y2 x,y curveto</li>
+<li>名称 ：三次贝兹曲线</li>
+<li>描述 ：绘制一条三次贝兹曲线到参数（x,y）指定的坐标,x1，y1和x2,y2是曲线的开始和结束控制点,控制曲线的弧度</li>
+</ol>
+<p>10.c (指令)</p>
+<ol>
+<li>坐标是相对于当前画笔的坐标</li>
+</ol>
+<p>11.Q(指令)</p>
+<ol>
+<li>参数：x1,y1 x,y</li>
+<li>名称 ：二次贝兹曲线</li>
+<li>描述 ：绘制一条二次贝兹曲线到参数（x,y）指定的坐标,x1,y1是控制点,用于控制曲线的弧度</li>
+</ol>
+<p>12.q (指令)</p>
+<ol>
+<li>坐标是相对于当前画笔的坐标</li>
+</ol>
+<p>13.T(指令)</p>
+<ol>
+<li>参数：x,y</li>
+<li>名称 ：平滑的二次贝兹曲线</li>
+<li>描述 ：绘制一条二次贝兹曲线到参数（x,y）指定的坐标,控制点被假定为最后一次使用的控制点</li>
+</ol>
+<p>14.t (指令)</p>
+<ol>
+<li>坐标是相对于当前画笔的坐标</li>
+</ol>
+<p>15.A(指令)</p>
+<ol>
+<li>参数：rx,ry x-axis-rotation large-arc-flag,sweepflag x,y</li>
+<li>名称 ：椭圆弧线</li>
+<li>描述 ：绘制一条椭圆弧线到（x,y）指定的坐标; rx(x轴半径)和ry(y轴半径); x-axis-rotation(绕x轴旋转的度数); large-arc-flag(取值0或1) 大弧(1)还是小弧(0); sweep-flag(弧线绘制的方向)</li>
+</ol>
+<p>16.a (指令)</p>
+<ol>
+<li>坐标是相对于当前画笔的坐标</li>
+</ol>
+<p>17.Z (z) 大小写作用相同 ：闭合路径</p>
+<h3 id="M-L-指令"><a href="#M-L-指令" class="headerlink" title="M L 指令"></a>M L 指令</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+    &lt;path d=&quot;M50 50 L150 150 L250 50&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg043.png" alt="svg043"></p>
+<h3 id="M-L-Z-指令"><a href="#M-L-Z-指令" class="headerlink" title="M L Z 指令"></a>M L Z 指令</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+&lt;path d=&quot;M50 50 L150 150 L250 50 Z&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg044.png" alt="svg044"></p>
+<h3 id="M-H-指令"><a href="#M-H-指令" class="headerlink" title="M H 指令"></a>M H 指令</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+    &lt;path d=&quot;M50 50 H250&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg045.png" alt="svg045"></p>
+<h3 id="M-V-指令"><a href="#M-V-指令" class="headerlink" title="M V 指令"></a>M V 指令</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+    &lt;path d=&quot;M10 10 V150&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg046.png" alt="svg046"></p>
+<h3 id="M-C-指令"><a href="#M-C-指令" class="headerlink" title="M C 指令"></a>M C 指令</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 300px;&quot;&gt;
+    &lt;path d=&quot;M50 50 C100,100 0,150 50,250&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg047.png" alt="svg047"></p>
+<h3 id="M-S-指令"><a href="#M-S-指令" class="headerlink" title="M S 指令"></a>M S 指令</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 300px;&quot;&gt;
+    &lt;path d=&quot;M50 50 S200,125 50,250&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg048.png" alt="svg048"></p>
+<h3 id="M-Q-指令"><a href="#M-Q-指令" class="headerlink" title="M Q 指令"></a>M Q 指令</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 300px;&quot;&gt;
+    &lt;path d=&quot;M50 50 Q200,125 50,250&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg049.png" alt="svg049"></p>
+<h3 id="M-T-指令"><a href="#M-T-指令" class="headerlink" title="M T 指令"></a>M T 指令</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 300px;&quot;&gt;
+    &lt;path d=&quot;M50 50 T250,250&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg050.png" alt="svg050"></p>
+<h3 id="M-A-指令"><a href="#M-A-指令" class="headerlink" title="M A 指令"></a>M A 指令</h3><p>1.<code>A50,50 0 0,1 250,250</code><br>2.<code>A50,50 0 1,1 250,250</code></p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 300px;&quot;&gt;
+    &lt;path d=&quot;M50 50 A50,50 0 0,1 250,250&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg051.png" alt="svg051"></p>
+<p>3.<code>A50,50 0 1,0 250,250</code><br>4.<code>A50,50 0 0,0 250,250</code></p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;height: 300px;&quot;&gt;
+    &lt;path d=&quot;M50 50 A50,50 0 1,0 250,250&quot; style=&quot;stroke: #00ff00;stroke-width: 5; fill: none;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg052.png" alt="svg052"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[SVG系列（九） defs ,symbol ,use元素]]></title>
       <url>http://jsgrblog.win/2017/01/03/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E4%B9%9D%EF%BC%89%20def%20,symbol%20,use%E5%85%83%E7%B4%A0%20/</url>
       <content type="html"><![CDATA[<p>1.defs元素 ：定义一个可以重复使用元素</p>

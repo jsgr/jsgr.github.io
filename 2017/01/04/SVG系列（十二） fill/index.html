@@ -15,34 +15,22 @@
 
 
 
-<meta name="description" content="Canvas 绘制矩形canvas提供了三种方法绘制矩形：
-
-填充的矩形:  fillRect( x ,y ,width, height)
-描边的矩形:  strokeRect( x ,y ,width, height)
-清除指定矩形区域:  clearRect( x ,y ,width, height)">
+<meta name="description" content="fill 属性stroke : 定义图形的填充样式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5 Canvas(二) 绘制矩形">
-<meta property="og:url" content="http://jsgrblog.win/2016/12/24/HTML5Canvas绘制矩形/index.html">
+<meta property="og:title" content="SVG系列（十二） fill">
+<meta property="og:url" content="http://jsgrblog.win/2017/01/04/SVG系列（十二） fill/index.html">
 <meta property="og:site_name" content="jsgr blog">
-<meta property="og:description" content="Canvas 绘制矩形canvas提供了三种方法绘制矩形：
-
-填充的矩形:  fillRect( x ,y ,width, height)
-描边的矩形:  strokeRect( x ,y ,width, height)
-清除指定矩形区域:  clearRect( x ,y ,width, height)">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas001.jpg">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas002.jpg">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas003.jpg">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas004.jpg">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas005.jpg">
-<meta property="og:updated_time" content="2016-12-26T13:51:28.531Z">
+<meta property="og:description" content="fill 属性stroke : 定义图形的填充样式">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg062.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg061.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg063.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg064.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg065.png">
+<meta property="og:updated_time" content="2017-01-04T12:59:04.054Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML5 Canvas(二) 绘制矩形">
-<meta name="twitter:description" content="Canvas 绘制矩形canvas提供了三种方法绘制矩形：
-
-填充的矩形:  fillRect( x ,y ,width, height)
-描边的矩形:  strokeRect( x ,y ,width, height)
-清除指定矩形区域:  clearRect( x ,y ,width, height)">
-<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas001.jpg">
+<meta name="twitter:title" content="SVG系列（十二） fill">
+<meta name="twitter:description" content="fill 属性stroke : 定义图形的填充样式">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/svg062.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -74,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>HTML5 Canvas(二) 绘制矩形 | jsgr blog</title>
+<title>SVG系列（十二） fill | jsgr blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -285,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-HTML5Canvas绘制矩形" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SVG系列（十二） fill" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/24/HTML5Canvas绘制矩形/" class="article-date">
-      <time datetime="2016-12-24T01:50:59.000Z" itemprop="datePublished">2016-12-24</time>
+      <a href="/2017/01/04/SVG系列（十二） fill/" class="article-date">
+      <time datetime="2017-01-04T12:12:36.000Z" itemprop="datePublished">2017-01-04</time>
 </a>
 
 
@@ -304,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      HTML5 Canvas(二) 绘制矩形
+      SVG系列（十二） fill
     </h1>
   
 
@@ -319,7 +307,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/">SVG</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -329,74 +317,31 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Canvas-绘制矩形"><a href="#Canvas-绘制矩形" class="headerlink" title="Canvas 绘制矩形"></a>Canvas 绘制矩形</h2><p>canvas提供了三种方法绘制矩形：</p>
-<ol>
-<li>填充的矩形:  fillRect( x ,y ,width, height)</li>
-<li>描边的矩形:  strokeRect( x ,y ,width, height)</li>
-<li>清除指定矩形区域:  clearRect( x ,y ,width, height)<a id="more"></a>
-</li>
-</ol>
-<h3 id="使用-fillRect-strokeRect-clearRect-绘制矩形"><a href="#使用-fillRect-strokeRect-clearRect-绘制矩形" class="headerlink" title="使用 fillRect() strokeRect() clearRect() 绘制矩形"></a>使用 fillRect() strokeRect() clearRect() 绘制矩形</h3><pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var canvas = document.getElementById(&quot;canvas&quot;);
-    if(canvas.getContext) {
-        var context = canvas.getContext(&apos;2d&apos;);
-        context.strokeRect(10, 10, 200, 200);
-        context.fillRect(50, 50, 100, 100);
-        context.clearRect(60, 60, 50, 50);
-    }
-&lt;/script&gt;
-</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas001.jpg" alt="canvas绘制矩形001"></p>
-<h3 id="strokeRect"><a href="#strokeRect" class="headerlink" title="strokeRect()"></a>strokeRect()</h3><p>strokeRect()方法用于绘制一个描边矩形，没有填充色。同样，它由x和y属性决定矩形的左上角位置，width和height实现决定矩形的宽度和高度。</p>
-<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var canvas = document.getElementById(&quot;canvas&quot;);
-    if(canvas.getContext) {
-        var context = canvas.getContext(&apos;2d&apos;);
-        context.strokeRect(10, 10, 200, 200);
-    }
-&lt;/script&gt;
-</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas002.jpg" alt="canvas绘制矩形002"></p>
-<p>使用2D上下文的lineWidth属性来设置描边的宽度。</p>
-<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var canvas = document.getElementById(&quot;canvas&quot;);
-    if(canvas.getContext) {
-        var context = canvas.getContext(&apos;2d&apos;);
-        context.lineWidth = 5;
-        context.strokeRect(10, 10, 200, 200);
-    }
-&lt;/script&gt;
-</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas003.jpg" alt="canvas绘制矩形003"></p>
-<h3 id="矩形的颜色-：-fillStyle-strokeStyle"><a href="#矩形的颜色-：-fillStyle-strokeStyle" class="headerlink" title="矩形的颜色 ： fillStyle strokeStyle"></a>矩形的颜色 ： fillStyle strokeStyle</h3><p>使用2D上下文的fillStyle和strokeStyle来设置绘制矩形的颜色</p>
-<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var canvas = document.getElementById(&quot;canvas&quot;);
-    if(canvas.getContext) {
-        var context = canvas.getContext(&apos;2d&apos;);
-        context.lineWidth = 5;
-        context.strokeStyle=&quot;#ff0000&quot;
-        context.strokeRect(10, 10, 200, 200);
-        context.fillStyle=&quot;#00ff00&quot;
-        context.fillRect(50, 50, 100, 100);
-    }
-&lt;/script&gt;
-</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas004.jpg" alt="canvas绘制矩形004"></p>
-<h3 id="clearRect"><a href="#clearRect" class="headerlink" title="clearRect()"></a>clearRect()</h3><p>2D上下文的clearRect()函数用于在Canvas中清除一个矩形区域。被清除的矩形区域变为透明。</p>
-<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var canvas = document.getElementById(&quot;canvas&quot;);
-    if(canvas.getContext) {
-        var context = canvas.getContext(&apos;2d&apos;);
-        context.lineWidth = 5;
-        context.strokeStyle=&quot;#ff0000&quot;
-        context.strokeRect(10, 10, 200, 200);
-        context.fillStyle=&quot;#00ff00&quot;
-        context.fillRect(50, 50, 100, 100);
-        context.clearRect(80, 80, 150, 50);
-    }
-&lt;/script&gt;
-</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas005.jpg" alt="canvas绘制矩形005"></p>
+        <h2 id="fill-属性"><a href="#fill-属性" class="headerlink" title="fill 属性"></a>fill 属性</h2><p>stroke : 定义图形的填充样式<br><a id="more"></a></p>
+<h3 id="fill"><a href="#fill" class="headerlink" title="fill"></a>fill</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;fill: #00ff00;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg062.png" alt="svg062"></p>
+<h3 id="fill-stroke"><a href="#fill-stroke" class="headerlink" title="fill+stroke"></a>fill+stroke</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;fill: #00ff00; stroke: #0000ff;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg061.png" alt="svg061"></p>
+<h3 id="fill-opacity-透明度"><a href="#fill-opacity-透明度" class="headerlink" title="fill-opacity(透明度)"></a>fill-opacity(透明度)</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;
+    &lt;rect x=&quot;50&quot; y=&quot;50&quot; width=&quot;50&quot; height=&quot;50&quot; style=&quot;fill: #00ff00; fill-opacity: 0.1;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;120&quot; y=&quot;50&quot; width=&quot;50&quot; height=&quot;50&quot; style=&quot;fill: #00ff00; fill-opacity: 0.5;&quot;&gt;&lt;/rect&gt;
+    &lt;rect x=&quot;190&quot; y=&quot;50&quot; width=&quot;50&quot; height=&quot;50&quot; style=&quot;fill: #00ff00; fill-opacity: 1;&quot;&gt;&lt;/rect&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg063.png" alt="svg063"></p>
+<h3 id="fill-rule"><a href="#fill-rule" class="headerlink" title="fill-rule"></a>fill-rule</h3><p>1.nonzero</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;path d=&quot;M50,50 L250,50 L250,250 L50,250 M100,100 L150,100 L150,150 L100 150&quot; style=&quot;fill: #00ff00; fill-rule: nonzero;&quot;&gt;&lt;/path&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg064.png" alt="svg064"></p>
+<p>2.evenodd</p>
+<pre><code>&lt;svg xmlns=&quot;http://www.w3c.org/2000/svg&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+        &lt;path d=&quot;M50,50 L250,50 L250,250 L50,250 M100,100 L150,100 L150,150 L100 150&quot; style=&quot;fill: #00ff00; fill-rule: evenodd;&quot;&gt;&lt;/path&gt;
+    &lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg065.png" alt="svg065"></p>
 
       
     </div>
@@ -405,13 +350,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/24/HTML5Canvas绘制矩形/">HTML5 Canvas(二) 绘制矩形</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/04/SVG系列（十二） fill/">SVG系列（十二） fill</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
-        <p><span>发布时间:</span>2016-12-24, 09:50:59</p>
-        <p><span>最后更新:</span>2016-12-26, 21:51:28</p>
+        <p><span>发布时间:</span>2017-01-04, 20:12:36</p>
+        <p><span>最后更新:</span>2017-01-04, 20:59:04</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/24/HTML5Canvas绘制矩形/" title="HTML5 Canvas(二) 绘制矩形">http://jsgrblog.win/2016/12/24/HTML5Canvas绘制矩形/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/24/HTML5Canvas绘制矩形/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/04/SVG系列（十二） fill/" title="SVG系列（十二） fill">http://jsgrblog.win/2017/01/04/SVG系列（十二） fill/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2017/01/04/SVG系列（十二） fill/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -424,15 +369,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/24/HTML5Canvas绘制路径/">
-                    HTML5 Canvas(三) 绘制路径
+                <a href="/2017/01/04/SVG系列（十三）transform/">
+                    SVG系列（十三） transform
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/24/HTML5Canvas学习前言/">
-                    HTML5 Canvas(一) 学习前言
+                <a href="/2017/01/04/SVG系列（十一） stroke/">
+                    SVG系列（十一） stroke
                 </a>
             </div>
         
@@ -444,7 +389,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas-绘制矩形"><span class="toc-number">1.</span> <span class="toc-text">Canvas 绘制矩形</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-fillRect-strokeRect-clearRect-绘制矩形"><span class="toc-number">1.1.</span> <span class="toc-text">使用 fillRect() strokeRect() clearRect() 绘制矩形</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strokeRect"><span class="toc-number">1.2.</span> <span class="toc-text">strokeRect()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩形的颜色-：-fillStyle-strokeStyle"><span class="toc-number">1.3.</span> <span class="toc-text">矩形的颜色 ： fillStyle strokeStyle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clearRect"><span class="toc-number">1.4.</span> <span class="toc-text">clearRect()</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#fill-属性"><span class="toc-number">1.</span> <span class="toc-text">fill 属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fill"><span class="toc-number">1.1.</span> <span class="toc-text">fill</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fill-stroke"><span class="toc-number">1.2.</span> <span class="toc-text">fill+stroke</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fill-opacity-透明度"><span class="toc-number">1.3.</span> <span class="toc-text">fill-opacity(透明度)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fill-rule"><span class="toc-number">1.4.</span> <span class="toc-text">fill-rule</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -480,7 +425,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"HTML5 Canvas(二) 绘制矩形　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SVG系列（十二） fill　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -496,7 +441,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/24/HTML5Canvas绘制矩形/" data-title="HTML5 Canvas(二) 绘制矩形" data-url="http://jsgrblog.win/2016/12/24/HTML5Canvas绘制矩形/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/04/SVG系列（十二） fill/" data-title="SVG系列（十二） fill" data-url="http://jsgrblog.win/2017/01/04/SVG系列（十二） fill/"></div>
     <script>
         var duoshuoQuery = {short_name:"jsgr"};
         var loadComment = function(){
@@ -519,7 +464,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/24/HTML5Canvas绘制路径/" title="上一篇: HTML5 Canvas(三) 绘制路径">
+            <a href="/2017/01/04/SVG系列（十三）transform/" title="上一篇: SVG系列（十三） transform">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -527,7 +472,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/24/HTML5Canvas学习前言/" title="下一篇: HTML5 Canvas(一) 学习前言">
+            <a href="/2017/01/04/SVG系列（十一） stroke/" title="下一篇: SVG系列（十一） stroke">
                 <i class="fa fa-angle-right"></i>
             </a>
         

@@ -15,21 +15,22 @@
 
 
 
-<meta name="description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
+<meta name="description" content="SVG过滤器 : 添加一些非常酷的效果,如阴影、模糊和高光等">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器动画兼容">
-<meta property="og:url" content="http://jsgrblog.win/2016/12/12/浏览器动画兼容/index.html">
+<meta property="og:title" content="SVG系列（十七）过滤器">
+<meta property="og:url" content="http://jsgrblog.win/2017/01/21/SVG系列（十七）过滤器/index.html">
 <meta property="og:site_name" content="jsgr blog">
-<meta property="og:description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/firefo%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/360%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif">
-<meta property="og:updated_time" content="2016-12-15T13:08:02.165Z">
+<meta property="og:description" content="SVG过滤器 : 添加一些非常酷的效果,如阴影、模糊和高光等">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg079.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg080.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg081.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg082.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg083.png">
+<meta property="og:updated_time" content="2017-01-22T08:56:16.292Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浏览器动画兼容">
-<meta name="twitter:description" content="现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，">
-<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif">
+<meta name="twitter:title" content="SVG系列（十七）过滤器">
+<meta name="twitter:description" content="SVG过滤器 : 添加一些非常酷的效果,如阴影、模糊和高光等">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/svg079.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -61,7 +62,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>浏览器动画兼容 | jsgr blog</title>
+<title>SVG系列（十七）过滤器 | jsgr blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,11 +273,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-浏览器动画兼容" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SVG系列（十七）过滤器" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/12/浏览器动画兼容/" class="article-date">
-      <time datetime="2016-12-12T11:16:59.000Z" itemprop="datePublished">2016-12-12</time>
+      <a href="/2017/01/21/SVG系列（十七）过滤器/" class="article-date">
+      <time datetime="2017-01-21T14:50:12.000Z" itemprop="datePublished">2017-01-21</time>
 </a>
 
 
@@ -291,7 +292,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      浏览器动画兼容
+      SVG系列（十七）过滤器
     </h1>
   
 
@@ -300,13 +301,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/踩过的坑/">踩过的坑</a>
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器兼容/">浏览器兼容</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/">SVG</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -316,236 +317,70 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>现在CSS已经足够强大了，浏览器也支持的很好，我们考虑IE10+的话，网页里的动画基本可以用CSS来实现，制作简单，修改方便。<br>作为前端对这个是非常喜欢，网上也有很多开源的纯CSS3实现的动画插件，虽然说是不用兼容低版本的IE，但就说目前比较常用的现代浏览器吧：谷歌，火狐，360 8.1. 也是有坑的。<br>今天要吐槽的就是所谓现在浏览器里的360浏览器了，动画兼容实在有问题，搞了两天终于把这个坑踩过了，这里就分享一下，自己挖坑自己填。</p>
+        <p>SVG过滤器 : 添加一些非常酷的效果,如阴影、模糊和高光等</p>
 <a id="more"></a>
-<h2 id="首先先上动画在三个浏览器里的gif图"><a href="#首先先上动画在三个浏览器里的gif图" class="headerlink" title="首先先上动画在三个浏览器里的gif图"></a>首先先上动画在三个浏览器里的gif图</h2><ol>
-<li><p>谷歌浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9chrome.gif" alt="浏览器动画兼容chrome.gif"></p>
-</li>
-<li><p>火狐浏览器<br><img src="http://ohyo58iyo.bkt.clouddn.com/firefo%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif" alt="firefo浏览器动画兼容.gif"></p>
-</li>
-<li><p>360浏览器8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9360.gif" alt="浏览器动画兼容360.gif"></p>
-</li>
-</ol>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>明显可以看到360浏览器的动画会闪动一下，只要操作频繁，还有鼠标快速移动才会出现，正常情况下是不会出现的。既然有坑那就先填了再说，不能找借口，是的，说是这样说，问题是什么原因造成的呢？中医讲究对症下药，那我们也要找到坑才知道要往哪儿填啊。</p>
-<p>先把代码贴上再说：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot;&gt;
-        &lt;title&gt;浏览器兼容&lt;/title&gt;
-        &lt;style type=&quot;text/css&quot;&gt;
-            .grid {
-                text-align: center;
-            }
+<h3 id="模糊滤镜"><a href="#模糊滤镜" class="headerlink" title="模糊滤镜"></a>模糊滤镜</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;Filter&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;5&quot;&gt;&lt;/feGaussianBlur&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+    &lt;circle cx=&quot;100&quot; cy=&quot;60&quot; r=&quot;50&quot; style=&quot;stroke: none; fill: #00ffff; &quot;&gt;&lt;/circle&gt;
+    &lt;circle cx=&quot;250&quot; cy=&quot;60&quot; r=&quot;50&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter);&quot;&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg079.png" alt="svg079"></p>
+<h3 id="高斯模糊滤镜"><a href="#高斯模糊滤镜" class="headerlink" title="高斯模糊滤镜"></a>高斯模糊滤镜</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;Filter&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;10&quot; /&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter);&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg080.png" alt="svg080"></p>
+<h3 id="模糊的数值"><a href="#模糊的数值" class="headerlink" title="模糊的数值"></a>模糊的数值</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;Filter5&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;5&quot; /&gt;
+        &lt;/filter&gt;
+        &lt;filter id=&quot;Filter10&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;10&quot; /&gt;
+        &lt;/filter&gt;
+        &lt;filter id=&quot;Filter15&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;15&quot; /&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
 
-            .grid figure {
-                position: relative;
-                float: left;
-                overflow: hidden;
-                min-width: 320px;
-                max-width: 480px;
-                max-height: 360px;
-                width: 48%;
-                height: auto;
-                background: #3085a3;
-                text-align: center;
-                cursor: pointer;
-            }
+    &lt;rect x=&quot;20&quot; y=&quot;20&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter5);&quot; /&gt;
+    &lt;rect x=&quot;20&quot; y=&quot;200&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter10);&quot; /&gt;
+    &lt;rect x=&quot;20&quot; y=&quot;380&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter15);&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg081.png" alt="svg081"></p>
+<h3 id="偏移滤镜"><a href="#偏移滤镜" class="headerlink" title="偏移滤镜"></a>偏移滤镜</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;offsetFilter&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feOffset in=&quot;SourceGraphic&quot; dx=&quot;100&quot; dy=&quot;100&quot; /&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;stroke: #ff0000; fill: none; filter: url(#offsetFilter);&quot; /&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;stroke: #00ff00; fill: none; &quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg082.png" alt="svg082"></p>
+<h3 id="混合滤镜"><a href="#混合滤镜" class="headerlink" title="混合滤镜"></a>混合滤镜</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;blurFilter&quot; y=&quot;-10&quot; height=&quot;40&quot; x=&quot;-10&quot; width=&quot;200&quot;&gt;
+            &lt;feOffset in=&quot;SourceAlpha&quot; dx=&quot;3&quot; dy=&quot;3&quot; result=&quot;offset&quot; /&gt;
+            &lt;feGaussianBlur in=&quot;offset&quot; stdDeviation=&quot;3&quot; result=&quot;blur&quot; /&gt;
 
-            .grid figure img {
-                position: relative;
-                display: block;
-                min-height: 100%;
-                max-width: 100%;
-                opacity: 0.8;
-            }
+            &lt;feBlend in=&quot;SourceGraphic&quot; in2=&quot;blur&quot; x=&quot;-10&quot; width=&quot;200&quot; /&gt;
 
-            .grid figure figcaption {
-                padding: 2em;
-                color: #fff;
-                text-transform: uppercase;
-                font-size: 1.25em;
-            }
+        &lt;/filter&gt;
+    &lt;/defs&gt;
 
-            figure.effect-goliath {
-                background: #df4e4e;
-            }
-
-            figure.effect-goliath img,
-            figure.effect-goliath h2,
-            figure.effect-goliath p {
-                -webkit-transition: 0.35s all;
-                transition: 0.35s all;
-            }
-
-            figure.effect-goliath h2,
-            figure.effect-goliath p {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                padding: 15px;
-            }
-
-            figure.effect-goliath p {
-                text-transform: none;
-                font-size: 90%;
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0);
-                transform: translate3d(0, 40px, 0);
-            }
-
-            figure.effect-goliath:hover img {
-                -webkit-transform: translate3d(0, -80px, 0);
-                transform: translate3d(0, -80px, 0);
-            }
-
-            figure.effect-goliath:hover h2 {
-                -webkit-transform: translate3d(0, -100px, 0);
-                transform: translate3d(0, -100px, 0);
-            }
-
-            figure.effect-goliath:hover p {
-                opacity: 1;
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-
-    &lt;body&gt;
-        &lt;div class=&quot;grid&quot;&gt;
-            &lt;figure class=&quot;effect-goliath&quot;&gt;
-                &lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.jpg&quot; /&gt;
-                &lt;figcaption&gt;
-                    &lt;h2&gt;Thoughtful &lt;span&gt;Goliath&lt;/span&gt;&lt;/h2&gt;
-                    &lt;p&gt;When Goliath comes out, you should run.&lt;/p&gt;
-                &lt;/figcaption&gt;
-            &lt;/figure&gt;
-        &lt;/div&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
-</code></pre><p>动画都是用CSS3 transform 属性来实现的，难道问题就是在这个？好像猜对了，试试看，哈哈。</p>
-<p>再把修改后的代码放上来：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot;&gt;
-        &lt;title&gt;浏览器兼容&lt;/title&gt;
-        &lt;style type=&quot;text/css&quot;&gt;
-            .grid {
-                text-align: center;
-            }
-
-            .grid figure {
-                position: relative;
-                float: left;
-                overflow: hidden;
-                min-width: 320px;
-                max-width: 480px;
-                max-height: 360px;
-                width: 48%;
-                height: auto;
-                background: #3085a3;
-                text-align: center;
-                cursor: pointer;
-            }
-
-            .grid figure img {
-                position: relative;
-                display: block;
-                min-height: 100%;
-                max-width: 100%;
-                opacity: 0.8;
-            }
-
-            .grid figure figcaption {
-                padding: 1em;
-                color: #fff;
-                text-transform: uppercase;
-                font-size: 1.25em;
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-            }
-
-            .grid figure figcaption::before,
-            .grid figure figcaption::after {
-                pointer-events: none;
-            }
-
-            figure.effect-goliath {
-                background: #df4e4e;
-            }
-
-            figure.effect-goliath img,
-            figure.effect-goliath h2,
-            figure.effect-goliath p {
-                -webkit-transition: 0.35s all;
-                transition: 0.35s all;
-            }
-
-            figure.effect-goliath img {
-                position: relative;
-                top: 0;
-            }
-
-            figure.effect-goliath h2,
-            figure.effect-goliath p {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                padding: 15px;
-            }
-
-            figure.effect-goliath p {
-                text-transform: none;
-                font-size: 90%;
-                opacity: 0;
-                -webkit-transform: translate3d(0, 40px, 0);
-                transform: translate3d(0, 40px, 0);
-            }
-
-            figure.effect-goliath:hover img {
-                top: -80px;
-            }
-
-            figure.effect-goliath:hover h2 {
-                -webkit-transform: translate3d(0, -100px, 0);
-                transform: translate3d(0, -100px, 0);
-            }
-
-            figure.effect-goliath:hover p {
-                opacity: 1;
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-            }
-        &lt;/style&gt;
-    &lt;/head&gt;
-
-    &lt;body&gt;
-        &lt;div class=&quot;grid&quot;&gt;
-            &lt;figure class=&quot;effect-goliath&quot;&gt;
-                &lt;img src=&quot;http://ohyo58iyo.bkt.clouddn.com/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.jpg&quot; /&gt;
-                &lt;figcaption&gt;
-                    &lt;h2&gt;Thoughtful &lt;span&gt;Goliath&lt;/span&gt;&lt;/h2&gt;
-                    &lt;p&gt;When Goliath comes out, you should run.&lt;/p&gt;
-                &lt;/figcaption&gt;
-            &lt;/figure&gt;
-        &lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>附上一张效果图：360浏览器 8.1<br><img src="http://ohyo58iyo.bkt.clouddn.com/360%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8A%A8%E7%94%BB%E5%85%BC%E5%AE%B9.gif" alt="浏览器动画兼容360.gif"><br>这下子鼠标效果就不会出现闪现了，<em>感觉gif录制的有点差，感兴趣的同学可以将代码复制下来，本地测试</em></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这里只将两部分不同的代码粘贴出来</p>
-<p>修改前：<br>   <code>figure.effect-goliath:hover img {
-        -webkit-transform: translate3d(0, -80px, 0);
-        transform: translate3d(0, -80px, 0);
-    }</code></p>
-<p>修改后：<br>    <code>figure.effect-goliath img {
-        position: relative;
-        top: 0;
-    }</code><br>    <code>figure.effect-goliath:hover img {
-        top: -80px;
-    }</code></p>
-<p>就是把之前使用 transform 实现的动画，换成相对定位来实现，然后，然后就可以了···<br>至于原理，一脸懵逼，本人原则是，不管怎样，先做出来再说话。<br>到此，效果虽已实现，坑还未填，期待下一步更新（我也不知道会不会更新，哈哈）<br>有兴趣的同学还可以试试，使用 margin padding 等其他CSS属性来实现同一个动画效果哦 !（目的只有一个，方法有很多）<br>有更好的建议，欢迎交流 QQ:1256961638</p>
+    &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;50&quot; style=&quot;stroke: none; fill: #00ffff;
+        filter: url(#blurFilter);&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg083.png" alt="svg083"></p>
 
       
     </div>
@@ -554,13 +389,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/12/浏览器动画兼容/">浏览器动画兼容</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/21/SVG系列（十七）过滤器/">SVG系列（十七）过滤器</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
-        <p><span>发布时间:</span>2016-12-12, 19:16:59</p>
-        <p><span>最后更新:</span>2016-12-15, 21:08:02</p>
+        <p><span>发布时间:</span>2017-01-21, 22:50:12</p>
+        <p><span>最后更新:</span>2017-01-22, 16:56:16</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/12/浏览器动画兼容/" title="浏览器动画兼容">http://jsgrblog.win/2016/12/12/浏览器动画兼容/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/12/浏览器动画兼容/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/21/SVG系列（十七）过滤器/" title="SVG系列（十七）过滤器">http://jsgrblog.win/2017/01/21/SVG系列（十七）过滤器/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2017/01/21/SVG系列（十七）过滤器/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -573,15 +408,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/24/HTML5Canvas学习前言/">
-                    HTML5 Canvas(一) 学习前言
+                <a href="/2017/01/22/CSS 揭秘 案例代码/">
+                    CSS 揭秘 案例代码
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/">
-                    每个JavaScript开发者都该懂的Unicode
+                <a href="/2017/01/21/SVG系列（十六）裁剪路径/">
+                    SVG系列（十六）裁剪路径
                 </a>
             </div>
         
@@ -593,7 +428,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先先上动画在三个浏览器里的gif图"><span class="toc-number">1.</span> <span class="toc-text">首先先上动画在三个浏览器里的gif图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">2.</span> <span class="toc-text">区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">3.</span> <span class="toc-text">分析</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊滤镜"><span class="toc-number">1.</span> <span class="toc-text">模糊滤镜</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高斯模糊滤镜"><span class="toc-number">2.</span> <span class="toc-text">高斯模糊滤镜</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模糊的数值"><span class="toc-number">3.</span> <span class="toc-text">模糊的数值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#偏移滤镜"><span class="toc-number">4.</span> <span class="toc-text">偏移滤镜</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#混合滤镜"><span class="toc-number">5.</span> <span class="toc-text">混合滤镜</span></a></li></ol>
         
     </div>
     <style>
@@ -629,7 +464,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"浏览器动画兼容　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SVG系列（十七）过滤器　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -645,7 +480,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/12/浏览器动画兼容/" data-title="浏览器动画兼容" data-url="http://jsgrblog.win/2016/12/12/浏览器动画兼容/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/21/SVG系列（十七）过滤器/" data-title="SVG系列（十七）过滤器" data-url="http://jsgrblog.win/2017/01/21/SVG系列（十七）过滤器/"></div>
     <script>
         var duoshuoQuery = {short_name:"jsgr"};
         var loadComment = function(){
@@ -668,7 +503,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/24/HTML5Canvas学习前言/" title="上一篇: HTML5 Canvas(一) 学习前言">
+            <a href="/2017/01/22/CSS 揭秘 案例代码/" title="上一篇: CSS 揭秘 案例代码">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -676,7 +511,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/11/每个JavaScript开发者都该懂的Unicode/" title="下一篇: 每个JavaScript开发者都该懂的Unicode">
+            <a href="/2017/01/21/SVG系列（十六）裁剪路径/" title="下一篇: SVG系列（十六）裁剪路径">
                 <i class="fa fa-angle-right"></i>
             </a>
         

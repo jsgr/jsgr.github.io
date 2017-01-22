@@ -4,6 +4,91 @@
   
     
     <entry>
+      <title><![CDATA[CSS 揭秘 案例代码]]></title>
+      <url>http://jsgrblog.win/2017/01/22/CSS%20%E6%8F%AD%E7%A7%98%20%E6%A1%88%E4%BE%8B%E4%BB%A3%E7%A0%81/</url>
+      <content type="html"><![CDATA[<p>CSS 揭秘 案例代码 更新在 Runjs 上</p>
+<a id="more"></a>
+<h3 id="1-边框与背景"><a href="#1-边框与背景" class="headerlink" title="1.边框与背景"></a>1.边框与背景</h3><p>1.<a href="http://runjs.cn/code/dvsepdo0" title="半透明边框" target="_blank" rel="external">半透明边框</a><br>2.<a href="http://runjs.cn/code/59iyvq8l" title="多重边框" target="_blank" rel="external">多重边框</a><br>3.<a href="http://runjs.cn/code/hcso7aoq" title="灵活的多重背景" target="_blank" rel="external">灵活的多重背景</a><br>4.<a href="http://runjs.cn/code/ahvbjeml" title="边框内圆角" target="_blank" rel="external">边框内圆角</a><br>5.<a href="http://runjs.cn/code/qrvqc488" title="双色水平条纹" target="_blank" rel="external">双色水平条纹</a><br>6.<a href="http://runjs.cn/code/x6h4mvbb" title="三色水平条纹" target="_blank" rel="external">三色水平条纹</a><br>7.<a href="http://runjs.cn/code/mn0toxdb" title="垂直条纹" target="_blank" rel="external">垂直条纹</a><br>8.<a href="http://runjs.cn/code/ddaiusio" title="斜向条纹" target="_blank" rel="external">斜向条纹</a><br>9.<a href="http://runjs.cn/code/uxpsgkvw" title="60度斜向条纹" target="_blank" rel="external">60度斜向条纹</a></p>
+<h3 id="2-形状"><a href="#2-形状" class="headerlink" title="2.形状"></a>2.形状</h3><p>1.<a href="http://runjs.cn/code/glh1nhxs" title="椭圆" target="_blank" rel="external">椭圆</a><br>2.<a href="http://runjs.cn/code/krzulx07" title="半椭圆" target="_blank" rel="external">半椭圆</a><br>3.<a href="http://runjs.cn/code/8grzufna" title="四分之一椭圆" target="_blank" rel="external">四分之一椭圆</a><br>4.<a href="http://runjs.cn/code/gomgkq09" title="平行四边形" target="_blank" rel="external">平行四边形</a><br>5.<a href="http://runjs.cn/code/yifvescr" title="菱形" target="_blank" rel="external">菱形</a><br>6.<a href="http://runjs.cn/code/qvqjomk0" title="切角效果" target="_blank" rel="external">切角效果</a><br>7.<a href="http://runjs.cn/code/mgmxgdhv" title="弧形切角" target="_blank" rel="external">弧形切角</a><br>8.<a href="http://runjs.cn/code/yjxjvwwg" title="梯形标签页" target="_blank" rel="external">梯形标签页</a></p>
+<h3 id="3-视觉效果"><a href="#3-视觉效果" class="headerlink" title="3.视觉效果"></a>3.视觉效果</h3><p>1.<a href="http://runjs.cn/code/0osmvv4i" title="单侧投影" target="_blank" rel="external">单侧投影</a><br>2.<a href="http://runjs.cn/code/qbircel7" title="邻边投影" target="_blank" rel="external">邻边投影</a><br>3.<a href="http://runjs.cn/code/t1dbkhci" title="双侧投影" target="_blank" rel="external">双侧投影</a><br>4.<a href="http://runjs.cn/code/fpl0fgw0" title="不规则投影" target="_blank" rel="external">不规则投影</a><br>5.<a href="http://runjs.cn/code/lwrcharx" title="染色效果(滤镜)" target="_blank" rel="external">染色效果(滤镜)</a><br>6.<a href="http://runjs.cn/code/uowibwxv" title="染色效果(混合)" target="_blank" rel="external">染色效果(混合)</a><br>7.<a href="http://runjs.cn/code/2qcvjkp4" title="毛玻璃效果" target="_blank" rel="external">毛玻璃效果</a><br>8.<a href="http://runjs.cn/code/rdktqs4o" title="45°折角" target="_blank" rel="external">45°折角</a><br>9.<a href="http://runjs.cn/code/ybo23fcs" title="其他角度折角" target="_blank" rel="external">其他角度折角</a></p>
+<h3 id="4-字体排印"><a href="#4-字体排印" class="headerlink" title="4.字体排印"></a>4.字体排印</h3><p>1.<a href="http://runjs.cn/code/drmy6azq" title="连字符断行" target="_blank" rel="external">连字符断行</a><br>2.<a href="http://runjs.cn/code/1okgd5mm" title="插入换行" target="_blank" rel="external">插入换行</a><br>3.<a href="http://runjs.cn/code/f2lbfcrj" title="文本行的斑马条纹" target="_blank" rel="external">文本行的斑马条纹</a><br>4.<a href="http://runjs.cn/code/4mzmsu30" title="调整tab的宽度" target="_blank" rel="external">调整tab的宽度</a><br>5.<a href="http://runjs.cn/code/xbci7haw" title="凸版印刷" target="_blank" rel="external">凸版印刷</a><br>6.<a href="http://runjs.cn/code/bvri2cah" title="空心字" target="_blank" rel="external">空心字</a><br>7.<a href="http://runjs.cn/code/rvhhphem" title="文字外发光" target="_blank" rel="external">文字外发光</a><br>8.<a href="http://runjs.cn/code/bczvag39" title="文字凸起" target="_blank" rel="external">文字凸起</a><br>9.<a href="http://runjs.cn/code/6uhfxnfv" title="环形文字" target="_blank" rel="external">环形文字</a></p>
+<h3 id="5-用户体验"><a href="#5-用户体验" class="headerlink" title="5.用户体验"></a>5.用户体验</h3><p>1.<a href="http://runjs.cn/code/jccpx9kt" title="扩大可点击区域" target="_blank" rel="external">扩大可点击区域</a><br>2.<a href="http://runjs.cn/code/gqtynppb" title="自定义复选框" target="_blank" rel="external">自定义复选框</a><br>3.<a href="http://runjs.cn/code/lsf4jrrm" title="开关式按钮" target="_blank" rel="external">开关式按钮</a><br>4.<a href="http://runjs.cn/code/oz2mymgp" title="box-shadow遮罩" target="_blank" rel="external">box-shadow遮罩</a><br>5.<a href="http://runjs.cn/code/r0bhh6an" title="backdrop遮罩" target="_blank" rel="external">backdrop遮罩</a><br>6.<a href="http://runjs.cn/code/r4xnjh4h" title="通过模糊来弱化背景" target="_blank" rel="external">通过模糊来弱化背景</a><br>7.<a href="http://runjs.cn/code/mkikj246" title="滚动提示" target="_blank" rel="external">滚动提示</a><br>8.<a href="http://runjs.cn/code/efrgasqm" title="交互式的图片对比控件" target="_blank" rel="external">交互式的图片对比控件</a></p>
+<h3 id="6-结构与布局"><a href="#6-结构与布局" class="headerlink" title="6.结构与布局"></a>6.结构与布局</h3><p>1.<a href="http://runjs.cn/code/rawudd2a" title="自适应内部元素" target="_blank" rel="external">自适应内部元素</a><br>2.<a href="http://runjs.cn/code/ye0fryjv" title="精确控制表格列宽" target="_blank" rel="external">精确控制表格列宽</a><br>3.<a href="http://runjs.cn/code/pxao8x5m" title="根据兄弟元素的数量来设置样式" target="_blank" rel="external">根据兄弟元素的数量来设置样式</a><br>4.<a href="http://runjs.cn/code/4y4covol" title="满幅的背景,定宽的内容" target="_blank" rel="external">满幅的背景 定宽的内容</a><br>5.<a href="http://runjs.cn/code/xblks2m6" title="垂直居中(绝对定位)" target="_blank" rel="external">垂直居中(绝对定位)</a><br>6.<a href="http://runjs.cn/code/edinn6ey" title="垂直居中(视口单位)" target="_blank" rel="external">垂直居中(视口单位)</a><br>7.<a href="http://runjs.cn/code/xi0i31fl" title="垂直居中(Flexbox)" target="_blank" rel="external">垂直居中(Flexbox)</a><br>8.<a href="http://runjs.cn/code/ctbeahqu" title="紧贴底部的页脚(视口单位)" target="_blank" rel="external">紧贴底部的页脚(视口单位)</a><br>9.<a href="http://runjs.cn/code/7mwqdnkt" title="紧贴底部的页脚(Flexbox)" target="_blank" rel="external">紧贴底部的页脚(Flexbox)</a></p>
+<h3 id="7-过渡与动画"><a href="#7-过渡与动画" class="headerlink" title="7.过渡与动画"></a>7.过渡与动画</h3><p>1.<a href="http://runjs.cn/code/rluh2qes" title="弹跳" target="_blank" rel="external">弹跳</a><br>2.<a href="http://runjs.cn/code/pmewcvwq" title="逐帧" target="_blank" rel="external">逐帧</a><br>3.<a href="http://runjs.cn/code/j2jqnrbz" title="闪烁" target="_blank" rel="external">闪烁</a><br>4.<a href="http://runjs.cn/code/oymbidz1" title="打字效果" target="_blank" rel="external">打字效果</a><br>5.<a href="http://runjs.cn/code/epsz8akq" title="状态平滑" target="_blank" rel="external">状态平滑</a><br>6.<a href="http://runjs.cn/code/koutblki" title="沿环形路径平移(两元素)" target="_blank" rel="external">沿环形路径平移(两元素)</a><br>7.<a href="http://runjs.cn/code/zvhxyfvk" title="沿环形路径平移(单元素)" target="_blank" rel="external">沿环形路径平移(单元素)</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SVG系列（十七）过滤器]]></title>
+      <url>http://jsgrblog.win/2017/01/21/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E4%B8%83%EF%BC%89%E8%BF%87%E6%BB%A4%E5%99%A8/</url>
+      <content type="html"><![CDATA[<p>SVG过滤器 : 添加一些非常酷的效果,如阴影、模糊和高光等</p>
+<a id="more"></a>
+<h3 id="模糊滤镜"><a href="#模糊滤镜" class="headerlink" title="模糊滤镜"></a>模糊滤镜</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;Filter&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;5&quot;&gt;&lt;/feGaussianBlur&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+    &lt;circle cx=&quot;100&quot; cy=&quot;60&quot; r=&quot;50&quot; style=&quot;stroke: none; fill: #00ffff; &quot;&gt;&lt;/circle&gt;
+    &lt;circle cx=&quot;250&quot; cy=&quot;60&quot; r=&quot;50&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter);&quot;&gt;&lt;/circle&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg079.png" alt="svg079"></p>
+<h3 id="高斯模糊滤镜"><a href="#高斯模糊滤镜" class="headerlink" title="高斯模糊滤镜"></a>高斯模糊滤镜</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;Filter&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;10&quot; /&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter);&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg080.png" alt="svg080"></p>
+<h3 id="模糊的数值"><a href="#模糊的数值" class="headerlink" title="模糊的数值"></a>模糊的数值</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;Filter5&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;5&quot; /&gt;
+        &lt;/filter&gt;
+        &lt;filter id=&quot;Filter10&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;10&quot; /&gt;
+        &lt;/filter&gt;
+        &lt;filter id=&quot;Filter15&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feGaussianBlur in=&quot;SourceGraphic&quot; stdDeviation=&quot;15&quot; /&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+
+    &lt;rect x=&quot;20&quot; y=&quot;20&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter5);&quot; /&gt;
+    &lt;rect x=&quot;20&quot; y=&quot;200&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter10);&quot; /&gt;
+    &lt;rect x=&quot;20&quot; y=&quot;380&quot; width=&quot;100&quot; height=&quot;100&quot; style=&quot;stroke: none; fill: #00ffff; filter: url(#Filter15);&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg081.png" alt="svg081"></p>
+<h3 id="偏移滤镜"><a href="#偏移滤镜" class="headerlink" title="偏移滤镜"></a>偏移滤镜</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;offsetFilter&quot; x=&quot;-20&quot; y=&quot;-20&quot; width=&quot;200&quot; height=&quot;200&quot;&gt;
+            &lt;feOffset in=&quot;SourceGraphic&quot; dx=&quot;100&quot; dy=&quot;100&quot; /&gt;
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;stroke: #ff0000; fill: none; filter: url(#offsetFilter);&quot; /&gt;
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;200&quot; height=&quot;200&quot; style=&quot;stroke: #00ff00; fill: none; &quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg082.png" alt="svg082"></p>
+<h3 id="混合滤镜"><a href="#混合滤镜" class="headerlink" title="混合滤镜"></a>混合滤镜</h3><pre><code>&lt;svg xmlns=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;filter id=&quot;blurFilter&quot; y=&quot;-10&quot; height=&quot;40&quot; x=&quot;-10&quot; width=&quot;200&quot;&gt;
+            &lt;feOffset in=&quot;SourceAlpha&quot; dx=&quot;3&quot; dy=&quot;3&quot; result=&quot;offset&quot; /&gt;
+            &lt;feGaussianBlur in=&quot;offset&quot; stdDeviation=&quot;3&quot; result=&quot;blur&quot; /&gt;
+
+            &lt;feBlend in=&quot;SourceGraphic&quot; in2=&quot;blur&quot; x=&quot;-10&quot; width=&quot;200&quot; /&gt;
+
+        &lt;/filter&gt;
+    &lt;/defs&gt;
+
+    &lt;circle cx=&quot;100&quot; cy=&quot;100&quot; r=&quot;50&quot; style=&quot;stroke: none; fill: #00ffff;
+        filter: url(#blurFilter);&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg083.png" alt="svg083"></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[SVG系列（十六）裁剪路径]]></title>
       <url>http://jsgrblog.win/2017/01/21/SVG%E7%B3%BB%E5%88%97%EF%BC%88%E5%8D%81%E5%85%AD%EF%BC%89%E8%A3%81%E5%89%AA%E8%B7%AF%E5%BE%84/</url>
       <content type="html"><![CDATA[<p>SVG剪裁路径 : 根据指定的路径或形状来剪裁SVG图形,在剪裁路径内部的图形可以被显示出来,反之被隐藏</p>

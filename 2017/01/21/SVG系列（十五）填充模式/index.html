@@ -15,24 +15,19 @@
 
 
 
-<meta name="description" content="Canvas 填充模式填充模式 ：canvas中使用某张图片作为一种模式来填充图形通过createPattern(image, type)方法来创建一种填充模式
-canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;lt;canvas&amp;gt;或一个&amp;lt;video&amp;gt;等2.type  ：使用图片来创建特定的模式(repeat的值和表示的意思和CSS同样)repeat">
+<meta name="description" content="SVG填充模式 : 使用某种图像作为模式来填充SVG图形,这种模式可以是SVG图形或位图">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML5 Canvas(六) 填充模式">
-<meta property="og:url" content="http://jsgrblog.win/2016/12/26/HTML5Canvas填充模式/index.html">
+<meta property="og:title" content="SVG系列（十五）填充模式">
+<meta property="og:url" content="http://jsgrblog.win/2017/01/21/SVG系列（十五）填充模式/index.html">
 <meta property="og:site_name" content="jsgr blog">
-<meta property="og:description" content="Canvas 填充模式填充模式 ：canvas中使用某张图片作为一种模式来填充图形通过createPattern(image, type)方法来创建一种填充模式
-canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;lt;canvas&amp;gt;或一个&amp;lt;video&amp;gt;等2.type  ：使用图片来创建特定的模式(repeat的值和表示的意思和CSS同样)repeat">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas021.jpg">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas021.png">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas022.jpg">
-<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas023.jpg">
-<meta property="og:updated_time" content="2016-12-26T03:32:50.000Z">
+<meta property="og:description" content="SVG填充模式 : 使用某种图像作为模式来填充SVG图形,这种模式可以是SVG图形或位图">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg073.png">
+<meta property="og:image" content="http://ohyo58iyo.bkt.clouddn.com/svg074.png">
+<meta property="og:updated_time" content="2017-01-22T02:22:59.389Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML5 Canvas(六) 填充模式">
-<meta name="twitter:description" content="Canvas 填充模式填充模式 ：canvas中使用某张图片作为一种模式来填充图形通过createPattern(image, type)方法来创建一种填充模式
-canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;lt;canvas&amp;gt;或一个&amp;lt;video&amp;gt;等2.type  ：使用图片来创建特定的模式(repeat的值和表示的意思和CSS同样)repeat">
-<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/canvas021.jpg">
+<meta name="twitter:title" content="SVG系列（十五）填充模式">
+<meta name="twitter:description" content="SVG填充模式 : 使用某种图像作为模式来填充SVG图形,这种模式可以是SVG图形或位图">
+<meta name="twitter:image" content="http://ohyo58iyo.bkt.clouddn.com/svg073.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -64,7 +59,7 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>HTML5 Canvas(六) 填充模式 | jsgr blog</title>
+<title>SVG系列（十五）填充模式 | jsgr blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -275,11 +270,11 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-HTML5Canvas填充模式" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-SVG系列（十五）填充模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/26/HTML5Canvas填充模式/" class="article-date">
-      <time datetime="2016-12-26T11:58:50.000Z" itemprop="datePublished">2016-12-26</time>
+      <a href="/2017/01/21/SVG系列（十五）填充模式/" class="article-date">
+      <time datetime="2017-01-21T12:58:22.000Z" itemprop="datePublished">2017-01-21</time>
 </a>
 
 
@@ -294,7 +289,7 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
         
   
     <h1 class="article-title" itemprop="name">
-      HTML5 Canvas(六) 填充模式
+      SVG系列（十五）填充模式
     </h1>
   
 
@@ -309,7 +304,7 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVG/">SVG</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -319,49 +314,35 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Canvas-填充模式"><a href="#Canvas-填充模式" class="headerlink" title="Canvas 填充模式"></a>Canvas 填充模式</h2><p>填充模式 ：canvas中使用某张图片作为一种模式来填充图形<br>通过createPattern(image, type)方法来创建一种填充模式</p>
-<p>canvas的填充模式有2个属性：<br>1.image : 一个HTML图片，另一个<code>&lt;canvas&gt;</code>或一个<code>&lt;video&gt;</code>等<br>2.type  ：使用图片来创建特定的模式(repeat的值和表示的意思和CSS同样)<br>repeat：在水平和垂直方向上重复图片<br>repeat-x：只在水平方向上重复图片<br>repeat-y：只在垂直方向上重复图片<br>no-repeat：不重复图片，只显示一次<br><a id="more"></a></p>
-<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var canvas = document.getElementById(&quot;canvas&quot;);
-    if(canvas.getContext) {
-        var context = canvas.getContext(&apos;2d&apos;);
+        <p>SVG填充模式 : 使用某种图像作为模式来填充SVG图形,这种模式可以是SVG图形或位图</p>
+<a id="more"></a>
+<p>1.x : 填充在X轴方向的开始位置<br>2.y : 填充在Y轴方向的开始位置<br>3.width : 填充的宽度<br>4.height : 填充的高度</p>
+<h3 id="基本填充"><a href="#基本填充" class="headerlink" title="基本填充"></a>基本填充</h3><p>1.<code>&lt;pattern&gt;</code>元素被定义在<code>&lt;defs&gt;</code>元素中。在<code>&lt;pattern&gt;</code>元素元素中包含一个<code>&lt;circle&gt;</code>元素，这个圆形将被用于作为填充模式<br>2.<code>&lt;rect&gt;</code>元素中，style属性的fill CSS属性指向了<code>&lt;pattern&gt;</code>元素。这意味着要使用这个模式来填充矩形</p>
+<pre><code>&lt;svg xmlins=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;pattern id=&quot;pattern&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;40&quot; height=&quot;40&quot; patternUnits=&quot;userSpaceOnUse&quot;&gt;
+            &lt;circle cx=&quot;20&quot; cy=&quot;20&quot; r=&quot;20&quot; style=&quot;stroke: none; fill: #00ffff&quot; /&gt;
+        &lt;/pattern&gt;
+    &lt;/defs&gt;
 
-        var img = new Image();
-        img.src = &apos;images/canvas021.png&apos;
-        //使用 Image 对象的 onload 来确保设置图案之前图像已经装载完毕
-        img.onload = function() {
-            var pattern = context.createPattern(img, &apos;repeat&apos;);
-            context.fillStyle = pattern;
-            context.fillRect(0, 0, 200, 200)
-        }
-    }
-    &lt;/script&gt;
-</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas021.jpg" alt="canvas021"><br>上面的例子是图片canvas021.png <img src="http://ohyo58iyo.bkt.clouddn.com/canvas021.png" alt="canvas021">（23px*23px）使用canvas填充模式生成的大图</p>
-<h3 id="Canvas-填充规则"><a href="#Canvas-填充规则" class="headerlink" title="Canvas 填充规则"></a>Canvas 填充规则</h3><p>使用fill（clip和isPointinPath ）可以选择一个填充规则。<br>填充规则根据某处在路径的外面或者里面来决定该处是否被填充，对于路径相交或者路径被嵌套的时候是有用的。<br>有2个值 ：<br>1.nonzero（默认值）</p>
-<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var canvas = document.getElementById(&quot;canvas&quot;);
-    if(canvas.getContext) {
-        var context = canvas.getContext(&apos;2d&apos;);
-        context.arc(100, 100, 50, 0, Math.PI * 2, true);
-        context.arc(100, 100, 20, 0, Math.PI * 2, true);
-        context.fill(&quot;nonzero&quot;);
-    }
-&lt;/script&gt;
-</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas022.jpg" alt="canvas022"></p>
-<p>2.evenodd</p>
-<pre><code>&lt;canvas id=&quot;canvas&quot; width=&quot;500&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-    var canvas = document.getElementById(&quot;canvas&quot;);
-    if(canvas.getContext) {
-        var context = canvas.getContext(&apos;2d&apos;);
-        context.arc(100, 100, 50, 0, Math.PI * 2, true);
-        context.arc(100, 100, 20, 0, Math.PI * 2, true);
-        context.fill(&quot;evenodd&quot;);
-    }
-&lt;/script&gt;
-</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/canvas023.jpg" alt="canvas023"></p>
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;300&quot; height=&quot;300&quot; style=&quot;stroke: #ff0000; fill: url(#pattern);&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg073.png" alt="svg073"></p>
+<h3 id="嵌套填充模式"><a href="#嵌套填充模式" class="headerlink" title="嵌套填充模式"></a>嵌套填充模式</h3><p>SVG的填充模式也可以进行嵌套,这样会在一个填充模式的内部使用另一个填充模式</p>
+<pre><code>&lt;svg xmlins=&quot;http://www.w3c.org&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;
+    &lt;defs&gt;
+        &lt;pattern id=&quot;circlePattern&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;30&quot; height=&quot;30&quot; patternUnits=&quot;userSpaceOnUse&quot;&gt;
+            &lt;circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;10&quot; style=&quot;stroke: none; fill: #0000ff;&quot; /&gt;
+        &lt;/pattern&gt;
+
+        &lt;pattern id=&quot;rectPattern&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;60&quot; height=&quot;60&quot; patternUnits=&quot;userSpaceOnUse&quot;&gt;
+            &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;50&quot; height=&quot;50&quot; style=&quot;stroke: #00ff00; fill: url(#circlePattern)&quot; /&gt;
+        &lt;/pattern&gt;
+    &lt;/defs&gt;
+
+    &lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;370&quot; height=&quot;370&quot; style=&quot;stroke: #ff0000; fill: url(#rectPattern);&quot; /&gt;
+&lt;/svg&gt;
+</code></pre><p><img src="http://ohyo58iyo.bkt.clouddn.com/svg074.png" alt="svg074"></p>
 
       
     </div>
@@ -370,13 +351,13 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/26/HTML5Canvas填充模式/">HTML5 Canvas(六) 填充模式</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/21/SVG系列（十五）填充模式/">SVG系列（十五）填充模式</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">jsgr</a></p>
-        <p><span>发布时间:</span>2016-12-26, 19:58:50</p>
-        <p><span>最后更新:</span>2016-12-26, 11:32:50</p>
+        <p><span>发布时间:</span>2017-01-21, 20:58:22</p>
+        <p><span>最后更新:</span>2017-01-22, 10:22:59</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/26/HTML5Canvas填充模式/" title="HTML5 Canvas(六) 填充模式">http://jsgrblog.win/2016/12/26/HTML5Canvas填充模式/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2016/12/26/HTML5Canvas填充模式/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/21/SVG系列（十五）填充模式/" title="SVG系列（十五）填充模式">http://jsgrblog.win/2017/01/21/SVG系列（十五）填充模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://jsgrblog.win/2017/01/21/SVG系列（十五）填充模式/　　作者: jsgr" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -389,15 +370,15 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/26/HTML5Canvas绘制文本/">
-                    HTML5 Canvas(七) 绘制文本
+                <a href="/2017/01/21/SVG系列（十六）裁剪路径/">
+                    SVG系列（十六）裁剪路径
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/26/HTML5Canvas绘制阴影/">
-                    HTML5 Canvas(五) 绘制阴影
+                <a href="/2017/01/21/SVG系列（十四）渐变/">
+                    SVG系列（十四）渐变
                 </a>
             </div>
         
@@ -409,7 +390,7 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Canvas-填充模式"><span class="toc-number">1.</span> <span class="toc-text">Canvas 填充模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Canvas-填充规则"><span class="toc-number">1.1.</span> <span class="toc-text">Canvas 填充规则</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本填充"><span class="toc-number">1.</span> <span class="toc-text">基本填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#嵌套填充模式"><span class="toc-number">2.</span> <span class="toc-text">嵌套填充模式</span></a></li></ol>
         
     </div>
     <style>
@@ -445,7 +426,7 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"HTML5 Canvas(六) 填充模式　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"SVG系列（十五）填充模式　| jsgr blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -461,7 +442,7 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/26/HTML5Canvas填充模式/" data-title="HTML5 Canvas(六) 填充模式" data-url="http://jsgrblog.win/2016/12/26/HTML5Canvas填充模式/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/21/SVG系列（十五）填充模式/" data-title="SVG系列（十五）填充模式" data-url="http://jsgrblog.win/2017/01/21/SVG系列（十五）填充模式/"></div>
     <script>
         var duoshuoQuery = {short_name:"jsgr"};
         var loadComment = function(){
@@ -484,7 +465,7 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/26/HTML5Canvas绘制文本/" title="上一篇: HTML5 Canvas(七) 绘制文本">
+            <a href="/2017/01/21/SVG系列（十六）裁剪路径/" title="上一篇: SVG系列（十六）裁剪路径">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -492,7 +473,7 @@ canvas的填充模式有2个属性：1.image : 一个HTML图片，另一个&amp;
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/26/HTML5Canvas绘制阴影/" title="下一篇: HTML5 Canvas(五) 绘制阴影">
+            <a href="/2017/01/21/SVG系列（十四）渐变/" title="下一篇: SVG系列（十四）渐变">
                 <i class="fa fa-angle-right"></i>
             </a>
         
